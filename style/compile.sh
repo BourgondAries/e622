@@ -1,2 +1,2 @@
 rm cat.css
-cat * > cat.css
+cat *.css > cat.css
