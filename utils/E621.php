@@ -4,7 +4,8 @@
 		var $connection;
 		function __construct()
 		{
-			$password = file_get_contents("../mysqlkey.txt");
+			$server_root = $_SERVER['DOCUMENT_ROOT'];
+			$password = file_get_contents("$server_root/../mysqlkey.txt");
 			$password = rtrim($password);
 			$this->connection = new mysqli("127.0.0.1", "server", $password, "e622", "3306");
 			if ($this->connection->connect_errno)
