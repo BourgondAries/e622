@@ -1,15 +1,7 @@
 <?php
-	var_dump(function_exists('mysqli_connect'));
-	$password = file_get_contents("../mysqlkey.txt");
-	$password = rtrim($password);
-	echo '"'.$password.'"';
-	$mysqli = new mysqli("127.0.0.1", "server", $password, "e622", "3306");
-	if ($mysqli->connect_errno)
-	{
-		printf("Connection failed: %s\n", $mysqli->connect_error);
-		exit();
-	}
-
-	printf("Server version: %s\n", $mysqli->host_info);
-
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+	require_once "utils/E621.php";
+	$db = new E621;
+	echo $db->version();
 ?>
