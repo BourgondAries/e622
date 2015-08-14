@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram height="600" made_with_version="1.5" name="Default" width="800">
+<entity id="0" is_weak="false" name="Image" x="343" y="146">
+<attributes>
+<attribute is_hidden="false" is_key="true" name="image_ID" type=""/>
+<attribute is_hidden="false" is_key="false" name="filename" type=""/>
+<attribute is_hidden="false" is_key="false" name="upload_date" type=""/>
+<attribute is_hidden="false" is_key="false" name="rating" type=""/>
+</attributes>
+</entity>
+<entity id="1" is_weak="false" name="Keyword" x="560" y="267">
+<attributes>
+<attribute is_hidden="false" is_key="true" name="keyword_ID" type=""/>
+<attribute is_hidden="false" is_key="false" name="name" type=""/>
+</attributes>
+</entity>
+<entity id="2" is_weak="false" name="User" x="99" y="231">
+<attributes>
+<attribute is_hidden="false" is_key="false" name="user_ID" type=""/>
+<attribute is_hidden="false" is_key="false" name="username" type=""/>
+<attribute is_hidden="false" is_key="false" name="uploads" type=""/>
+<attribute is_hidden="false" is_key="false" name="user_since" type=""/>
+</attributes>
+</entity>
+<diamond id="3" is_weak="false" name="Tagged" x="500" y="184">
+<attributes/>
+</diamond>
+<diamond id="4" is_weak="false" name="Uploader" x="217" y="185">
+<attributes>
+<attribute name="date" type=""/>
+</attributes>
+</diamond>
+<line cardinality_string="(0,n)" has_u="false" id="5" is_weak="false" role="" style="0" turned="false">
+<connection connection_side="2" direction="0" object_id="0" relation_point_x="421" relation_point_y="191"/>
+<connection connection_side="0" direction="0" object_id="3" relation_point_x="500" relation_point_y="200"/>
+</line>
+<line cardinality_string="(0,n)" has_u="false" id="6" is_weak="false" role="" style="0" turned="false">
+<connection connection_side="1" direction="1" object_id="1" relation_point_x="597" relation_point_y="267"/>
+<connection connection_side="2" direction="0" object_id="3" relation_point_x="532" relation_point_y="200"/>
+</line>
+<line cardinality_string="(0,n)" has_u="false" id="7" is_weak="false" role="" style="0" turned="false">
+<connection connection_side="1" direction="1" object_id="2" relation_point_x="135" relation_point_y="231"/>
+<connection connection_side="0" direction="0" object_id="4" relation_point_x="217" relation_point_y="201"/>
+</line>
+<line cardinality_string="(1,1)" has_u="false" id="8" is_weak="false" role="" style="0" turned="false">
+<connection connection_side="0" direction="0" object_id="0" relation_point_x="343" relation_point_y="191"/>
+<connection connection_side="2" direction="0" object_id="4" relation_point_x="249" relation_point_y="201"/>
+</line>
+</diagram>
