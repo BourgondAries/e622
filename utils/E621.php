@@ -13,13 +13,33 @@
 				printf("Connection failed: %s\n", $this->connection->connect_error);
 				exit();
 			}
+			$this->connection->autocommit(FALSE);
+		}
 
-
+		function __destruct()
+		{
+			$this->connection->close();
 		}
 
 		function version()
 		{
 			return "Server version: " .  $this->connection->host_info;
+		}
+
+		function query($string)
+		{
+			$this->connection->query($string);
+			return $this->connection->commit();
+		}
+
+		function queryEdit($string)
+		{
+			$this->connection->query($string);
+		}
+
+		function commit()
+		{
+			return $this->connection->commit();
 		}
 	}
 ?>
