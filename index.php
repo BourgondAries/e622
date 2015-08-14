@@ -4,4 +4,5 @@
 	require_once "utils/E621.php";
 	$db = new E621;
 	echo $db->version();
+	echo $db->query("select * from table");
 ?>
