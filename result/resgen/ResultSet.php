@@ -9,7 +9,14 @@
 	{
 		$total = '<div class="searchitem">';
 		foreach ($mediaset as &$media)
-			$total .= generateResultItem(0, rand(0, 300), rand(0, 25), rand(0, 150), "SFW");
+			$total .= generateResultItem
+			(
+				$media['id'],
+				$media['up'],
+				$media['fav'],
+				$media['down'],
+				$media['type']
+			);
 		return $total . '</div>';
 	}
 ?>
