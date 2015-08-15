@@ -6,7 +6,7 @@ CREATE TABLE User
 	hashed_pw	CHAR(60)				NOT NULL,
 	salt		VARCHAR(255),
 	user_since	DATETIME				DEFAULT NOW(),
-	profile_pic	VARCHAR(18),
+	profile_pic_ID	BIGINT UNSIGNED,
 	deleted		BOOLEAN					DEFAULT FALSE,
 
 	PRIMARY KEY (user_ID)
@@ -20,16 +20,16 @@ CREATE TABLE Media
 	source				VARCHAR(255),
 	upload_date 		DATETIME			DEFAULT NOW(),
 	uploader 			BIGINT UNSIGNED,
-	link_to_filename	VARCHAR(18),
+	link_to_ID			BIGINT UNSIGNED,
 
 	PRIMARY KEY (media_ID),
 	FOREIGN KEY (uploader) REFERENCES User(user_ID),
-	FOREIGN KEY (link_to_filename) REFERENCES Media(filename) ON DELETE SET NULL
+	FOREIGN KEY (link_to_ID) REFERENCES Media(media_ID) ON DELETE SET NULL
 
 );
 
 ALTER TABLE User 
-	ADD FOREIGN KEY (profile_pic) REFERENCES Media(filename) ON DELETE SET NULL;
+	ADD FOREIGN KEY (profile_pic_ID) REFERENCES Media(media_ID) ON DELETE SET NULL;
 
 CREATE TABLE Tag
 (
@@ -56,6 +56,7 @@ CREATE TABLE UserFeedback
 	media_ID	BIGINT UNSIGNED		NOT NULL,
 	upvote		BOOLEAN				DEFAULT FALSE,
 	downvote 	BOOLEAN				DEFAULT FALSE,
+	favorite	BOOLEAN				DEFAULT FALSE,
 
 	PRIMARY KEY (user_ID, media_ID),
 	FOREIGN KEY (user_ID) REFERENCES User(user_ID),
