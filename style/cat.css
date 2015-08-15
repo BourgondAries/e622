@@ -35,3 +35,17 @@ a:link, a:visited {
 a:hover, a:active {
 	background-color: #7A991A;
 }
+#newscapsule {
+	width: 100%;
+}
+
+#news {
+	border-radius: 12px;
+	background: #453269;
+	border-color: #00759f;
+	border-width: 1px;
+	border-style: solid;
+	margin: 5px;
+	padding: 10px;
+	color: white;
+}

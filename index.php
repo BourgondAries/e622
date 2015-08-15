@@ -14,6 +14,12 @@
 				<li><a href="#update">Update</a></li>
 			</ul>
 		</div>
+
+		<div id="newscapsule">
+			<div id="news">
+				Hi this is the news
+			</div>
+		</div>
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
