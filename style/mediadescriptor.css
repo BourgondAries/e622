@@ -19,5 +19,41 @@
 
 .mediadescriptor #description {
 	font-family: verdana, sans-serif;
-	font-size: 21px;
+	font-size: 16pt;
+	padding-left: 5px;
+}
+
+.mediadescriptor #descriptiontext {
+	font-family: verdana, sans-serif;
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
+
+.mediadescriptor textarea {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.mediadescriptor #tagarea {
+	padding-bottom: 5px;
+	margin: 5px;
+}
+
+.mediadescriptor .commentencapsulator {
+	margin-right: 10px;
+}
+
+.mediadescriptor .comment {
+	background-color: rgba(255, 255, 255, 0.05);
+	border-radius: 4px;
+	box-shadow: rgb(7, 22, 45) 2px 2px 5px 0px;
+	display: inline-block;
+	color: rgb(255, 221, 254);
+	font-family: verdana, sans-serif;
+	padding: 5px;
+	width: 100%;
+}
+
+.mediadescriptor .commentowner {
+	display: inline-block;
 }

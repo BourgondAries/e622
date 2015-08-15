@@ -7,8 +7,9 @@
 	(
 		"/static/diamond_tiara_rawr.png",
 		'',
-		'hi',
-		[]
+		['diamond_tiara_(mlp)', 'shouting', 'rawr', 'crying', 'diamond_tiara', 'pink', 'pony', 'mlp', 'earth_pony', 'fim', 'drawing', 'blue_eyes', 'mane', 'clothes'],
+		[['profilepic' => '', 'user' => 'Ozymandis', 'comment' => 'Show me your war face!']],
+		'Diamond Tiara saying rawr whilst tearing up.'
 	);
 
 
