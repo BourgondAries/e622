@@ -1,23 +1,23 @@
-#navbar {
+.navbar #navbar {
 	display: block;
 	width: 100%;
 	margin-left: 100px;
 	margin: auto;
 }
 
-ul {
+.navbar ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 }
 
-li {
+.navbar li {
 	float: left;
 	width: 25%;
 }
 
-a:link, a:visited {
+.navbar a:link, .navbar a:visited {
 	display: block;
 	width: 100%;
 	font-weight: bold;
@@ -29,6 +29,6 @@ a:link, a:visited {
 	text-transform: uppercase;
 }
 
-a:hover, a:active {
+.navbar a:hover, .navbar a:active {
 	background-color: #7A991A;
 }

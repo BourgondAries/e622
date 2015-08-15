@@ -6,19 +6,25 @@
 	</head>
 
 	<body>
-		<div id="navbar">
-			<ul>
-				<li><a href="#login">Login</a></li>
-				<li><a href="#tags">Tags</a></li>
-				<li><a href="#news">News</a></li>
-				<li><a href="#update">Update</a></li>
-			</ul>
+		<div class="navbar">
+			<div id="navbar">
+				<ul>
+					<li><a href="#login">Login</a></li>
+					<li><a href="#tags">Tags</a></li>
+					<li><a href="#news">News</a></li>
+					<li><a href="#update">Update</a></li>
+				</ul>
+			</div>
 		</div>
 
 		<?php
 			$root = $_SERVER['DOCUMENT_ROOT'];
 			$news = include "$root/utils/News.php";
 			echo $news;
+		?>
+
+		<?php
+
 		?>
 
 <?php

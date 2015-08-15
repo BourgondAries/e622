@@ -1,4 +1,5 @@
-<link rel="stylesheet" type="text/css" href="/style/searchitem.css">
+<link rel="stylesheet" type="text/css" href="/style/cat.css">
+<div class="generateResultItem">
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
@@ -45,4 +46,6 @@
 		<img class="thumbnail-searchitem" alt="thumbnail" height="150" width="150" src="/db/0.jpg">
 	<span class="thumbnail-score"> 4 | 1 | 3 | SFW </span>
 	</a>
+</div>
+
 </div>

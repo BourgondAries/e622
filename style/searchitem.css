@@ -1,4 +1,4 @@
-.searchitem {
+.generateResultItem .searchitem {
 	width: 150px;
 	display: inline-block;
 	text-align: center;
@@ -6,12 +6,12 @@
 	margin: 15px;
 }
 
-.thumbnail-searchitem {
+.generateResultItem .thumbnail-searchitem {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
-.thumbnail-score {
+.generateResultItem .thumbnail-score {
 	font-family: verdana, sans-serif;
 	color: #b4c7d9;
 	font-size: 13px;
@@ -21,14 +21,14 @@
 	border-bottom-right-radius: 5px;
 }
 
-.ups {
+.generateResultItem .ups {
 	color: #3e9e49;
 }
 
-.favorites {
+.generateResultItem .favorites {
 	color: #fdd017;
 }
 
-.downs {
+.generateResultItem .downs {
 	color: #e45f5f;
 }
