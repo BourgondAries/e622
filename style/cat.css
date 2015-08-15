@@ -2,6 +2,13 @@ body {
 	background-color: #250d51;
 	background-image: url(/static/stripe.png);
 }
+.mediadescriptor {
+
+}
+
+.mediadescriptor img {
+	max-width: 100%;
+}
 .navbar #navbar {
 	display: block;
 	width: 100%;
