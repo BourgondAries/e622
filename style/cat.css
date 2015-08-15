@@ -49,3 +49,31 @@ a:hover, a:active {
 	padding: 10px;
 	color: white;
 }
+#searchblock {
+	color: #ffddfe;
+	font-size: 1.2em;
+	margin: 0;
+	padding: 0;
+	font-family: verdana, sans-serif;
+}
+.searchitem {
+	height: 195px;
+	width: 150px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	margin: 15px;
+}
+
+.thumbnail-searchitem {
+	border-radius: 5px;
+}
+
+.thumbnail-score {
+	font-family: verdana, sans-serif;
+	color: #b4c7d9;
+	font-size: 13px;
+	display: block;
+	background-color: #453269;
+	border-radius: 5px;
+}
