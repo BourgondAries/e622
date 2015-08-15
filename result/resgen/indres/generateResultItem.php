@@ -24,7 +24,7 @@
 	<a href=/post/something>
 		<img class=\"thumbnail-searchitem\" alt=\"thumbnail\" height=\"150\" width=\"150\" src=\"/db/0.jpg\">
 		<span class=\"thumbnail-score\">
-			<span class=\"total\"> &#8645; $total </span>
+			&#8645; $total
 			<span class=\"ups\"> &#8593; $ups </span>
 			<span class=\"favorites\"> &#9733; $favorites </span>
 			<span class=\"downs\"> &#8595; $downs </span>
