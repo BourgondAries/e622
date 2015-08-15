@@ -1,12 +1,16 @@
-<div id="searchresults">
-	<span id="sbar">
+<?php
+	$root = $_SERVER['DOCUMENT_ROOT'];
+	require_once("$root/utils/stylelink.php")
+?>
+<div class="searchblock">
+	<div id="searchbar">
 		<?php
-			include 'search/SearchBar.php';
+			require_once 'search/SearchBar.php';
 		?>
-	</span>
-	<span id="ress">
+	</div>
+	<div id="result">
 		<?php
-			include 'resgen/ResultSet.php';
+			require_once 'resgen/ResultSet.php';
 		?>
-	</span>
+	</div>
 </div>
