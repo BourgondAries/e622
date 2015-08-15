@@ -1,5 +1,6 @@
 .searchblock {
 	display: table;
+	width: 100%;
 }
 
 .searchblock #searchcontainer {
@@ -7,7 +8,7 @@
 	background-position: 0% 0%;
 	background-repeat: repeat-x;
 	background-color: #2f175c;
-	border-radius: 10px;
+	border-radius: 5px;
 	box-shadow: black 2px 2px 10px 0px;
 	padding: 15px;
 }
