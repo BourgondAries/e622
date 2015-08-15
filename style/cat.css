@@ -1,5 +1,6 @@
 body {
-	background-color: #002387;
+	background-color: #250d51;
+	background-image: url(/static/stripe.png);
 }
 .navbar #navbar {
 	display: block;
@@ -23,9 +24,9 @@ body {
 .navbar a:link, .navbar a:visited {
 	display: block;
 	width: 100%;
-	font-weight: bold;
-	color: #FFFFFF;
-	background-color: #98bf21;
+	color: #e1ddfe;
+	font-family: verdana, sans-serif;
+	font-size: 15px;
 	text-align: center;
 	padding: 4px;
 	text-decoration: none;
@@ -33,21 +34,26 @@ body {
 }
 
 .navbar a:hover, .navbar a:active {
-	background-color: #7A991A;
+	background-color: rgba(150, 150, 150, 0.5);
 }
 .news #newscapsule {
 	width: 100%;
 }
 
 .news #news {
-	border-radius: 12px;
+	border-radius: 5px;
 	background: #453269;
 	border-color: #00759f;
 	border-width: 1px;
 	border-style: solid;
-	margin: 5px;
 	padding: 10px;
+	margin: 10px 0px 10px 0px;
 	color: white;
+}
+
+.news ul {
+	font-family: verdana, sans-serif;
+	font-size: 82%;
 }
 .searchbar #searchblock {
 	color: #ffddfe;
@@ -57,8 +63,17 @@ body {
 	font-family: verdana, sans-serif;
 	vertical-align: none;
 }
+
+.searchbar #textfield {
+	background-color: white;
+	border-radius: 2px;
+	border-width: 0px;
+	box-shadow: rgb(7, 22, 45) 2px 2px 5px 0px;
+	width: 183px;
+}
 .searchblock {
 	display: table;
+	width: 100%;
 }
 
 .searchblock #searchcontainer {
@@ -66,7 +81,7 @@ body {
 	background-position: 0% 0%;
 	background-repeat: repeat-x;
 	background-color: #2f175c;
-	border-radius: 10px;
+	border-radius: 5px;
 	box-shadow: black 2px 2px 10px 0px;
 	padding: 15px;
 }

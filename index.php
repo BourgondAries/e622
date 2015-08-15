@@ -19,8 +19,7 @@
 
 		<?php
 			$root = $_SERVER['DOCUMENT_ROOT'];
-			$news = include "$root/utils/News.php";
-			echo $news;
+			include "$root/utils/News.php";
 		?>
 
 		<?php
@@ -28,12 +27,10 @@
 		?>
 
 <?php
-	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
 	require_once "utils/E621.php";
-	$db = new E621;
-	echo $db->version();
-	echo $db->query("select * from table");
+	require_once 'result/Result.php';
+	$item = array(array('id' => 1, 'up' => 321, 'down' => 93, 'fav' => 6, 'type' => 'SFW'));
+	echo generateResult($item);
 ?>
 	</body>
 </html>
