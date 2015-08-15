@@ -1,9 +1,4 @@
 <?php
-	$root = $_SERVER['DOCUMENT_ROOT'];
-	require_once("$root/utils/stylelink.php")
-?>
-
-<?php
 	require_once 'indres/generateResultItem.php';
 	function generateResultSet($mediaset)
 	{

@@ -12,5 +12,5 @@
 		array('id' => 1, 'up' => 1, 'down' => 3, 'fav' => 6, 'type' => 'SFW')
 	);
 	$result = generateResult($item);
-	echo generateTemplate($result[0], $result[1]);
+	echo generateTemplate($result);
 ?>

@@ -1,9 +1,4 @@
 <?php
-	$root = $_SERVER['DOCUMENT_ROOT'];
-	require_once("$root/utils/stylelink.php")
-?>
-
-<?php
 	function generateResultItem($id, $ups, $favorites, $downs, $safety)
 	{
 		$total = $ups - $downs;

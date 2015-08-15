@@ -55,6 +55,10 @@ body {
 	font-family: verdana, sans-serif;
 	font-size: 82%;
 }
+.searchbar {
+	margin-right: 15px;
+}
+
 .searchbar #searchblock {
 	color: #ffddfe;
 	font-size: 1.2em;

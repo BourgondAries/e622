@@ -1,9 +1,16 @@
 <?php
+	$root = $_SERVER['DOCUMENT_ROOT'];
+	require_once("$root/utils/stylelink.php")
+?>
+
+<?php
+	require_once 'search/SearchBar.php';
 	function generateTemplate($mainpage = '', $sidebar = '', $title = 'e622 - World\'s Most Open Database')
 	{
 		$root = $_SERVER['DOCUMENT_ROOT'];
 		include_once "$root/utils/News.php";
 		$news = generateNews();
+		$searchbar = generateSearchBar();
 
 		return "<!DOCTYPE html>
 		<html>
@@ -29,7 +36,10 @@
 				<div class=\"searchblock\">
 					<div id=\"searchcontainer\">
 						<div id=\"searchbar\">
-							$sidebar
+							$searchbar
+							<div id=\"extra\">
+								$sidebar
+							</div>
 						</div>
 						<div id=\"result\">
 							$mainpage
