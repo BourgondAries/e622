@@ -19,8 +19,7 @@
 
 		<?php
 			$root = $_SERVER['DOCUMENT_ROOT'];
-			$news = include "$root/utils/News.php";
-			echo $news;
+			include "$root/utils/News.php";
 		?>
 
 		<?php
