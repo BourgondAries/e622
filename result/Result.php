@@ -12,6 +12,8 @@
 		<div id="result">
 			<?php
 				require_once 'resgen/ResultSet.php';
+				$item = array(1, 2, 3, 4);
+				echo generateResultSet($item);
 			?>
 		</div>
 	</div>
