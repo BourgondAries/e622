@@ -6,3 +6,11 @@
 	font-family: verdana, sans-serif;
 	vertical-align: none;
 }
+
+.searchbar #textfield {
+	background-color: white;
+	border-radius: 2px;
+	border-width: 0px;
+	box-shadow: rgb(7, 22, 45) 2px 2px 5px 0px;
+	width: 183px;
+}
