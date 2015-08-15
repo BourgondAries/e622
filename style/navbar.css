@@ -2,7 +2,6 @@
 	display: block;
 	width: 100%;
 	margin-left: 100px;
-	background-color: red;
 	margin: auto;
 }
 
@@ -31,5 +30,5 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-	background-color: #7A991Al;
+	background-color: #7A991A;
 }
