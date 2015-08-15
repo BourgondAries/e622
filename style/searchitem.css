@@ -20,3 +20,19 @@
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
+
+.total {
+	color: #3e9e49;
+}
+
+.ups {
+	color: #3e9e49;
+}
+
+.favorites {
+	color: #fdd017;
+}
+
+.downs {
+	color: #e45f5f;
+}
