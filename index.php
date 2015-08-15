@@ -27,9 +27,11 @@
 		?>
 
 <?php
-	require_once "utils/E621.php";
 	require_once 'result/Result.php';
-	$item = array(array('id' => 1, 'up' => 321, 'down' => 93, 'fav' => 6, 'type' => 'SFW'));
+	$item = array(
+		array('id' => 1, 'up' => 1, 'down' => 3, 'fav' => 6, 'type' => 'SFW'),
+		array('id' => 1, 'up' => 1, 'down' => 3, 'fav' => 6, 'type' => 'SFW')
+	);
 	echo generateResult($item);
 ?>
 	</body>
