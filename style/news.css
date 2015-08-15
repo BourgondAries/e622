@@ -1,8 +1,8 @@
-#newscapsule {
+.news #newscapsule {
 	width: 100%;
 }
 
-#news {
+.news #news {
 	border-radius: 12px;
 	background: #453269;
 	border-color: #00759f;

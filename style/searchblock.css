@@ -1,7 +1,12 @@
-#sbar {
-	display: inline-block;
+.searchblock {
+	display: table;
 }
 
-#ress {
-	display: inline-block;
+.searchblock #searchbar {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.searchblock #result {
+	display: table-cell;
 }
