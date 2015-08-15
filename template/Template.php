@@ -1,5 +1,5 @@
 <?php
-	function generateTemplate($mainpage = '', $title = 'e622 - World\'s Most Open Database', $sidebar = '')
+	function generateTemplate($mainpage = '', $sidebar = '', $title = 'e622 - World\'s Most Open Database')
 	{
 		$root = $_SERVER['DOCUMENT_ROOT'];
 		include_once "$root/utils/News.php";
@@ -26,7 +26,17 @@
 
 				$news
 
-				$mainpage
+				<div class=\"searchblock\">
+					<div id=\"searchcontainer\">
+						<div id=\"searchbar\">
+							$sidebar
+						</div>
+						<div id=\"result\">
+							$mainpage
+						</div>
+
+					</div>
+				</div>
 			</body>
 		</html>";
 	}

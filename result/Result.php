@@ -11,16 +11,6 @@
 		$searchbar = generateSearchBar();
 		$result = generateResultSet($mediaset);
 
-		$total = "<div class=\"searchblock\">
-			<div id=\"searchcontainer\">
-				<div id=\"searchbar\">
-					$searchbar
-				</div>
-				<div id=\"result\">
-					$result
-				</div>
-			</div>
-		</div>";
-		return $total;
+		return [$result, $searchbar];
 	}
 ?>
