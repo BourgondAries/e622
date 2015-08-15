@@ -2,8 +2,10 @@ CREATE TABLE User
 (
 	user_ID 	BIGINT UNSIGNED 		NOT NULL AUTO_INCREMENT,
 	username 	VARCHAR(255)			UNIQUE,
-	uploads		BIGINT UNSIGNED,
-	user_since	DATETIME,
+	email		VARCHAR(255),
+	hashed_pw	CHAR(60)				NOT NULL,
+	salt		VARCHAR(255),
+	user_since	DATETIME				DEFAULT NOW(),
 
 	PRIMARY KEY (user_ID)
 
@@ -11,13 +13,15 @@ CREATE TABLE User
 
 CREATE TABLE Media
 (
-	media_ID		BIGINT UNSIGNED 	NOT NULL AUTO_INCREMENT,
-	filename		VARCHAR(18)			UNIQUE,
-	upload_date 	DATETIME			DEFAULT NOW(),
-	uploader 		BIGINT UNSIGNED,
+	media_ID			BIGINT UNSIGNED 	NOT NULL AUTO_INCREMENT,
+	filename			VARCHAR(18)			UNIQUE,
+	upload_date 		DATETIME			DEFAULT NOW(),
+	uploader 			BIGINT UNSIGNED,
+	link_to_filename	VARCHAR(18),
 
 	PRIMARY KEY (media_ID),
-	FOREIGN KEY (uploader) REFERENCES User(user_ID)
+	FOREIGN KEY (uploader) REFERENCES User(user_ID),
+	FOREIGN KEY (link_to_filename) REFERENCES Media(filename)
 
 );
 
@@ -38,4 +42,27 @@ CREATE TABLE MediaTag
 	PRIMARY KEY (tag_ID, media_ID),
 	FOREIGN KEY (tag_ID) REFERENCES Tag(tag_ID) 		ON DELETE CASCADE,
 	FOREIGN KEY (media_ID) REFERENCES Media(media_ID) 	ON DELETE CASCADE
+);
+
+CREATE TABLE UserFeedback
+(
+	user_ID 	BIGINT UNSIGNED		NOT NULL,
+	media_ID	BIGINT UNSIGNED		NOT NULL,
+	upvote		BOOLEAN				DEFAULT FALSE,
+	downvote 	BOOLEAN				DEFAULT FALSE,
+
+	PRIMARY KEY (user_ID, media_ID),
+	FOREIGN KEY (user_ID) REFERENCES User(user_ID),
+	FOREIGN KEY (media_ID) REFERENCES Media(media_ID)
+);
+
+
+CREATE TABLE Comment
+(
+	comment_ID	BIGINT UNSIGNED		NOT NULL AUTO_INCREMENT,
+	user_ID 	BIGINT UNSIGNED,
+	comment 	VARCHAR(1024),
+
+	PRIMARY KEY (comment_ID),
+	FOREIGN KEY (user_ID) REFERENCES User(user_ID)
 );
