@@ -15,11 +15,12 @@
 			</ul>
 		</div>
 
-		<div id="newscapsule">
-			<div id="news">
-				Hi this is the news
-			</div>
-		</div>
+		<?php
+			$root = $_SERVER['DOCUMENT_ROOT'];
+			$news = include "$root/utils/News.php";
+			echo $news;
+		?>
+
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
