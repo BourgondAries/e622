@@ -1,5 +1,3 @@
 <?php
-	function generateElement
-	function generateResultSet($link_set)
-	{
-	}
+	include 'indres/generateResultItem.php';
+?>
