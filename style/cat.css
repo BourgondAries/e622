@@ -3,11 +3,22 @@ body {
 	background-image: url(/static/stripe.png);
 }
 .mediadescriptor {
-
+	width: 100%;
 }
 
 .mediadescriptor img {
 	max-width: 100%;
+}
+
+.mediadescriptor #infobox {
+	margin-right: auto;
+	background-color: #453269;
+	border-radius: 4px;
+	box-shadow: #07162d 2px 2px 5px 0;
+	display: block;
+	color: #ffddfe;
+	padding: 3px;
+	margin: 10px 0 10px 0;
 }
 .navbar #navbar {
 	display: block;
@@ -104,6 +115,7 @@ body {
 
 .searchblock #result {
 	display: table-cell;
+	width: 100%;
 }
 .searchitem .singlesearchitem {
 	width: 150px;

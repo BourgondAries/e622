@@ -1,7 +1,23 @@
 .mediadescriptor {
-
+	width: 100%;
 }
 
 .mediadescriptor img {
 	max-width: 100%;
+}
+
+.mediadescriptor #infobox {
+	margin-right: auto;
+	background-color: #453269;
+	border-radius: 4px;
+	box-shadow: #07162d 2px 2px 5px 0;
+	display: block;
+	color: #ffddfe;
+	padding: 0px;
+	margin: 10px 0 10px 0;
+}
+
+.mediadescriptor #description {
+	font-family: verdana, sans-serif;
+	font-size: 21px;
 }
