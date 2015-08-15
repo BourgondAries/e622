@@ -23,6 +23,4 @@
 		</div>";
 		return $total;
 	}
-	$item = array(array('id' => 1, 'up' => 321, 'down' => 93, 'fav' => 6, 'type' => 'SFW'));
-	echo generateResult($item);
 ?>
