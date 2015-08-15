@@ -62,6 +62,9 @@ body {
 }
 
 .searchblock #searchcontainer {
+	background-image: url(/static/top_gradient.png);
+	background-position: 0% 0%;
+	background-repeat: repeat-x;
 	background-color: #2f175c;
 	border-radius: 10px;
 	box-shadow: black 2px 2px 10px 0px;
