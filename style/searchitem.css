@@ -1,9 +1,9 @@
-.searchitem .searchitem {
+.searchitem .singlesearchitem {
 	width: 150px;
 	display: inline-block;
 	text-align: center;
 	vertical-align: middle;
-	margin: 0 15px 15px 15px;
+	margin: 0px 15px 15px 15px;
 }
 
 .searchitem .thumbnail-searchitem {
@@ -35,4 +35,8 @@
 
 .searchitem a {
 	text-decoration: none;
+}
+
+.searchitem img {
+	display: block;
 }

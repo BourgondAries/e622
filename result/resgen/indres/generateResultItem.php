@@ -21,8 +21,8 @@
 			default:
 				break;
 		}
-		return "<div class=\"searchitem\">
-	<a href=/post/something>
+		return "<a href=/media/media.php?id=$id>
+	<div class=\"singlesearchitem\">
 		<img class=\"thumbnail-searchitem\" alt=\"thumbnail\" height=\"150\" width=\"150\" src=\"/db/0.jpg\">
 		<span class=\"thumbnail-score\">
 			&#8645; $total
@@ -31,7 +31,7 @@
 			<span class=\"downs\"> &#8595; $downs </span>
 			$safety
 		</span>
-	</a>
-</div>";
+	</div>
+</a>";
 	}
 ?>
