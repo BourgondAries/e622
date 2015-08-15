@@ -1,40 +1,41 @@
 CREATE TABLE User
 (
-	user_ID 	int 			NOT NULL AUTO_INCREMENT,
-	username 	varchar(255)	UNIQUE,
-	uploads		int,
-	user_since	datetime,
+	user_ID 	BIGINT UNSIGNED 		NOT NULL AUTO_INCREMENT,
+	username 	VARCHAR(255)			UNIQUE,
+	uploads		BIGINT UNSIGNED,
+	user_since	DATETIME,
 
 	PRIMARY KEY (user_ID)
 
 );
 
-CREATE TABLE Image
+CREATE TABLE Media
 (
-	image_ID		int 			NOT NULL AUTO_INCREMENT,
-	filename		varchar(255)	UNIQUE,
-	upload_date 	datetime		DEFAULT NOW(),
-	uploader 		int,
+	media_ID		BIGINT UNSIGNED 	NOT NULL AUTO_INCREMENT,
+	filename		VARCHAR(18)			UNIQUE,
+	upload_date 	DATETIME			DEFAULT NOW(),
+	uploader 		BIGINT UNSIGNED,
 
-	PRIMARY KEY (image_ID),
+	PRIMARY KEY (media_ID),
 	FOREIGN KEY (uploader) REFERENCES User(user_ID)
 
 );
 
 CREATE TABLE Tag
 (
-	tag_ID		int 			NOT NULL AUTO_INCREMENT,
-	description	varchar(255),
+	tag_ID		BIGINT UNSIGNED 		NOT NULL AUTO_INCREMENT,
+	description	VARCHAR(255),
 
 	PRIMARY KEY (tag_ID)
 );
 
-CREATE TABLE PictureTag
+CREATE TABLE MediaTag
 (
-	tag_ID		int				NOT NULL,
-	image_ID	int 			NOT NULL,
+	tag_ID		BIGINT UNSIGNED			NOT NULL,
+	media_ID	BIGINT UNSIGNED 		NOT NULL,
+	placing		INT UNSIGNED			NOT NULL,
 
-	PRIMARY KEY (tag_ID, image_ID),
-	FOREIGN KEY (tag_ID) REFERENCES Tag(tag_ID),
-	FOREIGN KEY (image_ID) REFERENCES Image(image_ID)
+	PRIMARY KEY (tag_ID, media_ID),
+	FOREIGN KEY (tag_ID) REFERENCES Tag(tag_ID) 		ON DELETE CASCADE,
+	FOREIGN KEY (media_ID) REFERENCES Media(media_ID) 	ON DELETE CASCADE
 );
