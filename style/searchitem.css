@@ -1,4 +1,4 @@
-.generateResultItem .searchitem {
+.searchitem .searchitem {
 	width: 150px;
 	display: inline-block;
 	text-align: center;
@@ -6,12 +6,12 @@
 	margin: 15px;
 }
 
-.generateResultItem .thumbnail-searchitem {
+.searchitem .thumbnail-searchitem {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
-.generateResultItem .thumbnail-score {
+.searchitem .thumbnail-score {
 	font-family: verdana, sans-serif;
 	color: #b4c7d9;
 	font-size: 13px;
@@ -21,14 +21,18 @@
 	border-bottom-right-radius: 5px;
 }
 
-.generateResultItem .ups {
+.searchitem .ups {
 	color: #3e9e49;
 }
 
-.generateResultItem .favorites {
+.searchitem .favorites {
 	color: #fdd017;
 }
 
-.generateResultItem .downs {
+.searchitem .downs {
 	color: #e45f5f;
+}
+
+.searchitem a {
+	text-decoration: none;
 }
