@@ -6,6 +6,12 @@
 	</head>
 
 	<body>
+		<ul>
+			<li><a href="#login">Login</a></li>
+			<li><a href="#tags">Tags</a></li>
+			<li><a href="#news">News</a></li>
+			<li><a href="#update">Update</a></li>
+		</ul>
 <?php
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
