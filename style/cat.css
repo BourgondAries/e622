@@ -56,6 +56,13 @@ a:hover, a:active {
 	padding: 0;
 	font-family: verdana, sans-serif;
 }
+#sbar {
+	display: inline-block;
+}
+
+#ress {
+	display: inline-block;
+}
 .searchitem {
 	height: 195px;
 	width: 150px;
