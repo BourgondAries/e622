@@ -6,10 +6,30 @@
 	function generateResultItem($ups, $favorites, $downs, $safety)
 	{
 		$total = $ups - $downs;
+		switch ($safety)
+		{
+			case "SFW":
+				$safety = '<span class="ups"> SFW </span>';
+				break;
+			case "QSFW":
+				$safety = '<span class="favorites"> QSFW </span>';
+				break;
+			case "NSFW":
+				$safety = '<span class="downs"> NSFW </span>';
+				break;
+			default:
+				break;
+		}
 		return "<div class=\"searchitem\">
 	<a href=/post/something>
 		<img class=\"thumbnail-searchitem\" alt=\"thumbnail\" height=\"150\" width=\"150\" src=\"/db/0.jpg\">
-		<span class=\"thumbnail-score\"> $total | $ups | $favorites | $downs | $safety </span>
+		<span class=\"thumbnail-score\">
+			<span class=\"total\"> &#8645; $total </span>
+			<span class=\"ups\"> &#8593; $ups </span>
+			<span class=\"favorites\"> &#9733; $favorites </span>
+			<span class=\"downs\"> &#8595; $downs </span>
+			$safety
+		</span>
 	</a>
 </div>";
 	}
