@@ -63,6 +63,11 @@ body {
 	text-align: center;
 }
 
+.mediadescriptor .commentowner .user {
+	font-weight: bold;
+	font-size: 17px;
+}
+
 .mediadescriptor .commentowner .inner img {
 	padding-top: 5px;
 	max-height: 100px;
@@ -73,6 +78,7 @@ body {
 	display: table-cell;
 	width: 100%;
 	padding-left: 15px;
+	font-size: 12px;
 }
 .navbar #navbar {
 	display: block;

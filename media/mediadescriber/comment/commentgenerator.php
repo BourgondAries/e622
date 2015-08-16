@@ -5,7 +5,9 @@
 			<div class=\"comment\">
 				<div class=\"commentowner\">
 					<div class=\"inner\">
-						${comment['user']}
+						<div class=\"user\">
+							${comment['user']}
+						</div>
 						<img src=\"${comment['profilepic']}\">
 					</div>
 				</div>
