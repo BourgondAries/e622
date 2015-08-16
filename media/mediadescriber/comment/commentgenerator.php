@@ -3,7 +3,12 @@
 	{
 		$template = "<div class=\"commentencapsulator\">
 			<div class=\"comment\">
-				${comment['comment']}
+				<div class=\"commentowner\">
+					${comment['user']}
+				</div>
+				<div class=\"commentcontain\">
+					${comment['comment']}
+				</div>
 			</div>
 		</div>";
 		return $template;
