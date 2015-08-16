@@ -1,0 +1,17 @@
+.sidebarproperties {
+	font-family: verdana, sans-serif;
+	font-size: 20px;
+	color: #b4c7d9;
+}
+
+.sidebarproperties #ups {
+	color: #3e9e49;
+}
+
+.sidebarproperties #favorites {
+	color: #fdd017;
+}
+
+.sidebarproperties #downs {
+	color: #e45f5f;
+}

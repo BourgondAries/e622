@@ -2,6 +2,7 @@
 	$root = $_SERVER['DOCUMENT_ROOT'];
 	require_once "$root/template/Template.php";
 	require_once "mediadescriber/Describer.php";
+	require_once 'leftbar/PropertyGenerator.php';
 
 	$result = describeMedia
 	(
@@ -16,6 +17,7 @@
 		'Diamond Tiara saying rawr whilst tearing up.'
 	);
 
+	$leftbar = generateSidebarProperties(2, 1, 0, "SFW");
 
-	echo generateTemplate($result);
+	echo generateTemplate($result, $leftbar);
 ?>
