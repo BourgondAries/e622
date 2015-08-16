@@ -5,13 +5,13 @@
 		switch ($safety)
 		{
 			case "SFW":
-				$safety = '<span class="ups"> SFW </span>';
+				$safety = '<span class="ups"> &#9888;S </span>';
 				break;
 			case "QSFW":
-				$safety = '<span class="favorites"> QSFW </span>';
+				$safety = '<span class="favorites"> &#9888;Q </span>';
 				break;
 			case "NSFW":
-				$safety = '<span class="downs"> NSFW </span>';
+				$safety = '<span class="downs"> &#9888;N </span>';
 				break;
 			default:
 				break;
@@ -20,10 +20,10 @@
 	<div class=\"singlesearchitem\">
 		<img class=\"thumbnail-searchitem\" alt=\"thumbnail\" height=\"150\" width=\"150\" src=\"/db/0.jpg\">
 		<span class=\"thumbnail-score\">
-			&#8645; $total
-			<span class=\"ups\"> &#8593; $ups </span>
+			&#9830; $total
+			<span class=\"ups\"> &#9652; $ups </span>
 			<span class=\"favorites\"> &#9733; $favorites </span>
-			<span class=\"downs\"> &#8595; $downs </span>
+			<span class=\"downs\"> &#9662; $downs </span>
 			$safety
 		</span>
 	</div>
