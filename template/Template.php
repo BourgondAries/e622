@@ -1,12 +1,4 @@
 <?php
-	echo '<link rel="icon"
-	      type="image/png"
-				href="/favicon.png?v=2">';
-	echo '<script>
-		setTimeout(function(){
-			 window.location.reload(1);
-			 }, 2000);
-		</script>';
 	require_once 'search/SearchBar.php';
 	function generateTemplate($mainpage = '', $sidebar = '', $title = 'e622 - World\'s Most Open Database')
 	{
@@ -19,7 +11,13 @@
 		<html>
 			<head>
 				<title>$title</title>
+				<link rel=\"icon\" type=\"image/png\" href=\"/favicon.png?v=3\">
 				<link rel=\"stylesheet\" type=\"test/css\" href=\"/style/cat.css\">
+				<script>
+					setTimeout(function() {
+						 window.location.reload(1);
+					 }, 2000);
+				</script>
 			</head>
 
 			<body>
