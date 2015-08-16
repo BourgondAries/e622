@@ -1,10 +1,11 @@
 .sidebarproperties {
 	font-family: verdana, sans-serif;
-	font-size: 20px;
 	color: #b4c7d9;
+	text-align: left;
 }
 
 .sidebarproperties #ups {
+	font-style: bold;
 	color: #3e9e49;
 }
 
