@@ -4,7 +4,10 @@
 		$template = "<div class=\"commentencapsulator\">
 			<div class=\"comment\">
 				<div class=\"commentowner\">
-					${comment['user']}
+					<div class=\"inner\">
+						${comment['user']}
+						<img src=\"${comment['profilepic']}\">
+					</div>
 				</div>
 				<div class=\"commentcontain\">
 					${comment['comment']}

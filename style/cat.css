@@ -60,6 +60,13 @@ body {
 
 .mediadescriptor .commentowner {
 	display: table-cell;
+	text-align: center;
+}
+
+.mediadescriptor .commentowner .inner img {
+	padding-top: 5px;
+	max-height: 100px;
+	max-width: 100px;
 }
 
 .mediadescriptor .commentcontain {
