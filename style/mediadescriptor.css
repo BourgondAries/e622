@@ -56,12 +56,12 @@
 
 .mediadescriptor .commentowner {
 	display: table-cell;
-	text-align: center;
 }
 
 .mediadescriptor .commentowner .user {
 	font-weight: bold;
 	font-size: 17px;
+	text-align: center;
 }
 
 .mediadescriptor .commentowner .inner img {
