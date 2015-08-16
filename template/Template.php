@@ -1,4 +1,9 @@
 <?php
+	echo '<script>
+		setTimeout(function(){
+			 window.location.reload(1);
+			 }, 2000);
+		</script>';
 	require_once 'search/SearchBar.php';
 	function generateTemplate($mainpage = '', $sidebar = '', $title = 'e622 - World\'s Most Open Database')
 	{
