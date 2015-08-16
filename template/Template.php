@@ -1,9 +1,4 @@
 <?php
-	$root = $_SERVER['DOCUMENT_ROOT'];
-	require_once("$root/utils/stylelink.php")
-?>
-
-<?php
 	require_once 'search/SearchBar.php';
 	function generateTemplate($mainpage = '', $sidebar = '', $title = 'e622 - World\'s Most Open Database')
 	{
@@ -16,7 +11,7 @@
 		<html>
 			<head>
 				<title>$title</title>
-				<link rel=\"stylesheet\" type=\"test/css\" href=\"style/cat.css\">
+				<link rel=\"stylesheet\" type=\"test/css\" href=\"/style/cat.css\">
 			</head>
 
 			<body>
