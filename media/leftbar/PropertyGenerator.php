@@ -19,9 +19,9 @@
 		return "<div class=\"sidebarproperties\">
 			&#9830; $total
 			<div id=\"ups\">&#9652; $ups </div>
-			<div id=\"favorites\">&#9733; $favorites </div>
 			<div id=\"downs\">&#9662; $downs </div>
 			$safety
+			<div id=\"favorites\">&#9733; $favorites </div>
 		</div>";
 	}
 ?>
