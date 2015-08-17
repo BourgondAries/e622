@@ -2,7 +2,7 @@
 	$root = $_SERVER['DOCUMENT_ROOT'];
 	require_once "$root/phpass/PasswordHash.php";
 
-	$username = $_POST['username'].trim();
+	$username = $_POST['username'].trim(' ');
 	$password = $_POST['password'];
 
 	// Check if username exists in db.
