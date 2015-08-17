@@ -11,7 +11,11 @@
 	if ($username == 'root')
 	{
 		$hash = file_get_contents("$root/../root.hash") ;
-		echo $hash;
+	}
+	else if ($username == 'anon')
+	{
+		header('Location: ' . '/login/index.php?reason=cannot_anon');
+		die();
 	}
 	else
 	{
@@ -23,6 +27,8 @@
 	{
 		session_start();
 		$_SESSION['user'] = $username;
+		header('Location: ' . '/');
+		die();
 	}
 	else
 	{

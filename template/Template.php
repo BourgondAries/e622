@@ -7,6 +7,16 @@
 		$news = generateNews();
 		$searchbar = generateSearchBar();
 
+		session_start();
+
+		$login_or_username = 'LOGIN';
+		$login_or_userpage = '/login';
+		if (isset($_SESSION['user']))
+		{
+			$login_or_username = $_SESSION['user'];
+			$login_or_userpage = '/user/user.php?user=' . $login_or_username;
+		}
+
 		return "<!DOCTYPE html>
 		<html>
 			<head>
@@ -24,7 +34,7 @@
 				<div class=\"navbar\">
 					<div id=\"navbar\">
 						<ul>
-							<li><a href=\"/login\">Login</a></li>
+							<li><a href=\"$login_or_userpage\">$login_or_username</a></li>
 							<li><a href=\"/tags\">Tags</a></li>
 							<li><a href=\"/upload\">Upload</a></li>
 							<li><a href=\"/news\">News</a></li>

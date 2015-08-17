@@ -13,6 +13,18 @@
 				$redirect = '/upload';
 			}
 			break;
+			case 'no_such_account':
+			{
+				$sidebar = '<div class="login" id="redirectnotice"> The account does not exist </div>';
+				$redirect = '/upload';
+			}
+			break;
+			case 'cannot_anon':
+			{
+				$sidebar = '<div class="login" id="redirectnotice"> Silly, you can\'t log in as anon. Anon is anon. You are you. Your life is your life. You started to brush. She\'s looking at you. You started to blush. Respect anon. </div>';
+				$redirect = '/';
+			}
+			break;
 			case 'wrong_password':
 			{
 				$sidebar = '<div class="login" id="redirectnotice"> The password is incorrect. </div>';
