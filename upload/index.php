@@ -43,9 +43,9 @@
 					</div>
 				</div>
 				<div class=\"cell\">
-					<label class=\"ups\"> <input type=\"radio\">&#9888; SFW </label>
-					<label class=\"favorites\"> <input type=\"radio\">&#9888; QSFW </label>
-					<label class=\"downs\"> <input type=\"radio\">&#9888; NSFW </label>
+					<label class=\"ups\"> <input name=\"rating\" type=\"radio\" value=\"SFW\" checked>&#9888; SFW </label>
+					<label class=\"favorites\"> <input name=\"rating\" type=\"radio\" value=\"QSFW\">&#9888; QSFW </label>
+					<label class=\"downs\"> <input name=\"rating\" type=\"radio\" value=\"NSFW\">&#9888; NSFW </label>
 					<div class=\"elaboration\">
 						SFW material is normally not saucy or suggestive. It is sexually neutral as well as politically neutral. QSFW material may be saucy or suggestive. It can also be politically offensive or more commonly 'stuff you don't really want to have people looking over your shoulder see'. NSFW is completely unsafe. Sexually explicit media must be under NSFW. Non-sexual content can not fall under NSFW.
 					</div>
