@@ -6,12 +6,15 @@
 	$password = $_POST['password'];
 
 	// Check if username exists in db.
+	$pwcheck = new PasswordHash(8, false);
 
 	// Get hash from that user.
+	$hash = $pwcheck->HashPassword($password); // Placeholder, always succeeds
 
-	if (PasswordHash::CheckPassword($password, $hash))
+	if ($pwcheck->CheckPassword($password, $hash))
 	{
 		// Everything is OK!
+		echo 'Password hashed OK!';
 		$_SESSION['user'] = $username;
 	}
 
