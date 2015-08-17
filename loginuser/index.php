@@ -15,6 +15,7 @@
 	{
 		// Everything is OK!
 		echo 'Password hashed OK!';
+		session_start();
 		$_SESSION['user'] = $username;
 	}
 
