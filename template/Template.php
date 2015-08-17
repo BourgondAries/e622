@@ -39,8 +39,8 @@
 							<li><a href=\"$login_or_userpage\">$login_or_username</a></li>
 							<li><a href=\"/tags\">Tags</a></li>
 							<li><a href=\"/upload\">Upload</a></li>
-							<li><a href=\"/news\">News</a></li>
-							<li><a href=\"/update\">Support</a></li>
+							<li><a href=\"/help\">Help</a></li>
+							<li><a href=\"/support\">Support</a></li>
 						</ul>
 					</div>
 				</div>
