@@ -20,7 +20,7 @@
 	if ($visitor == $_GET['user'])
 	{
 		$template = "<div class=\"user\">
-			<form action=\"/userchange/change.php\" method=\"post\">
+			<form action=\"/user/change.php\" method=\"post\">
 				<div class=\"table\">
 					<div class=\"row\">
 						<div class=\"cell twenty\">
