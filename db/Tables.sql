@@ -3,10 +3,7 @@ CREATE TABLE User
 	user_ID 	BIGINT UNSIGNED 		NOT NULL AUTO_INCREMENT,
 	username 	VARCHAR(255)			UNIQUE,
 	email		VARCHAR(255),
-	hashed_pw	CHAR(60)				NOT NULL,
-	salt		VARCHAR(255),
 	user_since	DATETIME				DEFAULT NOW(),
-	profile_pic_ID	BIGINT UNSIGNED,
 	deleted		BOOLEAN					DEFAULT FALSE,
 
 	PRIMARY KEY (user_ID)
@@ -20,16 +17,25 @@ CREATE TABLE Media
 	source				VARCHAR(255),
 	upload_date 		DATETIME			DEFAULT NOW(),
 	uploader 			BIGINT UNSIGNED,
-	link_to_ID			BIGINT UNSIGNED,
+	link_forward_ID		BIGINT UNSIGNED,
+	link_previous_ID	BIGINT UNSIGNED,
 
 	PRIMARY KEY (media_ID),
 	FOREIGN KEY (uploader) REFERENCES User(user_ID),
-	FOREIGN KEY (link_to_ID) REFERENCES Media(media_ID) ON DELETE SET NULL
+	FOREIGN KEY (link_forward_ID) REFERENCES Media(media_ID) ON DELETE SET NULL,
+	FOREIGN KEY (link_previous_ID) REFERENCES Media(media_ID) ON DELETE SET NULL
 
 );
 
-ALTER TABLE User 
-	ADD FOREIGN KEY (profile_pic_ID) REFERENCES Media(media_ID) ON DELETE SET NULL;
+CREATE TABLE UserProfileMedia
+(
+	profile_pic_ID	BIGINT UNSIGNED 	DEFAULT 0,
+	user_ID 		BIGINT UNSIGNED,
+
+	PRIMARY	KEY (profile_pic_ID, user_ID),
+	FOREIGN KEY (profile_pic_ID) REFERENCES Media(media_ID),
+	FOREIGN KEY (user_ID) REFERENCES User(user_ID)
+);
 
 CREATE TABLE Tag
 (
@@ -41,13 +47,15 @@ CREATE TABLE Tag
 
 CREATE TABLE MediaTag
 (
-	tag_ID		BIGINT UNSIGNED			NOT NULL,
-	media_ID	BIGINT UNSIGNED 		NOT NULL,
-	placing		INT UNSIGNED			NOT NULL,
+	tag_ID			BIGINT UNSIGNED			NOT NULL,
+	media_ID		BIGINT UNSIGNED 		NOT NULL,
+	placing			INT UNSIGNED			NOT NULL,
+	responsible_user_ID 	BIGINT UNSIGNED,
 
 	PRIMARY KEY (tag_ID, media_ID),
 	FOREIGN KEY (tag_ID) REFERENCES Tag(tag_ID),
-	FOREIGN KEY (media_ID) REFERENCES Media(media_ID) 	ON DELETE CASCADE
+	FOREIGN KEY (media_ID) REFERENCES Media(media_ID) 	ON DELETE CASCADE,
+	FOREIGN KEY (responsible_user_ID) REFERENCES User(user_ID)
 );
 
 CREATE TABLE UserFeedback
