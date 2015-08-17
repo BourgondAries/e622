@@ -25,7 +25,7 @@
 			if (isset($_SESSION['user']))
 			{
 				// Change the user entry in db
-				header('Location: ' . "/user/user.php?user=dsa");
+				header('Location: ' . "/user/user.php?user=${_SESSION['user']}");
 				die();
 			}
 			else
