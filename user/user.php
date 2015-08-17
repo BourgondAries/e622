@@ -19,5 +19,9 @@
 	{
 		// Anyone viewing the public profile
 	}
+	$template = "<form action=\"/logout\">
+		<input type=\"submit\" value=\"logout\">
+	</form>";
 
+	echo generateTemplate($template);
 ?>
