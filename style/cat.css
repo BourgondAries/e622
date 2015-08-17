@@ -410,3 +410,60 @@ body {
 	display: table-cell;
 	vertical-align: top;
 }
+.user {
+	font-size: 15px;
+}
+
+.user .table {
+	border-collapse: separate;
+	border-spacing: 0 25px;
+	display: table;
+	width: 100%;
+}
+
+body {
+	font-family: verdana, sans-serif;
+	color: #ffddfe;
+}
+
+.user .row {
+	display: table-row;
+}
+
+.user .elaboration {
+	width: 90%;
+	font-size: 12px;
+	font-weight: normal;
+	padding: 5px 10px 0 5px;
+}
+
+.user .cell {
+	vertical-align: top;
+	display: table-cell;
+}
+
+.user input {
+	padding: 0 3px 0 3px;
+}
+
+.user .cell.twenty {
+	padding-right: 5px;
+	display: table-cell;
+	width: 20%;
+}
+
+.user input[type='submit'] {
+	width: 100%;
+}
+
+.user img {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.user input[type='text'] {
+	width: 100%;
+	border-radius: 2px;
+	border-width: 0;
+	box-shadow: 2px 2px 5px #07162d;
+}
