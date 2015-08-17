@@ -53,6 +53,20 @@
 			</div>
 			<div class=\"row\">
 				<div class=\"cell\">
+					Link:
+					<div class=\"elaboration\">
+						To link to another medium.
+					</div>
+				</div>
+				<div class=\"cell\">
+					<input id=\"link\" type=\"text\" placeholder=\"24910\">
+					<div class=\"elaboration\">
+						Sometimes you want to link to another medium. This can occur when you have a comic strip separated into different images. You can upload the first image, then, on the second image you link to the first image's ID. This allows users to easily hop to the next pane by following the links. Links can be empty.
+					</div>
+				</div>
+			</div>
+			<div class=\"row\">
+				<div class=\"cell\">
 					Upload:
 				</div>
 				<div class=\"cell\">
@@ -62,5 +76,6 @@
 		</div>
 	</form>";
 
-	echo generateTemplate($template);
+	$responsibilities = '<div class="upload"> Notice: <div class="selaboration"> e622 reserves the rights to revoke or delete any upload due to: the copyright holder\'s request of deletion, or, the breaking of any laws pertaining the media being uploaded. <br> You are responsible for the media you upload and may be held accountible. <br> You are free to upload whatever is within the bounds of the law. <br><br> The media uploaded to e622 is publicly available. By uploading you give e622 consent to propagate and redistribute copies of the media. (We need a lawyer to write this stuff). <br><br> We (e622 staff) will never delete media based on our own personal beliefs, public opinion, or whatever non-judiciary reason. </div></div>';
+	echo generateTemplate($template, $responsibilities);
 ?>

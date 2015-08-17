@@ -341,12 +341,22 @@ body {
 	width: 100%;
 }
 
+.upload.sidebarnotice {
+	width: 90%;
+}
+
 .upload .cell {
 	vertical-align: top;
 	display: table-cell;
 }
 
 .upload .elaboration {
+	font-weight: normal;
+	padding: 5px 10px 0 5px;
+}
+
+.upload .selaboration {
+	width: 90%;
 	font-weight: normal;
 	padding: 5px 10px 0 5px;
 }
