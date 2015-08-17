@@ -3,7 +3,7 @@
 	require_once "$root/template/Template.php";
 
 	// Here we need some forms
-	$template = "<form action=\"postupload\">
+	$template = "<form action=\"/postupload\">
 		<div class=\"upload\">
 			<div style=\"display: table-row;\">
 				<div id=\"filedescriptor\">
