@@ -35,6 +35,7 @@
 				<div class=\"navbar\">
 					<div id=\"navbar\">
 						<ul>
+							<li><a href=\"/\">e622</a></li>
 							<li><a href=\"$login_or_userpage\">$login_or_username</a></li>
 							<li><a href=\"/tags\">Tags</a></li>
 							<li><a href=\"/upload\">Upload</a></li>
