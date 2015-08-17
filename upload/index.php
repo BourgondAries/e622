@@ -1,4 +1,9 @@
 <?php
+	session_start();
+	if (!isset($_SESSION['username'])) {
+		header('Location: ' . '/login/index.php?reason=upload');
+		die();
+	}
 	$root = $_SERVER['DOCUMENT_ROOT'];
 	require_once "$root/template/Template.php";
 

@@ -1,6 +1,13 @@
 <?php
 	$root = $_SERVER['DOCUMENT_ROOT'];
 	require_once "$root/template/Template.php";
+	$sidebar = '';
+	$redirect = '';
+	if (isset($_GET['reason']) && $_GET['reason'] == 'upload')
+	{
+		$sidebar = '<div class="login" id="redirectnotice"> You were redirected here because you need to log in to upload. </div>';
+		$redirect = '/upload';
+	}
 	$template = "<div class=\"login\">
 		<div id=\"loginblock\">
 			<div class=\"login-information\">
@@ -11,7 +18,7 @@
 				Click here to register a new account. Click here to reset your password.
 			</div>
 			<div class=\"largespacer\"> </div>
-			<form id=\"loginform\" action=\"/loginuser/index.php\" method=\"post\">
+			<form id=\"loginform\" action=\"/loginuser/index.php?redirect=$redirect\" method=\"post\">
 				<div id=\"tbusername\">
 					<div class=\"tb\">
 						Username
@@ -36,5 +43,5 @@
 			</form>
 		</div>
 	</div>";
-	echo generateTemplate($template);
+	echo generateTemplate($template, $sidebar);
 ?>
