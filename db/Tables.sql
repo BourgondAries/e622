@@ -62,8 +62,7 @@ CREATE TABLE UserFeedback
 (
 	user_ID 	BIGINT UNSIGNED		NOT NULL,
 	media_ID	BIGINT UNSIGNED		NOT NULL,
-	upvote		BOOLEAN				DEFAULT FALSE,
-	downvote 	BOOLEAN				DEFAULT FALSE,
+	vote 		BOOLEAN,
 	favorite	BOOLEAN				DEFAULT FALSE,
 
 	PRIMARY KEY (user_ID, media_ID),
