@@ -193,6 +193,9 @@ body {
 .navbar a:hover, .navbar a:active {
 	background-color: rgba(150, 150, 150, 0.5);
 }
+.navnews {
+	font-family: verdana, sans-serif;
+}
 .news #newscapsule {
 	width: 100%;
 }
