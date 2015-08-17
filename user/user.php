@@ -27,7 +27,7 @@
 							To log out:
 						</div>
 						<div class=\"cell\">
-							<input type=\"submit\" value=\"logout\">
+							<input name=\"button\" type=\"submit\" value=\"logout\">
 						</div>
 					</div>
 					<div class=\"row\">
@@ -80,7 +80,7 @@
 					</div>
 				</div>
 				<div class=\"table\">
-					<input type=\"submit\" value=\"save\">
+					<input name=\"button\" type=\"submit\" value=\"save\">
 				</div>
 			</form>
 		</div>";

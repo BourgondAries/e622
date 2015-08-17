@@ -31,6 +31,13 @@
 				$redirect = '/';
 			}
 			break;
+			case 'already_logged_out':
+			{
+				$sidebar = '<div class="login" id="redirectnotice"> You tried logging out without being logged in. Maybe you want to log in. </div>';
+				$redirect = '/';
+			}
+			break;
+
 		}
 	}
 	$template = "<div class=\"login\">
