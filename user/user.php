@@ -33,35 +33,35 @@
 					<div class=\"row\">
 						<div class=\"cell twenty\">
 							Username:
-							<div class=\"elaboration\">
-								Your publicly displayed name. All your posts and comments are visible under this name.
-							</div>
 						</div>
 						<div class=\"cell\">
 							<input name=\"newname\" type=\"text\" value=\"$username\">
+							<div class=\"elaboration\">
+								Your publicly displayed name. All your posts and comments are visible under this name.
+							</div>
 						</div>
 					</div>
 					<div class=\"row\">
 						<div class=\"cell twenty\">
 							Password:
+						</div>
+						<div class=\"cell\">
+							<input name=\"newpass1\" type=\"text\" value=\"\">
+							<input name=\"newpass2\" type=\"text\" value=\"\">
 							<div class=\"elaboration\">
 								It's up to you to choose a strong password... To create a new password, write your passwords in both boxes.
 							</div>
-						</div>
-						<div class=\"cell\">
-							<input name=\"newname\" type=\"text\" value=\"\">
-							<input name=\"newname\" type=\"text\" value=\"\">
 						</div>
 					</div>
 					<div class=\"row\">
 						<div class=\"cell twenty\">
 							Email:
-							<div class=\"elaboration\">
-								We use this to send you a link to reset your password in case you lost your password.
-							</div>
 						</div>
 						<div class=\"cell\">
 							<input name=\"newmail\" type=\"text\" value=\"$email\">
+							<div class=\"elaboration\">
+								We use this to send you a link to reset your password in case you lost your password.
+							</div>
 						</div>
 					</div>
 				</div>
@@ -74,7 +74,7 @@
 							</div>
 						</div>
 						<div class=\"cell\">
-							<input name=\"newpic\" type=\"file\" placeholder=\"35913\">
+							<input name=\"newpic\" type=\"text\" placeholder=\"35913\">
 						</div>
 						<div class=\"cell\">
 							<img alt=\"Profile Picture\" src=\"$profimgsrc\">
