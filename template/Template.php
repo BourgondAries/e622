@@ -26,9 +26,9 @@
 						<ul>
 							<li><a href=\"/login\">Login</a></li>
 							<li><a href=\"/tags\">Tags</a></li>
-							<li><a href=\"#upload\">Upload</a></li>
-							<li><a href=\"#news\">News</a></li>
-							<li><a href=\"#update\">Support</a></li>
+							<li><a href=\"/upload\">Upload</a></li>
+							<li><a href=\"/news\">News</a></li>
+							<li><a href=\"/update\">Support</a></li>
 						</ul>
 					</div>
 				</div>
