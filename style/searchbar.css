@@ -1,15 +1,19 @@
 .searchbar {
 	margin-right: 15px;
+	font-family: verdana, sans-serif;
 	padding-bottom: 15px;
+	color: #ffddfe;
+	font-size: 1.2em;
+	vertical-align: none;
+}
+
+.searchbar #options {
+	font-size: 11px;
 }
 
 .searchbar #searchblock {
-	color: #ffddfe;
-	font-size: 1.2em;
 	margin: 0;
 	padding: 0;
-	font-family: verdana, sans-serif;
-	vertical-align: none;
 }
 
 .searchbar #textfield {

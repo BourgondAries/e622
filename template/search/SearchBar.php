@@ -2,7 +2,7 @@
 	function generateSearchBar()
 	{
 		return '<div class="searchbar">
-				<h5 id="searchblock"> Search </h5>
+				<span id="searchblock"> Search </span> <span id="options"> (search options) </span>
 				<form action="/search.php">
 					<input id="textfield" type="text" name="q">
 					<input type="submit" value="Submit"
