@@ -1,6 +1,7 @@
 <?php
-	session_start();
-	if (!isset($_SESSION['username'])) {
+	if (session_status() == PHP_SESSION_NONE)
+		session_start();
+	if (!isset($_SESSION['user'])) {
 		header('Location: ' . '/login/index.php?reason=upload');
 		die();
 	}

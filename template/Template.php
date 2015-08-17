@@ -7,7 +7,8 @@
 		$news = generateNews();
 		$searchbar = generateSearchBar();
 
-		session_start();
+		if (session_status() == PHP_SESSION_NONE)
+			session_start();
 
 		$login_or_username = 'LOGIN';
 		$login_or_userpage = '/login';
