@@ -3,10 +3,23 @@
 	require_once "$root/template/Template.php";
 	$sidebar = '';
 	$redirect = '';
-	if (isset($_GET['reason']) && $_GET['reason'] == 'upload')
+	if (isset($_GET['reason']))
 	{
-		$sidebar = '<div class="login" id="redirectnotice"> You were redirected here because you need to log in to upload. </div>';
-		$redirect = '/upload';
+		switch ($_GET['reason'])
+		{
+			case 'upload':
+			{
+				$sidebar = '<div class="login" id="redirectnotice"> You were redirected here because you need to log in to upload. </div>';
+				$redirect = '/upload';
+			}
+			break;
+			case 'wrong_password':
+			{
+				$sidebar = '<div class="login" id="redirectnotice"> The password is incorrect. </div>';
+				$redirect = '/';
+			}
+			break;
+		}
 	}
 	$template = "<div class=\"login\">
 		<div id=\"loginblock\">
