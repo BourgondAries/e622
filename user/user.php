@@ -75,8 +75,6 @@
 						</div>
 						<div class=\"cell\">
 							<input name=\"newpic\" type=\"text\" placeholder=\"35913\">
-						</div>
-						<div class=\"cell\">
 							<img alt=\"Profile Picture\" src=\"$profimgsrc\">
 						</div>
 					</div>
