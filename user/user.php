@@ -12,18 +12,85 @@
 	$visitor = 'anon';
 	if (isset($_SESSION['user']))
 		$visitor = $_SESSION['user'];
+	$username = $_GET['user'];
+
+	$email = 'user@mail.com';
+	$profimgsrc = '/static/diamond_tiara_rawr.png';
 
 	if ($visitor == $_GET['user'])
 	{
-		// The user looking at his own profile
+		$template = "<div class=\"user\">
+			<form action=\"/logout\">
+				<div class=\"table\">
+					<div class=\"row\">
+						<div class=\"cell twenty\">
+							To log out:
+						</div>
+						<div class=\"cell\">
+							<input type=\"submit\" value=\"logout\">
+						</div>
+					</div>
+					<div class=\"row\">
+						<div class=\"cell twenty\">
+							Username:
+							<div class=\"elaboration\">
+								Your publicly displayed name. All your posts and comments are visible under this name.
+							</div>
+						</div>
+						<div class=\"cell\">
+							<input name=\"newname\" type=\"text\" value=\"$username\">
+						</div>
+					</div>
+					<div class=\"row\">
+						<div class=\"cell twenty\">
+							Password:
+							<div class=\"elaboration\">
+								It's up to you to choose a strong password... To create a new password, write your passwords in both boxes.
+							</div>
+						</div>
+						<div class=\"cell\">
+							<input name=\"newname\" type=\"text\" value=\"\">
+							<input name=\"newname\" type=\"text\" value=\"\">
+						</div>
+					</div>
+					<div class=\"row\">
+						<div class=\"cell twenty\">
+							Email:
+							<div class=\"elaboration\">
+								We use this to send you a link to reset your password in case you lost your password.
+							</div>
+						</div>
+						<div class=\"cell\">
+							<input name=\"newmail\" type=\"text\" value=\"$email\">
+						</div>
+					</div>
+				</div>
+				<div class=\"table\">
+					<div class=\"row\">
+						<div class=\"cell twenty\">
+							Profile picture:
+							<div class=\"elaboration\">
+								The profile picture associated with your account. Remember that you can only choose pictures uploaded to this website.
+							</div>
+						</div>
+						<div class=\"cell\">
+							<input name=\"newpic\" type=\"file\" placeholder=\"35913\">
+						</div>
+						<div class=\"cell\">
+							<img alt=\"Profile Picture\" src=\"$profimgsrc\">
+						</div>
+					</div>
+				</div>
+				<div class=\"table\">
+					<input type=\"submit\" value=\"save\">
+				</div>
+			</form>
+		</div>";
+
+		echo generateTemplate($template);
 	}
 	else
 	{
 		// Anyone viewing the public profile
 	}
-	$template = "<form action=\"/logout\">
-		<input type=\"submit\" value=\"logout\">
-	</form>";
-
-	echo generateTemplate($template);
 ?>
