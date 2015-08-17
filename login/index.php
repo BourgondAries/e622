@@ -11,7 +11,7 @@
 				Click here to register a new account. Click here to reset your password.
 			</div>
 			<div class=\"largespacer\"> </div>
-			<form id=\"loginform\" action=\"loginuser\" method=\"post\">
+			<form id=\"loginform\" action=\"/loginuser/index.php\" method=\"post\">
 				<div id=\"tbusername\">
 					<div class=\"tb\">
 						Username
