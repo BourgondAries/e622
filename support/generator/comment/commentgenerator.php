@@ -8,6 +8,9 @@
 						<div class=\"user\">
 							${comment['user']}
 						</div>
+						<div class=\"commentdate\">
+							${comment['date']}
+						</div>
 						<img src=\"${comment['profilepic']}\">
 					</div>
 				</div>

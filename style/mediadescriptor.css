@@ -43,6 +43,11 @@
 	margin-right: 10px;
 }
 
+.mediadescriptor .commentdate {
+	font-size: 12px;
+	text-align: center;
+}
+
 .mediadescriptor .comment {
 	background-color: rgba(255, 255, 255, 0.05);
 	border-radius: 4px;
