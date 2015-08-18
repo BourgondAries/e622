@@ -27,7 +27,7 @@
 	{
 		session_start();
 		$_SESSION['user'] = $username;
-		header('Location: ' . '/');
+		header('Location: ' . $_GET['redirect']);
 		die();
 	}
 	else
