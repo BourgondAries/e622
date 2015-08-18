@@ -629,7 +629,10 @@ body {
 }
 
 .user input {
-	padding: 0 3px 0 3px;
+	box-shadow: 2px 2px 5px black;
+	border-radius: 2px;
+	border-width: 0px;
+	border-style: none;
 }
 
 .user .cell.twenty {
