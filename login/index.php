@@ -47,7 +47,7 @@
 			</div>
 			<div class=\"largespacer\"> </div>
 			<div class=\"information\">
-				Click here to register a new account. Click here to reset your password.
+				<a href=\"/register/register.php\">Click here</a> to register a new account. <a href=\"/resetpassword/resetpassword.php\">Click here</a> to reset your password.
 			</div>
 			<div class=\"largespacer\"> </div>
 			<form id=\"loginform\" action=\"/loginuser/index.php?redirect=$redirect\" method=\"post\">
