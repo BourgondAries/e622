@@ -14,7 +14,8 @@
 			['date' => '17/08/2015 13:45:09', 'profilepic' => '/static/diamond_tiara_rawr.png', 'user' => 'kekeke', 'comment' => 'Wow i\'m a comment!'],
 			['date' => '17/08/2015 00:45:28', 'profilepic' => '/static/diamond_tiara_rawr.png', 'user' => 'dumbusername', 'comment' => 'Bro, stahp'],
 		],
-		'Diamond Tiara saying rawr whilst tearing up.'
+		'Diamond Tiara saying rawr whilst tearing up.',
+		213
 	);
 
 	$leftbar = generateSidebarProperties(2, 1, 0, "SFW");
