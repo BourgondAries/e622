@@ -15,6 +15,12 @@
 	font-size: 12px;
 }
 
+.help .commentbox textarea {
+	width: 100%;
+	padding-right: 5px;
+	box-sizing: border-box;
+}
+
 .support .vertspacer {
 	height: 10px;
 	padding: 5px;

@@ -14,6 +14,9 @@
 				<div class=\"information\">
 					e622 is created by two university students: BourgondAries and [REDACTED]. A simple rewrite and more free content system than e621. e622 allows you to search for more tags than e621, as well as being a content host for any type of content. Go check out e621 btw, it's awesome and has been a great inspiration for e622! The code for e622 is freely available on github. e622 is free software. Free as in freedom, not free beer.
 					Write your complaints, compliments *blush*, criticism and ideas here! We (the webadmins) will read these and probably respond.
+					<div class=\"commentbox\">
+						<textarea placeholder=\"Your comment\"></textarea>
+					</div>
 					<div class=\"vertspacer\">
 						<div class=\"mediadescriptor\">
 							$all_comments
