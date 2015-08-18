@@ -1,0 +1,48 @@
+<?php
+	$root = $_SERVER['DOCUMENT_ROOT'];
+	require_once "$root/template/Template.php";
+
+	$template = "<div class=\"login\">
+		<div id=\"loginblock\">
+			<div class=\"login-information\">
+				REGISTER
+			</div>
+			<div class=\"largespacer\"> </div>
+				<form id=\"loginform\" action=\"/register/registeruser.php\" method=\"post\">
+					<div id=\"tbusername\">
+						<div class=\"tb\">
+							Username
+						</div>
+						<div class=\"tb\">
+							<input id=\"username\" name=\"username\" type=\"text\">
+						</div>
+					</div>
+					<div class=\"fieldspacer\"></div>
+					<div id=\"tbpassword\">
+						<div class=\"tb\">
+							Password
+						</div>
+						<div class=\"tb\">
+							<input id=\"password\" name=\"password\" type=\"password\">
+						</div>
+					</div>
+					<div class=\"fieldspacer\"></div>
+					<div id=\"tbusername\">
+						<div class=\"tb\">
+							Email
+						</div>
+						<div class=\"tb\">
+							<input id=\"username\" name=\"email\" type=\"text\">
+						</div>
+					</div>
+					<div class=\"fieldspacer\">
+					<div id=\"button\">
+						<input type=\"submit\" value=\"register\">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>";
+
+	echo generateTemplate($template);
+?>
