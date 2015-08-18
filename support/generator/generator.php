@@ -16,7 +16,10 @@
 					Write your complaints, compliments *blush*, criticism and ideas here! We (the webadmins) will read these and probably respond.
 					<div class=\"support commentspacer\">
 						<div class=\"commentbox\">
-							<textarea name=\"comment\" placeholder=\"Your comment\"></textarea>
+							<form action=\"postcomment/postcomment.php\" method=\"post\">
+								<textarea name=\"comment\" placeholder=\"Your comment\"></textarea>
+								<input type=\"submit\" value=\"post your comment bro\">
+							</form>
 						</div>
 					</div>
 					<div class=\"vertspacer\">

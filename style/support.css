@@ -26,6 +26,10 @@
 	height: 100px;
 }
 
+.help .commentbox input {
+	width: 100%;
+}
+
 .support .vertspacer {
 	height: 10px;
 	padding: 5px;
