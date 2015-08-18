@@ -428,6 +428,9 @@ body {
 	padding-right: 5px;
 	box-sizing: border-box;
 	height: 100px;
+	box-shadow: 2px 2px 5px black;
+	border-radius: 2px;
+	border-width: 0px;
 }
 
 .help .commentbox input {

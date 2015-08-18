@@ -2,7 +2,7 @@
 	function generateSupportPage($comments)
 	{
 		$root = $_SERVER['DOCUMENT_ROOT'];
-		require_once 'comment/commentgenerator.php';
+		require_once "$root/commentgenerator/commentgenerator.php";
 		require_once "$root/template/Template.php";
 
 		$all_comments = '';

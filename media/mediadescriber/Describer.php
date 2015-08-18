@@ -1,5 +1,5 @@
 <?php
-	require_once 'comment/commentgenerator.php';
+	require_once "${_SERVER['DOCUMENT_ROOT']}/commentgenerator/commentgenerator.php";
 	function describeMedia($imglink, $link, $tags, $comments, $description)
 	{
 		$all_tags = '';
