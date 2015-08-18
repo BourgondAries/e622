@@ -654,6 +654,7 @@ body {
 
 .user input[type='text'] {
 	width: 100%;
+	padding-left: 2px;
 	border-radius: 2px;
 	border-width: 0;
 	box-shadow: 2px 2px 5px #07162d;
