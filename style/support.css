@@ -28,6 +28,10 @@
 
 .help .commentbox input {
 	width: 100%;
+	box-shadow: 2px 2px 5px black;
+	border-radius: 2px;
+	border-width: 0px;
+	border-style: none;
 }
 
 .support .vertspacer {
