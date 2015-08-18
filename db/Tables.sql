@@ -77,7 +77,9 @@ CREATE TABLE Comment
 	user_ID 	BIGINT UNSIGNED,
 	media_ID	BIGINT UNSIGNED,
 	comment 	VARCHAR(1024),
+	comm_date 	DATETIME			DEFAULT NOW(),
 
 	PRIMARY KEY (comment_ID),
-	FOREIGN KEY (user_ID) REFERENCES User(user_ID)
+	FOREIGN KEY (user_ID) REFERENCES User(user_ID),
+	FOREIGN KEY (media_ID) REFERENCES Media(media_ID) ON DELETE CASCADE
 );
