@@ -16,14 +16,20 @@
 	$description = $_POST['description'];
 	$tmpname = $_FILES['file']['tmp_name'];
 	$check = getimagesize($tmpname);
+	$extension = '';
 	if ($check !== false)
 	{
 		$mime = $check['mime'];
-		$extension = '';
+		echo $mime;
 		switch ($mime)
 		{
+			case 'image/jpeg':
+				$extension = 'jpeg';
+			break;
 			case 'image/png':
 				$extension = 'png';
+			break;
+			default:
 			break;
 		}
 		$db = new E621;
@@ -32,12 +38,19 @@
 		$failed = false;
 		$mysqli = $db->get();
 		$mysqli->autocommit(false);
-		$res = $mysqli->query("SELECT max(media_ID) FROM Media");
-		echo 'AAAAAAAAAAAAAAAAAAAAA';
-		echo($res->current_field);
-		echo 'AAAAAAAAAAAAAAAAAAAAA';
+		$res = $mysqli->query("SELECT max(media_ID) as mx FROM Media");
+		$max = $res->fetch_object();
+		$assoc_file = base_convert($max->mx + 1, 10, 36) . '.' . $extension;
+		$full_path = "$root/media_store/$assoc_file";
+		rename($tmpname, $full_path);
+
+		$prepst = $mysqli->prepare("INSERT INTO Media (filename, description, uploader) VALUES (?, ?, ?);");
+		$prepst->bind_param('ssi', $assoc_file, $description, $num);
+		$prepst->execute();
+
+		$mysqli->commit();
 		die();
-		$mysqli->query("INSERT INTO table VALUES ('bar')") ? NULL : $failed = true;
+
 		$failed ? $mysqli->rollback() : $mysqli->commit();
 
 		$db_conn_getter = $db_conn->prepare('SELECT max(media_ID) FROM Media');
