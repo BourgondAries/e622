@@ -8,9 +8,20 @@
 		switch ($_GET['reason'])
 		{
 			case 'user_already_exists':
-			$notice = '<div id="redirectnotice" class="login">
-				The user already exists, choose another username.
-			</div>';
+				$notice = '<div id="redirectnotice" class="login">
+					The user already exists, choose another username.
+				</div>';
+			break;
+			case 'invalid_email':
+				$notice = '<div id="redirectnotice" class="login">
+					The email entered is invalid.
+				</div>';
+			break;
+			case 'trailing_whitespace_username':
+				$notice = '<div id="redirectnotice" class="login">
+					The username contained trailing whitespace. Whitespace is only allowed between non-whitespace characters.
+				</div>';
+			break;
 		}
 	}
 
