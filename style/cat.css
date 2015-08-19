@@ -318,6 +318,12 @@ body {
 	vertical-align: none;
 }
 
+.searchbar a {
+	font-style: none;
+	text-decoration: none;
+	color: inherit;
+}
+
 .searchbar #options {
 	font-size: 11px;
 }
