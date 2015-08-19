@@ -13,12 +13,16 @@
 				printf("Connection failed: %s\n", $this->connection->connect_error);
 				exit();
 			}
-			$this->connection->autocommit(FALSE);
 		}
 
 		function __destruct()
 		{
 			$this->connection->close();
+		}
+
+		function get()
+		{
+			return $this->connection;
 		}
 
 		function version()

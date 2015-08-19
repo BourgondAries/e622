@@ -8,6 +8,8 @@
 	// Check if username exists in db.
 	$pwcheck = new PasswordHash(8, false);
 
+	require_once "$root/utils/E621.php";
+
 	if ($username == 'root')
 	{
 		$hash = file_get_contents("$root/../root.hash") ;
@@ -19,8 +21,19 @@
 	}
 	else
 	{
-		// Get hash from that user.
-		$hash = $pwcheck->HashPassword($password); // Placeholder, always succeeds
+		$db = new E621;
+		$db_conn = $db->get();
+		$db_conn_prep = $db_conn->prepare('SELECT password_hash FROM User WHERE username=?;');
+		$db_conn_prep->bind_param('s', $username);
+		$does_exist = $db_conn_prep->execute();
+		$result = $db_conn_prep->get_result();
+		$fetched = $result->fetch_array(MYSQLI_NUM);
+		if ($fetched == NULL)
+		{
+			header('Location: ' . '/login/index.php?reason=no_such_account');
+			die();
+		}
+		$hash = $fetched[0];
 	}
 
 	if ($pwcheck->CheckPassword($password, $hash))
