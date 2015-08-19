@@ -1,8 +1,24 @@
 <?php
 	$root = $_SERVER['DOCUMENT_ROOT'];
 	require_once "$root/template/Template.php";
+	require_once "$root/utils/E621.php";
 	require_once "mediadescriber/Describer.php";
 	require_once 'leftbar/PropertyGenerator.php';
+
+	$failed = false;
+	$mysqli = $db->get();
+	$mysqli->autocommit(false);
+
+	// Find the user id first
+	$prepst = $mysqli->prepare("SELECT user_ID FROM User WHERE username=?");
+	$prepst->bind_param('s', $_SESSION['user']);
+	$res = $prepst->execute();
+	$res2 = $prepst->get_result();
+	$fetched = $res2->fetch_array(MYSQLI_NUM);
+	$userid = $fetched[0];
+
+
+
 
 	$result = describeMedia
 	(

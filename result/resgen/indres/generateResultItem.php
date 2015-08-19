@@ -1,5 +1,5 @@
 <?php
-	function generateResultItem($id, $ups, $favorites, $downs, $safety)
+	function generateResultItem($id, $ups, $favorites, $downs, $safety, $thumblink)
 	{
 		$total = $ups - $downs;
 		switch ($safety)
@@ -18,7 +18,7 @@
 		}
 		return "<a href=/media/media.php?id=$id>
 	<div class=\"singlesearchitem\">
-		<img class=\"thumbnail-searchitem\" alt=\"thumbnail\" height=\"150\" width=\"150\" src=\"/db/0.jpg\">
+		<img class=\"thumbnail-searchitem\" alt=\"thumbnail\" height=\"150\" width=\"150\" src=\"/media_store/$thumblink\">
 		<span class=\"thumbnail-score\">
 			&#9830; $total
 			<span class=\"ups\"> &#9652; $ups </span>

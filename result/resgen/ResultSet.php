@@ -10,7 +10,8 @@
 				$media['up'],
 				$media['fav'],
 				$media['down'],
-				$media['type']
+				$media['type'],
+				$media['thumb']
 			);
 		return $total . '</div>';
 	}
