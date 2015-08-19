@@ -7,6 +7,12 @@
 	{
 		switch ($_GET['reason'])
 		{
+			case 'upload_expired':
+			{
+				$sidebar = '<div class="login" id="redirectnotice"> Unfortunately, you were logged out whilst uploading. Please login and try again. We\'re sorry, this should not happen to normal users unless they closed their browsers. Please inform us on the support page.</div>';
+				$redirect = '/upload';
+			}
+			break;
 			case 'upload':
 			{
 				$sidebar = '<div class="login" id="redirectnotice"> You were redirected here because you need to log in to upload. </div>';
