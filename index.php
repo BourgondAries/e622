@@ -18,6 +18,8 @@
 		$infoget->execute();
 		$final_info = $infoget->get_result();
 		$partial_result = $final_info->fetch_array(MYSQLI_NUM);
+		for ($i = 0; $i < 3; ++$i)
+			$partial_result[0] = $partial_result[0] == null ? 0 : $partial_result[0];
 		array_push($item, array
 		(
 			'id' => $fetched[0],
