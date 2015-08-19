@@ -9,7 +9,7 @@
 	require_once "$root/template/Template.php";
 
 	// Here we need some forms
-	$template = "<form action=\"/postupload/post.php\" method=\"post\">
+	$template = "<form action=\"/upload/postupload.php\" method=\"post\" enctype=\"multipart/form-data\">
 		<div class=\"upload\">
 			<div style=\"display: table-row;\">
 				<div id=\"filedescriptor\">
@@ -38,7 +38,7 @@
 					</div>
 				</div>
 				<div class=\"cell\">
-					<textarea name=\"description\" placeholder=\"diamond_tiara_(mlp) crying screaming tears mlp fim angry blue_eyes open_mouth pink equine horse mane author:zorroW\"></textarea>
+					<textarea name=\"tags\" placeholder=\"diamond_tiara_(mlp) crying screaming tears mlp fim angry blue_eyes open_mouth pink equine horse mane author:zorroW\"></textarea>
 				</div>
 			</div>
 			<div class=\"row\">
