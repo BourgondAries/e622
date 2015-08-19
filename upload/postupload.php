@@ -58,22 +58,7 @@
 		$prepst->execute();
 
 		$mysqli->commit();
-		die();
-
-		$failed ? $mysqli->rollback() : $mysqli->commit();
-
-		$db_conn_getter = $db_conn->prepare('SELECT max(media_ID) FROM Media');
-		$db_conn_getter->execute();
-		$result = $db_conn_prep->get_result();
-		$fetched = $result->fetch_array(MYSQLI_NUM);
-		var_dump($fetched);
-		die();
-
-		$db_conn_prep = $db_conn->prepare('INSERT INTO Media (description, );');
-		$db_conn_prep->bind_param('s', $username);
-		$does_exist = $db_conn_prep->execute();
-		$result = $db_conn_prep->get_result();
-		$fetched = $result->fetch_array(MYSQLI_NUM);
+		header('Location: ' . '/upload');
 	}
 	else
 		echo 'not img';
