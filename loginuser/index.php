@@ -40,6 +40,11 @@
 	{
 		session_start();
 		$_SESSION['user'] = $username;
+		if ($_GET['redirect'] == '')
+		{
+			header('Location: ' . '/');
+			die();
+		}
 		header('Location: ' . $_GET['redirect']);
 		die();
 	}
