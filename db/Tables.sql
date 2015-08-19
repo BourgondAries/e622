@@ -3,11 +3,16 @@ CREATE TABLE User
 	user_ID 	BIGINT UNSIGNED 		NOT NULL AUTO_INCREMENT,
 	username 	VARCHAR(255)			UNIQUE,
 	email		VARCHAR(255),
-	user_since	DATETIME				DEFAULT NOW(),
+	user_since	DATETIME,
 	deleted		BOOLEAN					DEFAULT FALSE,
+	password_hash VARCHAR(255) NOT NULL,
 
 	PRIMARY KEY (user_ID)
 );
+
+CREATE TRIGGER user_since_creation BEFORE INSERT ON User
+FOR EACH ROW
+SET NEW.user_since = NOW();
 
 CREATE TABLE Media
 (
@@ -15,7 +20,7 @@ CREATE TABLE Media
 	filename			VARCHAR(18)			UNIQUE,
 	description			VARCHAR(1024),
 	source				VARCHAR(255),
-	upload_date 		DATETIME			DEFAULT NOW(),
+	upload_date 		DATETIME,
 	uploader 			BIGINT UNSIGNED,
 	link_forward_ID		BIGINT UNSIGNED,
 	link_previous_ID	BIGINT UNSIGNED,
@@ -26,6 +31,10 @@ CREATE TABLE Media
 	FOREIGN KEY (link_previous_ID) REFERENCES Media(media_ID) ON DELETE SET NULL
 
 );
+
+CREATE TRIGGER media_creation BEFORE INSERT ON Media
+FOR EACH ROW
+SET NEW.upload_date = NOW();
 
 CREATE TABLE UserProfileMedia
 (
@@ -77,9 +86,13 @@ CREATE TABLE Comment
 	user_ID 	BIGINT UNSIGNED,
 	media_ID	BIGINT UNSIGNED,
 	comment 	VARCHAR(1024),
-	comm_date 	DATETIME			DEFAULT NOW(),
+	comm_date 	DATETIME,
 
 	PRIMARY KEY (comment_ID),
 	FOREIGN KEY (user_ID) REFERENCES User(user_ID),
 	FOREIGN KEY (media_ID) REFERENCES Media(media_ID) ON DELETE CASCADE
 );
+
+CREATE TRIGGER comment_creation BEFORE INSERT ON Comment
+FOR EACH ROW
+SET NEW.comm_date = NOW();
