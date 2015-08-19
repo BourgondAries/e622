@@ -2,6 +2,18 @@
 	$root = $_SERVER['DOCUMENT_ROOT'];
 	require_once "$root/template/Template.php";
 
+	$notice = '';
+	if (isset($_GET['reason']))
+	{
+		switch ($_GET['reason'])
+		{
+			case 'user_already_exists':
+			$notice = '<div id="redirectnotice" class="login">
+				The user already exists, choose another username.
+			</div>';
+		}
+	}
+
 	$template = "<div class=\"login\">
 		<div id=\"loginblock\">
 			<div class=\"login-information\">
@@ -44,5 +56,5 @@
 		</div>
 	</div>";
 
-	echo generateTemplate($template);
+	echo generateTemplate($template, $notice);
 ?>
