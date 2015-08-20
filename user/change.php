@@ -25,6 +25,27 @@
 			if (isset($_SESSION['user']))
 			{
 				// Change the user entry in db
+				$username = $_SESSION['user'];
+				$root = $_SERVER['DOCUMENT_ROOT'];
+				require_once "$root/utils/E621.php";
+				require_once "$root/phpass/PasswordHash.php";
+				$db = new E621;
+				$dbc = $db->get();
+				if ($_POST['newname'] != $_SESSION['user'])
+				{
+					$dbc->autocommit(true);
+					$prepstmt = $dbc->prepare('UPDATE User SET username = ? WHERE username = ?;');
+					$prepstmt->bind_param('ss', $_POST['newname'], $_SESSION['user']);
+					$affected = $prepstmt->execute();
+					if ($affected == 0)
+					{
+						echo 'Could not change username';
+						die();
+					}
+					$_SESSION['user'] = $_POST['newname'];
+				}
+				var_dump($_POST);
+				die();
 				header('Location: ' . "/user/user.php?user=${_SESSION['user']}");
 				die();
 			}
