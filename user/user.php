@@ -49,8 +49,8 @@
 							Password:
 						</div>
 						<div class=\"cell\">
-							<input name=\"newpass1\" type=\"text\" value=\"\">
-							<input name=\"newpass2\" type=\"text\" value=\"\">
+							<input name=\"newpass1\" type=\"password\" value=\"\">
+							<input name=\"newpass2\" type=\"password\" value=\"\">
 							<div class=\"elaboration\">
 								It's up to you to choose a strong password... To create a new password, write your passwords in both boxes.
 							</div>
