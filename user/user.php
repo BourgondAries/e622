@@ -9,6 +9,9 @@
 		echo generateTemplate('<div class="login" id="redirectnotice"> No user specified. If you suspect to have found a bug, please report this on the support page. </div>');
 		die();
 	}
+	$reason = '';
+	if (isset($_GET['reason']) && $_GET['reason'] == 'passwords_dont_match')
+		$reason = '<div class="login" id="redirectnotice"> The passwords your entered do not match. </div>';
 	$visitor = 'anon';
 	if (isset($_SESSION['user']))
 		$visitor = $_SESSION['user'];
@@ -85,7 +88,7 @@
 			</form>
 		</div>";
 
-		echo generateTemplate($template);
+		echo generateTemplate($template, $reason);
 	}
 	else
 	{

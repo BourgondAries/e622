@@ -55,6 +55,11 @@
 						$prepstmt->bind_param('ss', $pwhash, $_SESSION['user']);
 						$affected = $prepstmt->execute();
 					}
+					else
+					{
+						header('Location: ' . "/user/user.php?user=${_SESSION['user']}&reason=passwords_dont_match");
+						die();
+					}
 				}
 				$dbc->autocommit(true);
 				$prepstmt = $dbc->prepare('UPDATE User SET email = ? WHERE username = ?;');
