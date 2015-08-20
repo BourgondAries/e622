@@ -29,6 +29,7 @@
 				$root = $_SERVER['DOCUMENT_ROOT'];
 				require_once "$root/utils/E621.php";
 				require_once "$root/phpass/PasswordHash.php";
+				$pwcheck = new PasswordHash(8, false);
 				$db = new E621;
 				$dbc = $db->get();
 				if ($_POST['newname'] != $_SESSION['user'])
@@ -44,8 +45,22 @@
 					}
 					$_SESSION['user'] = $_POST['newname'];
 				}
-				var_dump($_POST);
-				die();
+				if ($_POST['newpass1'] != '')
+				{
+					if ($_POST['newpass1'] == $_POST['newpass2'])
+					{
+						$pwhash = $pwcheck->HashPassword($_POST['newpass1']);
+						$dbc->autocommit(true);
+						$prepstmt = $dbc->prepare('UPDATE User SET password_hash = ? WHERE username = ?;');
+						$prepstmt->bind_param('ss', $pwhash, $_SESSION['user']);
+						$affected = $prepstmt->execute();
+					}
+				}
+				$dbc->autocommit(true);
+				$prepstmt = $dbc->prepare('UPDATE User SET email = ? WHERE username = ?;');
+				$prepstmt->bind_param('ss', $_POST['newmail'], $_SESSION['user']);
+				$affected = $prepstmt->execute();
+
 				header('Location: ' . "/user/user.php?user=${_SESSION['user']}");
 				die();
 			}
