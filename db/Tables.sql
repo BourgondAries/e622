@@ -49,7 +49,7 @@ CREATE TABLE UserProfileMedia
 CREATE TABLE Tag
 (
 	tag_ID		BIGINT UNSIGNED 		NOT NULL AUTO_INCREMENT,
-	description	VARCHAR(255),
+	description	VARCHAR(255) UNIQUE,
 
 	PRIMARY KEY (tag_ID)
 );
