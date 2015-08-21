@@ -61,6 +61,36 @@
 						die();
 					}
 				}
+				if ($_POST['newpic'] != '')
+				{
+					$dbc->autocommit(false);
+					$prep = $dbc->prepare('SELECT UserProfileMedia.user_ID FROM UserProfileMedia JOIN User ON UserProfileMedia.user_ID = User.user_ID WHERE username = ?;');
+					$prep->bind_param('i', $_SESSION['user']);
+					$prep->execute();
+					$res2 = $prep->get_result();
+					$uid = $res2->fetch_array();
+
+					while ($res2->fetch_array());
+
+					$prep = $dbc->prepare('SELECT user_ID FROM User WHERE username = ?;');
+					$prep->bind_param('s', $_SESSION['user']);
+					$prep->execute();
+					$res2 = $prep->get_result();
+					$userid = $res2->fetch_array()[0];
+
+					if (!$uid)
+					{
+						$prep = $dbc->prepare('INSERT INTO UserProfileMedia (profile_pic_ID, user_ID) VALUES (?, ?);');
+						$prep->bind_param('ii', $_POST['newpic'], $userid);
+						$prep->execute();
+					}
+					else
+					{
+						$prep = $dbc->prepare('UPDATE UserProfileMedia SET profile_pic_ID WHERE user_ID = ?;');
+						$prep->bind_param('i', $userid);
+						$prep->execute();
+					}
+				}
 				$dbc->autocommit(true);
 				$prepstmt = $dbc->prepare('UPDATE User SET email = ? WHERE username = ?;');
 				$prepstmt->bind_param('ss', $_POST['newmail'], $_SESSION['user']);
