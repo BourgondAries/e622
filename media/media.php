@@ -26,8 +26,21 @@
 	$tag_list = [];
 	while ($fetched)
 	{
+		$tag_list[] = $fetched[0];
 		$fetched = $res2->fetch_array(MYSQLI_NUM);
-		array_push($tag_list, $fetched[0]);
+	}
+
+	$prepst = $mysqli->prepare("SELECT comment, comm_date as date, username as user FROM Comment JOIN User ON User.user_ID = Comment.user_ID WHERE media_ID = ? ORDER BY comm_date DESC;");
+	$prepst->bind_param('i', $_GET['id']);
+	$res = $prepst->execute();
+	$res2 = $prepst->get_result();
+	$fetched = $res2->fetch_assoc();
+	$comment_list = [];
+
+	while ($fetched)
+	{
+		$comment_list[] = $fetched;
+		$fetched = $res2->fetch_assoc();
 	}
 
 	$result = describeMedia
@@ -35,13 +48,9 @@
 		"/media_store/$file",
 		'',
 		$tag_list,
-		[
-			['date' => '18/08/2015 14:39:33', 'profilepic' => '/static/diamond_tiara_rawr.png', 'user' => 'Ozymandis', 'comment' => 'Show me your war face!'],
-			['date' => '17/08/2015 13:45:09', 'profilepic' => '/static/diamond_tiara_rawr.png', 'user' => 'kekeke', 'comment' => 'Wow i\'m a comment!'],
-			['date' => '17/08/2015 00:45:28', 'profilepic' => '/static/diamond_tiara_rawr.png', 'user' => 'dumbusername', 'comment' => 'Bro, stahp'],
-		],
+		$comment_list,
 		$description,
-		213
+		$_GET['id']
 	);
 
 	$leftbar = generateSidebarProperties(2, 1, 0, "SFW");
