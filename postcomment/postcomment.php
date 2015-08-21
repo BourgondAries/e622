@@ -17,7 +17,6 @@
 	$res2 = $prep->get_result();
 	$userid = $res2->fetch_array(MYSQLI_NUM)[0];
 
-	echo 'hey';
 	echo $_POST['commentwhere'];
 	$prep = $con->prepare('INSERT INTO Comment (user_ID, media_ID, comment) VALUES (?, ?, ?);');
 	$comment = $_POST['comment'];
@@ -28,4 +27,5 @@
 		echo $con->error;
 	}
 	$con->commit();
+	header('Location: /media/media.php?id=' . $_POST['commentwhere']);
 ?>
