@@ -56,6 +56,8 @@
 		$prepst = $mysqli->prepare("INSERT INTO Media (filename, description, uploader) VALUES (?, ?, ?);");
 		$prepst->bind_param('ssi', $assoc_file, $description, $userid);
 		$prepst->execute();
+		array_push($tag_array, strtolower($_POST['rating']));
+		$tag_array = array_unique($tag_array);
 		foreach ($tag_array as &$tag)
 		{
 			$tagprep = $mysqli->prepare('INSERT IGNORE INTO Tag (description) VALUES (?);');
