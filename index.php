@@ -14,7 +14,8 @@
 	while ($fetched = $result->fetch_array(MYSQLI_NUM))
 	{
 		$infoget = $db_conn->prepare("SELECT sum(vote = true) as ups, sum(vote = false) as downs, sum(favorite) as favs FROM UserFeedback WHERE media_ID = ?;");
-		$infoget->bind_param('i', $fetched[0]);
+		$id = $fetched[0];
+		$infoget->bind_param('i', $id);
 		$infoget->execute();
 		$final_info = $infoget->get_result();
 		$partial_result = $final_info->fetch_array(MYSQLI_NUM);
