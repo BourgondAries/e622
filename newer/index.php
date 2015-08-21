@@ -34,8 +34,18 @@
 			</div>
 			<div class="row">
 				<div class="footer">
-					<div class="table">
-						This is a footer!
+					<div class="center">
+						<div class="autotable">
+							<div class="cell">
+								Design
+							</div>
+							<div class="cell">
+								|
+							</div>
+							<div class="cell">
+								Kevin R. S.
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

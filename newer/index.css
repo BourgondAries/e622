@@ -4,9 +4,12 @@ body { background-color: rgb(69, 50, 105); color: rgb(255, 221, 254); font-famil
 
 .content { }
 .footer { background-color: black; width: 100%; }
+.footer .autotable { border-spacing: 0.5vw; border-collapse: separate; font-size: 60%; }
 
 .generic { display: table; width: 100%; }
+.generic .autotable { display: table; width: auto; }
 .generic .cell { display: table-cell; }
+.generic .center { display: inline-block; margin-left: 50%; transform: translate(-50%, 0); width: auto; }
 .generic .prefoot { min-height: 100vh; width: 100%; }
 .generic .row { display: table-row; width: 100%; }
 .generic .table { display: table; width: 100%; }
