@@ -1,6 +1,7 @@
 <?php
 	$root = $_SERVER['DOCUMENT_ROOT'];
 	require_once "$root/phpass/PasswordHash.php";
+	require_once "$root/utils/E621.php";
 	require_once "$root/template/Template.php";
 	if (session_status() == PHP_SESSION_NONE)
 		session_start();
@@ -19,6 +20,17 @@
 
 	$email = 'user@mail.com';
 	$profimgsrc = '/static/diamond_tiara_rawr.png';
+
+	$db = new E621;
+	$dbc = $db->get();
+	$prep = $dbc->prepare('SELECT email, filename FROM User JOIN UserProfileMedia ON User.user_ID = UserProfileMedia.user_ID JOIN Media ON profile_pic_ID = Media.media_ID WHERE username = ?');
+	$prep->bind_param('s', $username);
+	$prep->execute();
+	$res = $prep->get_result();
+	$result = $res->fetch_array();
+
+	$email = $result[0];
+	$profimgsrc = '/media_store/' . $result[1];
 
 	if ($visitor == $_GET['user'])
 	{
