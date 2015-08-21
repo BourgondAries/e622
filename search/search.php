@@ -16,7 +16,10 @@
 	while ($fetched = $prep->fetch_array())
 		$tag_ids[] = $fetched[0];
 	if (empty($tag_ids))
+	{
+		header('Location: /');
 		die();
+	}
 	$fullquery = implode(', ', $tag_ids);
 	$tagcount = count($tag_ids);
 	$template = "SELECT media_ID, filename FROM MediaTag NATURAL JOIN Media WHERE tag_ID IN ($fullquery) GROUP BY media_ID HAVING count(distinct tag_ID) >= $tagcount ORDER BY upload_date DESC LIMIT 50;";
