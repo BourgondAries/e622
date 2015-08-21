@@ -78,6 +78,8 @@
 					$res2 = $prep->get_result();
 					$userid = $res2->fetch_array()[0];
 
+					while ($res2->fetch_array());
+
 					if (!$uid)
 					{
 						$prep = $dbc->prepare('INSERT INTO UserProfileMedia (profile_pic_ID, user_ID) VALUES (?, ?);');
@@ -86,8 +88,9 @@
 					}
 					else
 					{
-						$prep = $dbc->prepare('UPDATE UserProfileMedia SET profile_pic_ID WHERE user_ID = ?;');
-						$prep->bind_param('i', $userid);
+						$prep = $dbc->prepare('UPDATE UserProfileMedia SET profile_pic_ID = ? WHERE user_ID = ?;');
+						var_dump($prep);
+						$prep->bind_param('ii', $_POST['newpic'], $userid);
 						$prep->execute();
 					}
 				}
