@@ -21,13 +21,24 @@
 		$partial_result = $final_info->fetch_array(MYSQLI_NUM);
 		for ($i = 0; $i < 3; ++$i)
 			$partial_result[$i] = $partial_result[$i] == null ? 0 : $partial_result[$i];
+		$safety_rating = $db_conn->query("SELECT 1 FROM Media WHERE ${fetched[0]} IN (SELECT Media_ID FROM Tag JOIN MediaTag ON MediaTag.tag_ID = Tag.tag_ID WHERE description = 'sfw')");
+		$current_safety = 'NSFW';
+		if ($safe_res = $safety_rating->fetch_array())
+			$current_safety = 'SFW';
+		else
+		{
+			$safety_rating = $db_conn->query("SELECT 1 FROM Media WHERE ${fetched[0]} IN (SELECT Media_ID FROM Tag JOIN MediaTag ON MediaTag.tag_ID = Tag.tag_ID WHERE description = 'qsfw')");
+			if ($safe_res = $safety_rating->fetch_array())
+				$current_safety = 'QSFW';
+		}
+
 		array_push($item, array
 		(
 			'id' => $fetched[0],
 			'up' => $partial_result[0],
 			'fav' => $partial_result[2],
 			'down' => $partial_result[1],
-			'type' => 'NSFW',
+			'type' => $current_safety,
 			'thumb' => $fetched[1]
 		));
 	}
