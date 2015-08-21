@@ -30,7 +30,7 @@
 		$fetched = $res2->fetch_array(MYSQLI_NUM);
 	}
 
-	$prepst = $mysqli->prepare("SELECT comment, comm_date as date, username as user FROM Comment JOIN User ON User.user_ID = Comment.user_ID WHERE media_ID = ? ORDER BY comm_date DESC;");
+	$prepst = $mysqli->prepare("SELECT User.user_ID, comment, comm_date as date, username as user FROM Comment JOIN User ON User.user_ID = Comment.user_ID WHERE media_ID = ? ORDER BY comm_date DESC;");
 	$prepst->bind_param('i', $_GET['id']);
 	$res = $prepst->execute();
 	$res2 = $prepst->get_result();
@@ -41,6 +41,16 @@
 	{
 		$comment_list[] = $fetched;
 		$fetched = $res2->fetch_assoc();
+	}
+
+	foreach ($comment_list as &$comment)
+	{
+		$prepst = $mysqli->prepare('SELECT filename FROM UserProfileMedia JOIN Media ON Media.media_ID = profile_pic_ID WHERE user_ID = ?;');
+		$prepst->bind_param('i', $comment['user_ID']);
+		$res = $prepst->execute();
+		$res2 = $prepst->get_result();
+		$fetched = $res2->fetch_assoc();
+		$comment['profilepic'] = '/media_store/' . $fetched['filename'];
 	}
 
 	$result = describeMedia
