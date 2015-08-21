@@ -18,11 +18,23 @@
 	$source = $fetched[2];
 	$upload_date = $fetched[3];
 
+	$prepst = $mysqli->prepare("SELECT description FROM MediaTag JOIN Tag ON MediaTag.tag_ID = Tag.tag_ID WHERE media_ID = ? ORDER BY placing ASC;");
+	$prepst->bind_param('i', $_GET['id']);
+	$res = $prepst->execute();
+	$res2 = $prepst->get_result();
+	$fetched = $res2->fetch_array(MYSQLI_NUM);
+	$tag_list = [];
+	while ($fetched)
+	{
+		$fetched = $res2->fetch_array(MYSQLI_NUM);
+		array_push($tag_list, $fetched[0]);
+	}
+
 	$result = describeMedia
 	(
 		"/media_store/$file",
 		'',
-		['diamond_tiara_(mlp)', 'shouting', 'rawr', 'crying', 'diamond_tiara', 'pink', 'pony', 'mlp', 'earth_pony', 'fim', 'drawing', 'blue_eyes', 'mane', 'clothes'],
+		$tag_list,
 		[
 			['date' => '18/08/2015 14:39:33', 'profilepic' => '/static/diamond_tiara_rawr.png', 'user' => 'Ozymandis', 'comment' => 'Show me your war face!'],
 			['date' => '17/08/2015 13:45:09', 'profilepic' => '/static/diamond_tiara_rawr.png', 'user' => 'kekeke', 'comment' => 'Wow i\'m a comment!'],
