@@ -4,10 +4,10 @@
 	color: rgb(255, 221, 254);	
 }
 
-.tags a:link {
+.tags a:visited {
 	color: #250d51;
 }
 
-.tags a:visited {
+.tags a:link {
 	color: #ffffff; 
 }
