@@ -56,7 +56,31 @@
 		$prepst = $mysqli->prepare("INSERT INTO Media (filename, description, uploader) VALUES (?, ?, ?);");
 		$prepst->bind_param('ssi', $assoc_file, $description, $userid);
 		$prepst->execute();
+		foreach ($tag_array as &$tag)
+		{
+			$tagprep = $mysqli->prepare('INSERT IGNORE INTO Tag (description) VALUES (?);');
+			$tagprep->bind_param('s', $tag);
+			$tagprep->execute();
+		}
 
+		$mysqli->commit();
+
+		$placing = 0;
+		$imgid = $max->mx + 1;
+		foreach ($tag_array as &$tag)
+		{
+			$res = $mysqli->prepare('SELECT tag_ID FROM Tag WHERE description = ?;');
+			$res->bind_param('s', $tag);
+			$res->execute();
+			$result = '';
+			$res->bind_result($result);
+			while ($res->fetch());
+
+			$res = $mysqli->prepare('INSERT INTO MediaTag (tag_ID, media_ID, placing, responsible_user_id) VALUES (?, ?, ?, ?);');
+			$res->bind_param('iiii', $result, $imgid, $placing, $userid);
+			$res->execute();
+			++$placing;
+		}
 		$mysqli->commit();
 		header('Location: ' . '/upload');
 	}
