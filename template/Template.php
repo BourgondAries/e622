@@ -24,6 +24,7 @@
 				<title>$title</title>
 				<link rel=\"icon\" type=\"image/png\" href=\"/favicon.png?v=3\">
 				<link rel=\"stylesheet\" type=\"test/css\" href=\"/style/cat.css\">
+				<link rel=\"stylesheet\" type=\"test/css\" href=\"/style/tags.css\">
 				<script>
 					// setTimeout(function() {
 					//	 window.location.reload(1);
