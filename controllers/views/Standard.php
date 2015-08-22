@@ -17,8 +17,8 @@
 			'<!DOCTYPE html>
 			<html>
 				<head>
-					<style> @import url("/style/reset.css"); </style>
-					<style> @import url("/style/index.css"); </style>
+					<style> @import url("/controllers/views/style/reset.css"); </style>
+					<style> @import url("/controllers/views/style/index.css"); </style>
 				</head>
 				<body>
 					<div class="generic">

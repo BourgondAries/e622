@@ -1,4 +1,4 @@
 <?php
-	require_once "${_SERVER['DOCUMENT_ROOT']}/views/Standard.php";
+	require_once "views/Standard.php";
 	echo Standard::render('Hi', 'There!');
 ?>
