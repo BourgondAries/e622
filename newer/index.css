@@ -5,6 +5,7 @@ body { background-color: #250D51; background-image: url("stripe.png"); backgroun
 .content { background-color: #2F175C; background-image: url("top_gradient.png"); background-position: 0 0; background-repeat: repeat-x; border-radius: 0.5vw; height: 100%; margin: 0 1vw; margin-bottom: 1vh; padding: 1.5vh 1vw; }
 .content .searchbar { border-radius: 0.15vw; border-style: none; border-width: 0; box-shadow: black 0.15vw 0.25vh 0.26vh 0; margin: 1vh 0 1vh 0; padding-left: 0.5vw; width: 100%; }
 .content .searchbar_button { border-radius: 0.15vw; border-style: none; border-width: 0; box-shadow: black 0.15vw 0.25vh 0.26vh 0; margin: 0 0 1vh 0; padding-left: 0.5vw; }
+.content .searchhelp { font-size: 60%; }
 .content .searchtable { display: table; width: 20vw; }
 .footer { background-color: black; width: 100%; }
 .footer .autotable { border-spacing: 0.5vw; border-collapse: separate; font-size: 60%; }
