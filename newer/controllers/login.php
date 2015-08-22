@@ -1,6 +1,7 @@
 <?php
 	require_once '../models/Http.php';
-	echo Http::get('h');
-	echo Http::get('t');
-	var_dump(Http::get('x'));
+	require_once '../views/Standard.php';
+	require_once '../views/Login.php';
+	$reason = Http::get('reason');
+	echo Standard::render('Please log in!', 'Welcome');
 ?>

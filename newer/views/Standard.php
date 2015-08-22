@@ -1,18 +1,18 @@
 <?php
 	class Standard
 	{
-		function render($main_content, $under_search_bar)
+		static function render($main_content, $under_search_bar, $loginstate = ['LOGIN', '/controllers/login.php'])
 		{
 			$inserter = [$under_search_bar, $main_content];
+			foreach ($loginstate as &$value)
+				$inserter[] = $value;
 			$generated = '';
-			foreach ($this->template as &$part)
-			{
+			foreach (self::$template as &$part)
 				$generated .= $part . array_pop($inserter);
-			}
 			return $generated;
 		}
 
-		private $template =
+		static private $template =
 		[
 			'<!DOCTYPE html>
 			<html>
@@ -29,7 +29,11 @@
 										<div class="navigation_bar">
 											<div class="table">
 												<a href="#"> e622 </a>
-												<a href="#"> LOGIN </a>
+												<a href="',
+
+												'">',
+
+												'</a>
 												<a href="#"> UPLOAD </a>
 												<a href="#"> TAGS </a>
 												<a href="#"> SUPPORT </a>
