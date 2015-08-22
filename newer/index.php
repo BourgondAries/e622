@@ -23,21 +23,25 @@
 						<div class="row">
 							<div class="content">
 								<div class="autotable">
-									<div class="cell">
-										<div class="table">
+									<div class="cell-right-marged">
+										<div class="searchtable">
 											<div class="row">
 												Search (search help)
 											</div>
 											<div class="row">
 												<form action="/search/search.php" method="get">
 													<input class="searchbar" name="tags" placeholder="your tags" type="text">
+													<br>
+													<input class="searchbar_button" name="submit" type="submit" value="search">
 												</form>
 											</div>
 											<div class="row">
+												Ayy lmao lorem ipsum dolor sit amet coloor el rada lol muh dick xD
 											</div>
 										</div>
 									</div>
 									<div class="cell">
+										wow
 									</div>
 								</div>
 							</div>
