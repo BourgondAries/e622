@@ -32,19 +32,12 @@ CREATE TABLE Media
 
 );
 
+ALTER TABLE User ADD profile_media_ID BIGINT UNSIGNED;
+ALTER TABLE User ADD FOREIGN KEY (profile_media_ID) REFERENCES Media(media_ID);
+
 CREATE TRIGGER media_creation BEFORE INSERT ON Media
 FOR EACH ROW
 SET NEW.upload_date = NOW();
-
-CREATE TABLE UserProfileMedia
-(
-	profile_pic_ID BIGINT UNSIGNED DEFAULT 0,
-	user_ID BIGINT UNSIGNED,
-
-	PRIMARY KEY (profile_pic_ID, user_ID),
-	FOREIGN KEY (profile_pic_ID) REFERENCES Media(media_ID),
-	FOREIGN KEY (user_ID) REFERENCES User(user_ID)
-);
 
 CREATE TABLE Tag
 (
