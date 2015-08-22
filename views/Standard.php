@@ -1,7 +1,7 @@
 <?php
 	class Standard
 	{
-		static function render($main_content, $under_search_bar, $loginstate = ['LOGIN', '/controllers/login.php'])
+		static function render($main_content, $under_search_bar, $loginstate = ['LOGIN', '/login'])
 		{
 			$inserter = [$under_search_bar, $main_content];
 			foreach ($loginstate as &$value)
@@ -17,8 +17,8 @@
 			'<!DOCTYPE html>
 			<html>
 				<head>
-					<style> @import url("/reset.css"); </style>
-					<style> @import url("/index.css"); </style>
+					<style> @import url("/style/reset.css"); </style>
+					<style> @import url("/style/index.css"); </style>
 				</head>
 				<body>
 					<div class="generic">

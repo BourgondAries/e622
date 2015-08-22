@@ -1,13 +1,21 @@
+CREATE TABLE Privilege
+(
+	privilege_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	description VARCHAR(255)
+);
+
 CREATE TABLE User
 (
 	user_ID BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
 	username VARCHAR(255) UNIQUE,
 	email VARCHAR(255),
 	user_since DATETIME,
+	privilege BIGINT UNSIGNED,
 	deleted BOOLEAN DEFAULT FALSE,
 	password_hash VARCHAR(255) NOT NULL,
 
-	PRIMARY KEY (user_ID)
+	PRIMARY KEY (user_ID),
+	FOREIGN KEY (privilege) REFERENCES Privilege(privilege_id)
 );
 
 CREATE TRIGGER user_since_creation BEFORE INSERT ON User
