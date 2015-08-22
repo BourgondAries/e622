@@ -14,6 +14,9 @@
 				case 'account_suspended':
 					$reason = 'The account is currently suspended';
 				break;
+				case null:
+					return null;
+				break;
 			}
 			return Login::$reason_code[0] . $reason . Login::$reason_code[1];
 		}
@@ -44,7 +47,7 @@
 									Username
 								</div>
 								<div class="cell">
-									<input class="searchbar" type="text">
+									<input class="searchbar" name="username" type="text">
 								</div>
 							</div>
 							<div class="row">
@@ -52,7 +55,7 @@
 									Password
 								</div>
 								<div class="cell">
-									<input class="searchbar" type="password">
+									<input class="searchbar" name="password" type="password">
 								</div>
 							</div>
 						</div>
