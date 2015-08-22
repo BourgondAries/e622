@@ -28,7 +28,7 @@
 									<div class="row">
 										<div class="navigation_bar">
 											<div class="table">
-												<a href="#"> e622 </a>
+												<a href="/"> e622 </a>
 												<a href="',
 
 												'">',
