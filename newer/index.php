@@ -22,8 +22,24 @@
 						</div>
 						<div class="row">
 							<div class="content">
-								<p>Here we put the content.</p>
-								<p>Some lyrics:</p>
+								<div class="autotable">
+									<div class="cell">
+										<div class="table">
+											<div class="row">
+												Search (search help)
+											</div>
+											<div class="row">
+												<form action="/search/search.php" method="get">
+													<input class="searchbar" name="tags" placeholder="your tags" type="text">
+												</form>
+											</div>
+											<div class="row">
+											</div>
+										</div>
+									</div>
+									<div class="cell">
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
