@@ -8,10 +8,7 @@
 	{
 
 	}
-	if (Http::get('password') == Http::get('password_retype')
+	if (Http::get('password') != Http::get('password_retype')
 	{
-
 	}
-	$user->register();
 ?>
-
