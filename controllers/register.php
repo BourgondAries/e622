@@ -4,5 +4,5 @@
 	require_once 'views/Register.php';
 
 	$register_form = Register::render();
-	echo Standard::render('', $register_form);
+	echo Standard::render('', $register_form, User::generateLoginState());
 ?>
