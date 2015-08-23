@@ -8,7 +8,8 @@
 	switch ($result = $user->loginUsername($username, $password))
 	{
 		case 'success':
-			$_SESSION['username'] = $username;
+			User::setCurrentLogin($username);
+			header('Location: ' . '/');
 		break;
 		default: header('Location: ' . "login/$result");
 	}

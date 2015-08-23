@@ -10,6 +10,30 @@
 			$this->pwhash = new PasswordHash(8, false);
 		}
 
+		static function setCurrentLogin($username)
+		{
+			if (!isset($_SESSION))
+				session_start();
+			$_SESSION['username'] = $username;
+		}
+
+		static function getCurrentLogin()
+		{
+			if (!isset($_SESSION))
+				session_start();
+			if (isset($_SESSION['username']))
+				return $_SESSION['username'];
+			return false;
+		}
+
+		static function generateLoginState()
+		{
+			$loginstate = ['LOGIN', '/login'];
+			if ($username = self::getCurrentLogin())
+				$loginstate = [$username, "/user/$username"];
+			return $loginstate;
+		}
+
 		function loginUsername($username, $password)
 		{
 			$dbc = new Database;
