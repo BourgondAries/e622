@@ -1,8 +1,15 @@
 <?php
 	require_once 'db/Database.php';
 	require_once 'pwhash/PasswordHash.php';
+
 	class User
 	{
+		private $pwhash;
+		function __construct()
+		{
+			$this->pwhash = new PasswordHash(8, false);
+		}
+
 		function register($username, $email, $password)
 		{
 			// Check if the email is valid
@@ -13,21 +20,55 @@
 			if ($username == 'root')
 				return 'username_special';
 
-			// Check if username is in the db already.
 			$dbc = new Database;
 			$db = $dbc->get();
-			$result = $db->query('SELECT * FROM User;');
-			while ($row = $result->fetch_assoc())
+
+			// Check if username is in the db already.
+			if ($prepare = $db->prepare('SELECT 1 FROM User WHERE username = ?;'))
 			{
-				var_dump($row);
-				echo '<br>';
-				echo '<br>';
+				$prepare->bind_param('s', $username);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				$rows = $result->num_rows;
+				if ($rows != 0)
+					return 'username_exists';
+			}
+			else
+			{
+				return $db->error;
 			}
 
 			// Check if the email is already used.
+			if ($prepare = $db->prepare('SELECT 1 FROM User WHERE email = ?;'))
+			{
+				$prepare->bind_param('s', $email);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				$rows = $result->num_rows;
+				if ($rows != 0)
+					return 'email_exists';
+			}
+			else
+			{
+				return $db->error;
+			}
 
 			// Insert it all into the database
-			// Return an error code if something fails.
+			if ($prepare = $db->prepare('INSERT INTO User (username, email, password_hash) VALUES (?, ?, ?);'))
+			{
+				$prepare->bind_param('sss', $username, $email, $this->pwhash->HashPassword($password));
+				$prepare->execute();
+				if ($prepare->affected_rows != 1)
+				{
+					return 'unable_to_insert';
+				}
+			}
+			else
+			{
+				return $db->error;
+			}
+			$db->commit();
+			return 'success';
 		}
 	}
 ?>
