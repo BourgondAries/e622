@@ -10,6 +10,13 @@
 			$this->pwhash = new PasswordHash(8, false);
 		}
 
+		static function logout()
+		{
+			if (!isset($_SESSION))
+				session_start();
+			session_destroy();
+		}
+
 		static function setCurrentLogin($username)
 		{
 			if (!isset($_SESSION))
