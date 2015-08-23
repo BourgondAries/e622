@@ -5,5 +5,11 @@
 	$password = Http::get('password');
 
 	$user = new User;
-	echo $user->loginUsername($username, $password);
+	switch ($result = $user->loginUsername($username, $password))
+	{
+		case 'success':
+			$_SESSION['username'] = $username;
+		break;
+		default: header('Location: ' . "login/$result");
+	}
 ?>
