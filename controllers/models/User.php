@@ -10,6 +10,30 @@
 			$this->pwhash = new PasswordHash(8, false);
 		}
 
+		function loginUsername($username, $password)
+		{
+			$dbc = new Database;
+			$db = $dbc->get();
+
+			if ($prepare = $db->prepare('SELECT password_hash FROM User WHERE username = ?;'))
+			{
+				$prepare->bind_param('s', $username);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				if ($row = $result->fetch_assoc())
+				{
+					if ($this->pwhash->CheckPassword($password, $row['password_hash']))
+						return 'success';
+					else
+						return 'wrong_password';
+				}
+				else
+					return 'user_does_not_exist';
+			}
+			else
+				return $db->error;
+		}
+
 		function register($username, $email, $password)
 		{
 			// Check if the email is valid
