@@ -2,11 +2,24 @@
 	require_once 'models/Http.php';
 	require_once 'models/User.php';
 
-	if (Http::has('password') == null || Http::has('password_retype') == null)
+	if (Http::has('username') == false)
 	{
-		echo 'null_passwords';
+		header('Location: /register/no_username');
 		die();
 	}
+
+	if (Http::has('email') == false)
+	{
+		header('Location: /register/no_email');
+		die();
+	}
+
+	if (Http::has('password') == false || Http::has('password_retype') == false)
+	{
+		echo 'no_passwords';
+		die();
+	}
+
 	if (Http::get('password') != Http::get('password_retype'))
 	{
 		echo 'password_not_match';
