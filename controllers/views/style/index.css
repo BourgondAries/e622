@@ -14,8 +14,6 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .footer { background-color: black; width: 100%; }
 .e622 .footer .autotable { border-spacing: 0.5vw; border-collapse: separate; font-size: 60%; }
 
-.e622 .space.horizontal{ width: 1vw; }
-.e622 .space.vertical { height: 1vh; }
 .e622 .content .cell-right-marged { width: 30%; }
 
 .e622 .autotable { display: table; width: auto; }
@@ -26,11 +24,12 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .table { display: table; table-layout: fixed; width: 100%; }
 
 .e622 .navigation_bar { display: table; font-size: 120%; text-align: center; width: 100%; }
-.e622 .navigation_bar .table { margin: 1vh 0; }
 .e622 .navigation_bar .table a:hover { background-color: rgba(0, 0, 0, 0.2); }
 .e622 .navigation_bar .table a { display: table-cell; }
 .e622 .navigation_bar .table a:visited { color: inherit; }
 
+.e622 .space.horizontal{ width: 1vw; }
+.e622 .space.vertical { height: 1vh; }
 .e622 .smalltext { font-size: 80%; }
 .e622 .tinytext{ font-size: 60%; }
 .e622 .table-column.auto { display: table-column; width: auto; }

@@ -23,6 +23,7 @@
 				<body class="e622">
 					<div class="row">
 						<div class="prefoot">
+							<div class="vertical space"></div>
 							<div class="table">
 								<div class="row">
 									<div class="navigation_bar">
@@ -39,6 +40,7 @@
 										</div>
 									</div>
 								</div>
+								<div class="vertical space"></div>
 								<div class="row">
 									<div class="content">
 										<div class="table">
