@@ -43,7 +43,10 @@
 									<div class="row">
 										<div class="content">
 											<div class="table">
-												<div class="cell-right-marged">
+												<div class="small table-column"></div>
+												<div class="tiny table-column"></div>
+												<div class="max table-column"></div>
+												<div class="cell">
 													<div class="searchtable">
 														<div class="row">
 															Search <a class="tinytext" href="/help">(search help)</a>
@@ -60,6 +63,7 @@
 														'</div>
 													</div>
 												</div>
+												<div class="cell"></div>
 												<div class="cell">',
 
 												'</div>

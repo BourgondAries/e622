@@ -15,20 +15,20 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .footer { background-color: black; width: 100%; }
 .e622 .footer .autotable { border-spacing: 0.5vw; border-collapse: separate; font-size: 60%; }
 
-.e622 .tablecol { display: table-column; width: 100%; }
-.e622 .btablecol { display: table-column; width: 2%; }
-.e622 .atablecol { display: table-column; width: auto; }
+.e622 .auto.table-column { display: table-column; width: auto; }
+.e622 .max.table-column { display: table-column; width: 100%; }
+.e622 .small.table-column { display: table-column; width: 30%; }
+.e622 .tiny.table-column { display: table-column; width: 2%; }
+
 .e622 .space.horizontal{ width: 1vw; }
 .e622 .space.vertical { height: 1vh; }
 .e622 .content .cell-right-marged { width: 30%; }
 
 .e622 .generic { display: table; width: 100%; }
-.e622 .generic .autotable { display: table; width: auto; }
+.e622 .generic .autotable { display: table; table-layout: fixed; width: auto; }
 .e622 .generic .cell { display: table-cell; }
 .e622 .generic .cell-right-marged { display: table-cell; padding-right: 2%; }
-.e622 .generic .cell-right-padded { border-right: 50% solid rgba(0, 0, 0, 0); display: table-cell; }
 .e622 .generic .center { display: inline-block; margin-left: 50%; transform: translate(-50%, 0); width: auto; }
-.e622 .generic .maxcell { display: table-cell; }
 .e622 .generic .prefoot { height: 100%; min-height: 100vh; width: 100%; }
 .e622 .generic .row { display: table-row; width: 100%; }
 .e622 .generic .table { display: table; table-layout: fixed; width: 100%; }

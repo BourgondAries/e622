@@ -40,9 +40,9 @@
 					</div>
 					<form action="/changeuser" method="post">
 						<div class="autotable">
-							<div class="atablecol"></div>
-							<div class="btablecol"></div>
-							<div class="tablecol"></div>
+							<div class="auto table-column"></div>
+							<div class="tiny table-column"></div>
+							<div class="max table-column"></div>
 							<div class="row">
 								<div class="cell">
 									Username
