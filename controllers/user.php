@@ -5,8 +5,22 @@
 	require_once 'views/Userpage.php';
 	$username = Http::get('name');
 	$logged_in_as = User::getCurrentLogin();
-	if ($username == $logged_in_as)
-		;
+	$userinfo = User::getUser($username);
+	if ($userinfo == false)
+	{
+		$error = Userpage::renderNotExist($username);
+		echo Standard::render('', $error);
+		die();
+	}
 
-	echo Standard::render('Username', Userpage::renderPrivileged($username, 'd'), User::generateLoginState());
+	if ($username == $logged_in_as)
+	{
+		$privilege = Userpage::renderPrivileged($username, $userinfo['email']);
+		$sidebar = Userpage::renderPrivilegedStatistics();
+		echo Standard::render($sidebar, $privilege, User::generateLoginState());
+	}
+	else
+	{
+
+	}
 ?>
