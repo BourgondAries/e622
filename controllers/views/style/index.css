@@ -11,7 +11,6 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 input[type=text] { border-radius: 0.15vw; border-style: none; border-width: 0; box-sizing: border-box; box-shadow: black 0.15vw 0.25vh 0.26vh 0; margin: 1vh 0 1vh 0; padding-left: 0.5vw; width: 100%; }
 .e622 input[type=submit] { border-radius: 0.15vw; border-style: none; border-width: 0; box-shadow: black 0.15vw 0.25vh 0.26vh 0; margin: 0 0 1vh 0; }
 .e622 input[type=password] { border-radius: 0.15vw; border-style: none; border-width: 0; box-sizing: border-box; box-shadow: black 0.15vw 0.25vh 0.26vh 0; margin: 1vh 0 1vh 0; padding-left: 0.5vw; width: 100%; }
-.e622 .content .searchhelp { font-size: 60%; }
 .e622 .content .searchtable { display: table; width: 100%; }
 .e622 .footer { background-color: black; width: 100%; }
 .e622 .footer .autotable { border-spacing: 0.5vw; border-collapse: separate; font-size: 60%; }
@@ -41,4 +40,5 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .navigation_bar .table a:visited { color: inherit; }
 
 .e622 .smalltext { font-size: 80%; }
-.e622 .warning { background-color: red; border: 0.3vw solid brown; border-radius: 0.5vw; padding: 0.5vh 0.5vw; }
+.e622 .tinytext{ font-size: 60%; }
+.e622 .warning { background-color: red; border: 0.3vmin solid brown; border-radius: 0.5vmin; padding: 0.5vh 0.5vw; }

@@ -46,7 +46,7 @@
 												<div class="cell-right-marged">
 													<div class="searchtable">
 														<div class="row">
-															Search <a class="searchhelp" href="/help">(search help)</a>
+															Search <a class="tinytext" href="/help">(search help)</a>
 														</div>
 														<div class="row">
 															<form action="/search/search.php" method="get">
