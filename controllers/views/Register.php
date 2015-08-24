@@ -52,6 +52,7 @@
 							<div class="auto table-column"></div>
 							<div class="tiny table-column"></div>
 							<div class="max table-column"></div>
+							<div class="row"><div class="vertical space"></div></div>
 							<div class="row">
 								<div class="cell">
 									Username
@@ -61,6 +62,7 @@
 									<input class="searchbar" name="username" placeholder="This is my username" type="text">
 								</div>
 							</div>
+							<div class="row"><div class="vertical space"></div></div>
 							<div class="row">
 								<div class="cell">
 									Email
@@ -70,6 +72,7 @@
 									<input class="searchbar" name="email" placeholder="xXxN00bKill4r94oOo@rektmail.com" type="text">
 								</div>
 							</div>
+							<div class="row"><div class="vertical space"></div></div>
 							<div class="row">
 								<div class="cell">
 									Password
@@ -78,15 +81,17 @@
 								<div class="cell">
 									<div class="table">
 										<div class="row">
-											<input class="searchbar" name="password" type="password">
+											<input class="searchbar" name="password" placeholder="type your password" type="password">
 										</div>
+										<div class="row"><div class="vertical space"></div></div>
 										<div class="row">
-											<input class="searchbar" name="password_retype" type="password">
+											<input class="searchbar" name="password_retype" placeholder="retype your password" type="password">
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						<div class="row"><div class="vertical space"></div></div>
 						<input type="submit" value="register">
 					</form>';
 	}

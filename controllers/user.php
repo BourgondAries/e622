@@ -17,10 +17,11 @@
 	{
 		$privilege = Userpage::renderPrivileged($username, $userinfo['email']);
 		$sidebar = Userpage::renderPrivilegedStatistics();
+		$sidebar .= Userpage::renderReason(Http::get('reason'));
 		echo Standard::render($sidebar, $privilege, User::generateLoginState());
 	}
 	else
 	{
-
+		echo 'da' . User::getCurrentLogin();
 	}
 ?>
