@@ -40,18 +40,14 @@
 					</div>
 					<form action="/changeuser" method="post">
 						<div class="autotable">
-							<div class="atablecol">
-							</div>
-							<div class="atablecol">
-							</div>
-							<div class="tablecol">
-							</div>
+							<div class="atablecol"></div>
+							<div class="btablecol"></div>
+							<div class="tablecol"></div>
 							<div class="row">
 								<div class="cell">
 									Username
 								</div>
 								<div class="cell">
-									<div class="space horizontal"></div>
 								</div>
 								<div class="cell">
 									<input class="searchbar" name="username" placeholder="',
@@ -64,7 +60,6 @@
 									Email
 								</div>
 								<div class="cell">
-									<div class="space horizontal"></div>
 								</div>
 								<div class="cell">
 									<input class="searchbar" name="email" placeholder="',
@@ -77,7 +72,6 @@
 									Password
 								</div>
 								<div class="cell">
-									<div class="space horizontal"></div>
 								</div>
 								<div class="cell">
 									<input name="password" type="password">
@@ -88,7 +82,6 @@
 									Re-type password
 								</div>
 								<div class="cell">
-									<div class="space horizontal"></div>
 								</div>
 								<div class="cell">
 									<input name="password_retype" type="password">

@@ -16,6 +16,7 @@ input[type=password] { border-radius: 0.15vw; border-style: none; border-width: 
 .footer .autotable { border-spacing: 0.5vw; border-collapse: separate; font-size: 60%; }
 
 .tablecol { display: table-column; width: 100%; }
+.btablecol { display: table-column; width: 2%; }
 .atablecol { display: table-column; width: auto; }
 .space.horizontal{ width: 1vw; }
 .space.vertical { height: 1vh; }
