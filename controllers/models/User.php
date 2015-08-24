@@ -33,6 +33,27 @@
 			return false;
 		}
 
+		static function getUser($username)
+		{
+			$dbc = new Database;
+			$db = $dbc->get();
+			if ($prepare = $db->prepare('SELECT * FROM User WHERE username = ?;'))
+			{
+				$prepare->bind_param('s', $username);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				if ($rows = $result->num_rows)
+					return $result->fetch_assoc();
+				else
+					return false;
+			}
+			else
+			{
+				echo $db->error;
+				return false;
+			}
+		}
+
 		static function generateLoginState()
 		{
 			$loginstate = ['LOGIN', '/login'];
