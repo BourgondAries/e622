@@ -1,6 +1,8 @@
 @charset "UTF-8";
-a { color: inherit; text-decoration: inherit; }
-body { background-color: #250D51; background-image: url("stripe.png"); background-repeat: repeat; color: rgb(255, 221, 254); font-family: verdana, sans-serif; font-size: 100%; width: 100%; }
+
+/* Standard Namespace e622. All that's needed is to change the body's class to change the CSS of the entire page. Javascript can be used to quickly change styles with this. */
+.e622 a { color: inherit; text-decoration: inherit; }
+body.e622 { background-color: #250D51; background-image: url("stripe.png"); background-repeat: repeat; color: rgb(255, 221, 254); font-family: verdana, sans-serif; font-size: 100%; width: 100%; }
 
 .box { background-color: rgba(0, 0, 0, 0.1); }
 .boxpad { padding: 1vh 1vw; }

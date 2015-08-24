@@ -20,7 +20,7 @@
 					<style> @import url("/controllers/views/style/reset.css"); </style>
 					<style> @import url("/controllers/views/style/index.css"); </style>
 				</head>
-				<body>
+				<body class="e622">
 					<div class="generic">
 						<div class="row">
 							<div class="prefoot">
