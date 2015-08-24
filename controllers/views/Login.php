@@ -43,6 +43,7 @@
 							<div class="auto table-column"></div>
 							<div class="tiny table-column"></div>
 							<div class="max table-column"></div>
+							<div class="row"><div class="vertical space"></div></div>
 							<div class="row">
 								<div class="cell">
 									Username
@@ -52,6 +53,7 @@
 									<input class="searchbar" name="username" type="text">
 								</div>
 							</div>
+							<div class="row"><div class="vertical space"></div></div>
 							<div class="row">
 								<div class="cell">
 									Password
@@ -61,6 +63,7 @@
 									<input class="searchbar" name="password" type="password">
 								</div>
 							</div>
+							<div class="row"><div class="vertical space"></div></div>
 						</div>
 						<input type="submit" value="log in">
 					</form>';

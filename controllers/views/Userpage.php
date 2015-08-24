@@ -43,6 +43,7 @@
 							<div class="auto table-column"></div>
 							<div class="tiny table-column"></div>
 							<div class="max table-column"></div>
+							<div class="row"><div class="vertical space"></div></div>
 							<div class="row">
 								<div class="cell">
 									Username
@@ -50,11 +51,12 @@
 								<div class="cell">
 								</div>
 								<div class="cell">
-									<input class="searchbar" name="username" placeholder="',
+									<input name="username" placeholder="',
 
 									'" type="text">
 								</div>
 							</div>
+							<div class="row"><div class="vertical space"></div></div>
 							<div class="row">
 								<div class="cell">
 									Email
@@ -67,9 +69,21 @@
 									'" type="text">
 								</div>
 							</div>
+							<div class="row"><div class="vertical space"></div></div>
 							<div class="row">
+								<div class="cell text">
+									Old Password
+								</div>
 								<div class="cell">
-									Password
+								</div>
+								<div class="cell">
+									<input name="old_password" type="password">
+								</div>
+							</div>
+							<div class="row"><div class="vertical space"></div></div>
+							<div class="row">
+								<div class="cell text">
+									New Password
 								</div>
 								<div class="cell">
 								</div>
@@ -77,8 +91,9 @@
 									<input name="password" type="password">
 								</div>
 							</div>
+							<div class="row"><div class="vertical space"></div></div>
 							<div class="row">
-								<div class="cell">
+								<div class="cell text">
 									Re-type password
 								</div>
 								<div class="cell">

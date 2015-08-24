@@ -49,12 +49,15 @@ e622<div class="vertical space"></div></a>
 													<div class="row">
 														Search <a class="tinytext" href="/help">(search help)</a>
 													</div>
+													<div class="row"><div class="vertical space"></div></div>
 													<div class="row">
 														<form action="/search/search.php" method="get">
 															<input name="tags" placeholder="your tags" type="text">
+															<div class="row"><div class="vertical space"></div></div>
 															<input name="submit" type="submit" value="search">
 														</form>
 													</div>
+													<div class="row"><div class="vertical space"></div></div>
 													<div class="row">',
 
 													'</div>
