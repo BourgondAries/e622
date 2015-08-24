@@ -32,9 +32,7 @@
 			'</div>'
 		];
 
-		static private $code = '<div class="box">
-				<div class="boxpad">
-					<div class="row">
+		static private $code = '<div class="row">
 						LOGIN
 					</div>
 					<div class="row">
@@ -65,8 +63,6 @@
 							</div>
 						</div>
 						<input type="submit" value="log in">
-					</form>
-				</div>
-			</div>';
+					</form>';
 	}
 ?>

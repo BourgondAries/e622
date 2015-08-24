@@ -1,18 +1,34 @@
 <?php
 	class Register
 	{
+		static function renderInformation()
+		{
+			return self::$information;
+		}
+
+		private static $information = '<div class="smalltext">Your email is used to send you a password reset. Your password is securely hashed and salted, so we can not retrieve it. Your username must be unique. The username can be changed.</div><div class="space vertical"></div>';
+
 		static function renderReason($reason)
 		{
 			switch ($reason)
 			{
+				case 'no_username':
+					$reason = 'A request was made for a new account, but no username was given.';
+				break;
+				case 'no_email':
+					$reason = 'A request was made for a new account, but no email was given.';
+				break;
+				case 'no_password':
+					$reason = 'A request was made for a new account, but no password was given.';
+				break;
 				case 'email_used':
 					$reason = 'The email address is already used. If you lost your password <a href="reset"> click here </a>';
 				break;
 				case null:
-					return null;
+					return '';
 				break;
 			}
-			return $reason_code[0] . $reason . $reason_code[1];
+			return self::$reason_code[0] . $reason . self::$reason_code[1];
 		}
 
 		static function render()
@@ -27,9 +43,7 @@
 			'</div>'
 		];
 
-		static private $code = '<div class="box">
-				<div class="boxpad">
-					<div class="row">
+		static private $code = '<div class="row">
 						REGISTER
 					</div>
 					<div class="row">
@@ -78,8 +92,6 @@
 							</div>
 						</div>
 						<input type="submit" value="register">
-					</form>
-				</div>
-			</div>';
+					</form>';
 	}
 ?>
