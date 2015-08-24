@@ -92,10 +92,6 @@
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 				return 'invalid_email';
 
-			// Check if the username is special
-			if ($username == 'root')
-				return 'username_special';
-
 			$dbc = new Database;
 			$db = $dbc->get();
 
