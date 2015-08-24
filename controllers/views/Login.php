@@ -38,7 +38,7 @@
 						LOGIN
 					</div>
 					<div class="row">
-						<span class="smalltext"> <a href="register"> Click here </a> to register an account. <a href="reset"> Click here </a> to reset your password. </span>
+						<span class="smalltext"> <a href="/register"> Click here </a> to register an account. <a href="/reset"> Click here </a> to reset your password. </span>
 					</div>
 					<form action="/checklogin" method="post">
 						<div class="autotable">
