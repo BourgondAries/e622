@@ -23,12 +23,12 @@
 				<body class="e622">
 					<div class="row">
 						<div class="prefoot">
-							<div class="vertical space"></div>
 							<div class="table">
 								<div class="row">
 									<div class="navigation_bar">
 										<div class="table">
-											<a href="/"> e622 </a>
+											<a href="/"><div class="vertical space"></div>
+e622<div class="vertical space"></div></a>
 											<a href="',
 
 											'">',
@@ -40,7 +40,6 @@
 										</div>
 									</div>
 								</div>
-								<div class="vertical space"></div>
 								<div class="row">
 									<div class="content">
 										<div class="table">

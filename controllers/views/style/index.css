@@ -4,6 +4,7 @@
 .e622 a { color: inherit; text-decoration: inherit; }
 body.e622 { background-color: #250D51; background-image: url("stripe.png"); background-repeat: repeat; color: rgb(255, 221, 254); font-family: verdana, sans-serif; font-size: 100%; width: 100%; }
 
+.e622 .bigtext { font-size: 120%; }
 .e622 .box { background-color: rgba(0, 0, 0, 0.1); }
 .e622 .boxpad { padding: 1vh 1vw; }
 
