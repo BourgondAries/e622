@@ -26,18 +26,16 @@
 							<div class="table">
 								<div class="row">
 									<div class="navigation_bar">
-										<div class="table">
-											<a href="/"><div class="vertical space"></div>
+										<a href="/"><div class="vertical space"></div>
 e622<div class="vertical space"></div></a>
-											<a href="',
+										<a href="',
 
-											'">',
+										'">',
 
-											'</a>
-											<a href="#"> UPLOAD </a>
-											<a href="#"> TAGS </a>
-											<a href="#"> SUPPORT </a>
-										</div>
+										'</a>
+										<a href="#"> UPLOAD </a>
+										<a href="#"> TAGS </a>
+										<a href="#"> SUPPORT </a>
 									</div>
 								</div>
 								<div class="row">
