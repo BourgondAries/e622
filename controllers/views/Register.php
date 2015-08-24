@@ -15,8 +15,10 @@
 				case 'no_username': $reason = 'A request was made for a new account, but no username was given.'; break;
 				case 'no_email': $reason = 'A request was made for a new account, but no email was given.'; break;
 				case 'no_password': $reason = 'A request was made for a new account, but no password was given.'; break;
+				case 'password_not_match': $reason = 'Your passwords do not match.'; break;
 				case 'name_too_short': $reason = 'The username ought to be at least three characters long.'; break;
 				case 'name_trailing_spaces': $reason = 'Trailing spaces are not allowed in the username.'; break;
+				case 'password_empty': $reason = 'Your password must not be empty.'; break;
 				case 'invalid_email': $reason = 'The email used does not appear to be valid.'; break;
 				case 'username_exists': $reason = 'The username you are trying to register already exists.'; break;
 

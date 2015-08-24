@@ -194,6 +194,9 @@
 			if (strlen($username) != strlen(trim($username)))
 				return 'name_trailing_spaces';
 
+			if (strlen($password) == 0)
+				return 'password_empty';
+
 			// Check if the email is valid
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 				return 'invalid_email';
