@@ -41,11 +41,15 @@
 						<span class="smalltext"> <a href="register"> Click here </a> to register an account. <a href="reset"> Click here </a> to reset your password. </span>
 					</div>
 					<form action="/checklogin" method="post">
-						<div class="table">
+						<div class="autotable">
+							<div class="atablecol"></div>
+							<div class="btablecol"></div>
+							<div class="tablecol"></div>
 							<div class="row">
 								<div class="cell">
 									Username
 								</div>
+								<div class="cell"></div>
 								<div class="cell">
 									<input class="searchbar" name="username" type="text">
 								</div>
@@ -54,6 +58,7 @@
 								<div class="cell">
 									Password
 								</div>
+								<div class="cell"></div>
 								<div class="cell">
 									<input class="searchbar" name="password" type="password">
 								</div>
