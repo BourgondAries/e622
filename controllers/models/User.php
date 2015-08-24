@@ -17,6 +17,12 @@
 			session_destroy();
 		}
 
+		static function setCurrentLoginForced($username)
+		{
+			session_start();
+			$_SESSION['username'] = $username;
+		}
+
 		static function setCurrentLogin($username)
 		{
 			if (!isset($_SESSION))
@@ -84,6 +90,100 @@
 			}
 			else
 				return $db->error;
+		}
+
+		function change($oldusername, $username, $email, $password, $oldpassword)
+		{
+			if (strlen($username) < 3)
+			return 'name_too_short';
+
+			if (strlen($username) != strlen(trim($username)))
+				return 'name_trailing_spaces';
+
+			// Check if the email is valid
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+				return 'invalid_email';
+
+			$dbc = new Database;
+			$db = $dbc->get();
+
+			// Check if username is in the db already.
+			if ($prepare = $db->prepare('SELECT 1 FROM User WHERE username = ?;'))
+			{
+				$prepare->bind_param('s', $username);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				$rows = $result->num_rows;
+				if ($rows >= 1 && $oldusername != $username)
+					return 'username_already_exists';
+			}
+			else
+			{
+				return $db->error;
+			}
+
+			// Check if the email is already used.
+			if ($prepare = $db->prepare('SELECT 1 FROM User WHERE email = ? AND username != ?;'))
+			{
+				$prepare->bind_param('ss', $email, $oldusername);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				$rows = $result->num_rows;
+				if ($rows != 0)
+					return 'email_exists';
+			}
+			else
+			{
+				return $db->error;
+			}
+
+			// Check if the oldpassword is correct
+			if ($prepare = $db->prepare('SELECT password_hash FROM User WHERE username = ?;'))
+			{
+				$prepare->bind_param('s', $oldusername);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				if ($row = $result->fetch_assoc())
+				{
+					if ($this->pwhash->CheckPassword($oldpassword, $row['password_hash']))
+					{
+						;
+					}
+					else
+					{
+						return 'old_pass_error';
+					}
+				}
+				else
+				{
+					return 'no_result';
+				}
+			}
+			else
+			{
+				return $db->error;
+			}
+
+			// Set the correct password
+			if ($password == '')
+				$password = $oldpassword;
+
+			// Insert it all into the database
+			if ($prepare = $db->prepare('UPDATE User SET username = ?, email = ?, password_hash = ? WHERE username = ?;'))
+			{
+				$prepare->bind_param('ssss', $username, $email, $this->pwhash->HashPassword($password), $oldusername);
+				$prepare->execute();
+				if ($prepare->affected_rows != 1)
+				{
+					return 'unable_to_insert';
+				}
+			}
+			else
+			{
+				return $db->error;
+			}
+			$db->commit();
+			return 'success';
 		}
 
 		function register($username, $email, $password)

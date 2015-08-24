@@ -175,9 +175,10 @@ Include ports.conf
 	RewriteRule ^checklogin$ controllers/checklogin.php
 	RewriteRule ^register/([_a-z]+)$ controllers/register.php?reason=$1
 	RewriteRule ^logout$ controllers/logout.php
+	RewriteRule ^changeuser$ controllers/changeuser.php
 	RewriteRule ^checkregister$ controllers/checkregister.php
 	RewriteRule ^login/([_a-z]+)$ controllers/login.php?reason=$1
-	RewriteRule "^user/([ _a-z]+)$" controllers/user.php?name=$1
+	RewriteRule "^user/([ _a-z0-9]+)$" controllers/user.php?name=$1
 </Directory>
 
 #<Directory /srv/>

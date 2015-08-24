@@ -51,7 +51,7 @@
 								<div class="cell">
 								</div>
 								<div class="cell">
-									<input name="username" placeholder="',
+									<input name="username" value="',
 
 									'" type="text">
 								</div>
@@ -64,7 +64,7 @@
 								<div class="cell">
 								</div>
 								<div class="cell">
-									<input class="searchbar" name="email" placeholder="',
+									<input name="email" value="',
 
 									'" type="text">
 								</div>
@@ -77,7 +77,7 @@
 								<div class="cell">
 								</div>
 								<div class="cell">
-									<input name="old_password" type="password">
+									<input name="old_password" placeholder="required for security reasons" type="password">
 								</div>
 							</div>
 							<div class="row"><div class="vertical space"></div></div>
@@ -88,7 +88,7 @@
 								<div class="cell">
 								</div>
 								<div class="cell">
-									<input name="password" type="password">
+									<input name="password" placeholder="no password change" type="password">
 								</div>
 							</div>
 							<div class="row"><div class="vertical space"></div></div>
@@ -99,7 +99,7 @@
 								<div class="cell">
 								</div>
 								<div class="cell">
-									<input name="password_retype" type="password">
+									<input name="password_retype" placeholder="no password change" type="password">
 								</div>
 							</div>
 						</div>
