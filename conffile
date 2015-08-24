@@ -174,7 +174,7 @@ Include ports.conf
 	RewriteRule ^login$ controllers/login.php
 	RewriteRule ^checklogin$ controllers/checklogin.php
 	RewriteRule ^register$ controllers/register.php
-	RewriteRule ^register/([_a-z]+)$ controllers/register.php?reason=$1
+	RewriteRule ^register/(.+) controllers/register.php?$1
 	RewriteRule ^logout$ controllers/logout.php
 	RewriteRule ^changeuser$ controllers/changeuser.php
 	RewriteRule ^checkregister$ controllers/checkregister.php

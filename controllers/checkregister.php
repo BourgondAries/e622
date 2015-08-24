@@ -2,27 +2,29 @@
 	require_once 'models/Http.php';
 	require_once 'models/User.php';
 
+	$parameters = '&username=' . Http::get('username') . '&email=' . Http::get('email');
+
 	if (Http::has('username') == false)
 	{
-		header('Location: /register/no_username');
+		header("Location: /register/reason=no_username$parameters");
 		die();
 	}
 
 	if (Http::has('email') == false)
 	{
-		header('Location: /register/no_email');
+		header("Location: /register/reason=no_email$parameters");
 		die();
 	}
 
 	if (Http::has('password') == false || Http::has('password_retype') == false)
 	{
-		header('Location: /register/no_password');
+		header("Location: /register/reason=no_password$parameters");
 		die();
 	}
 
 	if (Http::get('password') != Http::get('password_retype'))
 	{
-		echo 'password_not_match';
+		header("Location: /register/reason=password_not_match$parameters");
 		die();
 	}
 
@@ -34,7 +36,7 @@
 			header('Location: /login');
 		break;
 		default:
-			header('Location: ' . "/register/$result");
+			header('Location: ' . "/register/reason=$result$parameters");
 		break;
 	}
 ?>
