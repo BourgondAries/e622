@@ -12,21 +12,17 @@
 		{
 			switch ($reason)
 			{
-				case 'no_username':
-					$reason = 'A request was made for a new account, but no username was given.';
-				break;
-				case 'no_email':
-					$reason = 'A request was made for a new account, but no email was given.';
-				break;
-				case 'no_password':
-					$reason = 'A request was made for a new account, but no password was given.';
-				break;
-				case 'email_used':
-					$reason = 'The email address is already used. If you lost your password <a href="reset"> click here </a>';
-				break;
-				case null:
-					return '';
-				break;
+				case 'no_username': $reason = 'A request was made for a new account, but no username was given.'; break;
+				case 'no_email': $reason = 'A request was made for a new account, but no email was given.'; break;
+				case 'no_password': $reason = 'A request was made for a new account, but no password was given.'; break;
+				case 'name_too_short': $reason = 'The username ought to be at least three characters long.'; break;
+				case 'name_trailing_spaces': $reason = 'Trailing spaces are not allowed in the username.'; break;
+				case 'invalid_email': $reason = 'The email used does not appear to be valid.'; break;
+				case 'username_exists': $reason = 'The username you are trying to register already exists.'; break;
+
+				case 'email_exists': $reason = 'The email address is already used. If you lost your password <a href="/reset"> click here </a>'; break;
+				case 'unable_to_insert': $reason = 'For some reason, we were unable to create your user in this specific moment. Try again later or contact support.'; break;
+				case null: return ''; break;
 			}
 			return self::$reason_code[0] . $reason . self::$reason_code[1];
 		}

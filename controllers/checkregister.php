@@ -16,7 +16,7 @@
 
 	if (Http::has('password') == false || Http::has('password_retype') == false)
 	{
-		echo 'no_passwords';
+		header('Location: /register/no_password');
 		die();
 	}
 
@@ -28,32 +28,13 @@
 
 	$user = new User;
 	$result = $user->register(Http::get('username'), Http::get('email'), Http::get('password'));
-	echo $result;
 	switch ($result)
 	{
-		case 'unable_to_insert':
-		break;
 		case 'success':
-		{
-			echo 'Success';
-		}
-		break;
-		case 'invalid_email':
-		{
-		}
-		break;
-		case 'username_special':
-		{
-		}
-		break;
-		case 'email_exists':
-		break;
-		case 'username_exists':
-		{
-		}
+			header('Location: /login');
 		break;
 		default:
-		{}
+			header('Location: ' . "/register/$result");
 		break;
 	}
 ?>

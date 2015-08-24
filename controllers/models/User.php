@@ -88,6 +88,12 @@
 
 		function register($username, $email, $password)
 		{
+			if (strlen($username) < 3)
+				return 'name_too_short';
+
+			if (strlen($username) != strlen(trim($username)))
+				return 'name_trailing_spaces';
+
 			// Check if the email is valid
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 				return 'invalid_email';
