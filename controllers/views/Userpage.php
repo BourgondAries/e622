@@ -1,4 +1,5 @@
 <?php
+	require_once 'utils/StringManip.php';
 	class Userpage
 	{
 		static function renderNotExist($username)
@@ -60,21 +61,9 @@
 			return self::$statistics[0];
 		}
 
-		static private function intermix($template, $array)
-		{
-			$result = '';
-			for ($i = 0; $i < count($template); ++$i)
-			{
-				$result .= $template[$i];
-				if ($i < count($array))
-					$result .= $array[$i];
-			}
-			return $result;
-		}
-
 		static function renderNothingChanged()
 		{
-			return self::intermix(self::$nothing_changed, ['No visible changes made.']);
+			return intermix(self::$nothing_changed, ['No visible changes made.']);
 		}
 
 		static private $nothing_changed =
@@ -98,7 +87,7 @@
 
 				$description = $privilege_set['description'];
 				$id = $privilege_set['privilege_id'];
-				$keys .= self::intermix(self::$privilege_template, [$id, $status, $description]);
+				$keys .= intermix(self::$privilege_template, [$id, $status, $description]);
 			}
 			return $keys;
 		}
@@ -128,7 +117,7 @@
 			$oldpassfield = '';
 			if ($viewername == $username)
 				$oldpassfield = self::$old_pass_entry;
-			return self::intermix(self::$code, [$username, $username, $email, $oldpassfield, $privilege_buttons]);
+			return intermix(self::$code, [$username, $username, $email, $oldpassfield, $privilege_buttons]);
 		}
 
 		static private $old_pass_entry = '
