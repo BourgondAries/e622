@@ -179,6 +179,7 @@ Include ports.conf
 	RewriteRule ^changeuser/(.+)$ controllers/changeuser.php?user=$1
 	RewriteRule ^checkregister$ controllers/checkregister.php
 	RewriteRule ^login/(.+)$ controllers/login.php?$1
+	RewriteRule ^upload$ controllers/upload.php
 	RewriteRule "^user/([ _a-z0-9]+)$" controllers/user.php?name=$1
 	RewriteRule "^user/([ _a-z0-9]+)/(.+)$" controllers/user.php?name=$1&$2
 </Directory>

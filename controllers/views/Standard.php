@@ -33,7 +33,7 @@ e622<div class="vertical space"></div></a>
 										'">',
 
 										'</a>
-										<a href="#"> UPLOAD </a>
+										<a href="/upload"> UPLOAD </a>
 										<a href="#"> TAGS </a>
 										<a href="#"> SUPPORT </a>
 									</div>
