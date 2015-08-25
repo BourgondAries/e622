@@ -23,6 +23,8 @@
 		$sidebar .= Userpage::renderReason(Http::get('reason'));
 		if (Http::get('reason') == 'success')
 			$sidebar .= Userpage::renderSuccessTime(Http::get('time'));
+		else if (Http::get('reason') == 'nothing_changed')
+			$sidebar .= Userpage::renderNothingChanged();
 		echo Standard::render($sidebar, $privilege, User::generateLoginState());
 	}
 	else

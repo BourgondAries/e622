@@ -32,6 +32,7 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .space.horizontal{ width: 1vw; }
 .e622 .space.vertical { height: 1vh; }
 .e622 .smalltext { font-size: 80%; }
+.e622 .suspicion { background-color: orange; border: 0.3vmin solid brown; border-radius: 0.5vmin; padding: 0.5vh 0.5vw; }
 .e622 .tinytext{ font-size: 60%; }
 .e622 .table-column.auto { display: table-column; width: auto; }
 .e622 .table-column.big { display: table-column; width: 70%; }

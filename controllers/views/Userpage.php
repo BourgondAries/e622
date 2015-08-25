@@ -71,6 +71,19 @@
 			return $result;
 		}
 
+		static function renderNothingChanged()
+		{
+			return self::intermix(self::$nothing_changed, ['No visible changes made.']);
+		}
+
+		static private $nothing_changed =
+		[
+			'<div class="vertical space"></div>
+			<div class="suspicion">',
+
+			'</div>'
+		];
+
 		static private function renderPrivilegeButtons($privileges, $privilege, $viewer_privilege)
 		{
 			$keys = '';
@@ -194,7 +207,7 @@
 							<div class="cell"> Privilege </div>
 							<div class="cell"></div>
 							<div class="cell">
-								<select>
+								<select name="privilege">
 								',
 
 								'

@@ -109,8 +109,23 @@
 				return $db->error;
 		}
 
-		function change($oldusername, $username, $email, $password, $oldpassword)
+		function change($oldusername, $username, $email, $password, $oldpassword, $newprivilege, $user_that_changed_this)
 		{
+			$user_issued_command = self::getUser($user_that_changed_this);
+			$user_to_change = self::getUser($oldusername);
+
+			$require_password = !($user_issued_command['privilege'] < $user_to_change['privilege']);
+			if
+			(
+				$require_password == false
+				|| $user_that_changed_this == $oldusername
+			)
+			{}
+			else
+			{
+				return 'privilege_required';
+			}
+
 			if (strlen($username) > 26)
 				return 'username_too_long';
 
@@ -158,52 +173,73 @@
 			}
 
 			// Check if the oldpassword is correct
-			if ($prepare = $db->prepare('SELECT password_hash FROM User WHERE username = ?;'))
+			if ($require_password)
 			{
-				$prepare->bind_param('s', $oldusername);
-				$prepare->execute();
-				$result = $prepare->get_result();
-				if ($row = $result->fetch_assoc())
+				if ($prepare = $db->prepare('SELECT password_hash FROM User WHERE username = ?;'))
 				{
-					if ($this->pwhash->CheckPassword($oldpassword, $row['password_hash']))
+					$prepare->bind_param('s', $oldusername);
+					$prepare->execute();
+					$result = $prepare->get_result();
+					if ($row = $result->fetch_assoc())
 					{
-						;
+						if ($this->pwhash->CheckPassword($oldpassword, $row['password_hash']))
+						{
+							;
+						}
+						else
+						{
+							return 'old_pass_error';
+						}
 					}
 					else
 					{
-						return 'old_pass_error';
+						return 'no_result';
 					}
 				}
 				else
 				{
-					return 'no_result';
+					return $db->error;
 				}
-			}
-			else
-			{
-				return $db->error;
 			}
 
 			// Set the correct password
-			if ($password == '')
-				$password = $oldpassword;
-
-			// Insert it all into the database
-			if ($prepare = $db->prepare('UPDATE User SET username = ?, email = ?, password_hash = ? WHERE username = ?;'))
+			if ($password != '')
 			{
-				$prepare->bind_param('ssss', $username, $email, $this->pwhash->HashPassword($password), $oldusername);
-				$prepare->execute();
-				if ($prepare->affected_rows != 1)
+				// Insert it all into the database
+				if ($prepare = $db->prepare('UPDATE User SET username = ?, email = ?, password_hash = ? WHERE username = ?;'))
 				{
-					return 'unable_to_insert';
+					$prepare->bind_param('ssss', $username, $email, $this->pwhash->HashPassword($password), $oldusername);
+					$prepare->execute();
+					if ($prepare->affected_rows == 1)
+					{
+						return 'nothing_changed';
+					}
 				}
+				else
+				{
+					return $db->error;
+				}
+				$db->commit();
+				return 'success';
 			}
 			else
 			{
-				return $db->error;
+				if ($prepare = $db->prepare('UPDATE User SET username = ?, email = ? WHERE username = ?;'))
+				{
+					$prepare->bind_param('sss', $username, $email, $oldusername);
+					$prepare->execute();
+					if ($prepare->affected_rows == 0)
+					{
+						return 'nothing_changed';
+					}
+				}
+				else
+				{
+					return $db->error;
+				}
+				$db->commit();
+				return 'success';
 			}
-			$db->commit();
-			return 'success';
 		}
 
 		function register($username, $email, $password)
