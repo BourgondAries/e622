@@ -14,6 +14,38 @@
 			$this->dbc->get()->commit();
 		}
 
+		static function getMediaType($filename)
+		{
+			return preg_replace('/[a-z0-9]+\.([a-z]+)/', '$1', $filename);
+		}
+
+		static function generateThumbnail($src, $type, $thumb_width)
+		{
+			$dest = "${src}_${thumb_width}.$type";
+			$source_image = '';
+			switch ($type)
+			{
+				case 'png': $source_image = imagecreatefrompng($src); break;
+				case 'gif': $source_image = imagecreatefromgif($src); break;
+				case 'jpeg': $source_image = imagecreatefromjpeg($src); break;
+				case 'jpg': $source_image = imagecreatefromjpeg($src); break;
+				default: return;
+			}
+			$width = imagesx($source_image);
+			$height = imagesy($source_image);
+			$desired_height = floor($height * ($thumb_width / $width));
+			$virtual_image = imagecreatetruecolor($thumb_width , $desired_height);
+			imagecopyresampled($virtual_image, $source_image, 0, 0, 0, 0, $thumb_width, $desired_height, $width, $height);
+			switch ($type)
+			{
+				case 'png': imagepng($virtual_image, $dest); break;
+				case 'gif': imagegif($virtual_image, $dest); break;
+				case 'jpeg': imagejpeg($virtual_image, $dest); break;
+				case 'jpg': imagejpeg($virtual_image, $dest); break;
+				default: return;
+			}
+		}
+
 		function existsId($id)
 		{
 			$db = $this->dbc->get();
@@ -77,7 +109,8 @@
 					$prepare->bind_param('si', $newname, $mediaid);
 					$prepare->execute();
 					$root = $_SERVER['DOCUMENT_ROOT'];
-					rename($file, "$root/storage/" . $newname);
+					rename($file, "$root/storage/$newname");
+					self::generateThumbnail("$root/storage/$newname", $extension, 200);
 					return $mediaid;
 				}
 			}
@@ -130,7 +163,7 @@
 				return 'wrong_no_tags';
 
 			$tags = array_unique($tags);
-			if (!in_array('sfw', $tags) && !in_array('qsfw', $tags) && !in_array('nsfw'))
+			if (!in_array('sfw', $tags) && !in_array('qsfw', $tags) && !in_array('nsfw', $tags))
 				$tags[] = 'nsfw';
 			$counter = 0;
 			foreach ($tags as &$tag)
