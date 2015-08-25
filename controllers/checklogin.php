@@ -9,7 +9,7 @@
 	{
 		case 'success':
 			User::setCurrentLogin($username);
-			header('Location: ' . '/');
+			header('Location: ' . "/user/$username");
 		break;
 		default: header('Location: ' . "login/$result");
 	}
