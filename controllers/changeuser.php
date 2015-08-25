@@ -30,11 +30,16 @@
 				$newusername = Http::get('username');
 				header("Location: /user/$newusername/reason=$result");
 			}
-			else
+			else if ($result == 'success')
 			{
 				$newusername = Http::get('username');
 				$time = date('H:i:s');
 				header("Location: /user/$newusername/reason=success&time=$time");
+			}
+			else
+			{
+				$username = Http::get('user');
+				header("Location: /user/$username/reason=$result");
 			}
 		}
 		else

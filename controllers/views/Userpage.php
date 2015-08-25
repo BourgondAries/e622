@@ -24,6 +24,7 @@
 		{
 			switch ($reason)
 			{
+				case 'privilege_required': $reason = 'You do not have the privilege to change these settings.'; break;
 				case 'username_too_long': $reason = 'The username is too long. It must not exceed 26 characters.'; break;
 				case 'name_too_short': $reason = 'The name to change to is too short. A username must be at least three characters long.'; break;
 				case 'name_trailing_spaces': $reason = 'A username can not contain trailing spaces. Spaces within the words is just fine.'; break;
@@ -96,7 +97,8 @@
 					$status = 'disabled';
 
 				$description = $privilege_set['description'];
-				$keys .= self::intermix(self::$privilege_template, [$description, $status, $description]);
+				$id = $privilege_set['privilege_id'];
+				$keys .= self::intermix(self::$privilege_template, [$id, $status, $description]);
 			}
 			return $keys;
 		}

@@ -117,8 +117,12 @@
 			$require_password = !($user_issued_command['privilege'] < $user_to_change['privilege']);
 			if
 			(
-				$require_password == false
-				|| $user_that_changed_this == $oldusername
+				$newprivilege > $user_issued_command['privilege']
+				&&
+				(
+					$require_password == false
+					|| $user_that_changed_this == $oldusername
+				)
 			)
 			{}
 			else
@@ -206,9 +210,9 @@
 			if ($password != '')
 			{
 				// Insert it all into the database
-				if ($prepare = $db->prepare('UPDATE User SET username = ?, email = ?, password_hash = ? WHERE username = ?;'))
+				if ($prepare = $db->prepare('UPDATE User SET username = ?, email = ?, password_hash = ?, privilege = ? WHERE username = ?;'))
 				{
-					$prepare->bind_param('ssss', $username, $email, $this->pwhash->HashPassword($password), $oldusername);
+					$prepare->bind_param('sssis', $username, $email, $this->pwhash->HashPassword($password), $newprivilege, $oldusername);
 					$prepare->execute();
 					if ($prepare->affected_rows == 1)
 					{
@@ -224,9 +228,9 @@
 			}
 			else
 			{
-				if ($prepare = $db->prepare('UPDATE User SET username = ?, email = ? WHERE username = ?;'))
+				if ($prepare = $db->prepare('UPDATE User SET username = ?, email = ?, privilege = ? WHERE username = ?;'))
 				{
-					$prepare->bind_param('sss', $username, $email, $oldusername);
+					$prepare->bind_param('ssis', $username, $email, $newprivilege, $oldusername);
 					$prepare->execute();
 					if ($prepare->affected_rows == 0)
 					{
