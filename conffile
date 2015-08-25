@@ -178,7 +178,7 @@ Include ports.conf
 	RewriteRule ^logout$ controllers/logout.php
 	RewriteRule ^changeuser$ controllers/changeuser.php
 	RewriteRule ^checkregister$ controllers/checkregister.php
-	RewriteRule ^login/([_a-z]+)$ controllers/login.php?reason=$1
+	RewriteRule ^login/(.+)$ controllers/login.php?$1
 	RewriteRule "^user/([ _a-z0-9]+)$" controllers/user.php?name=$1
 	RewriteRule "^user/([ _a-z0-9]+)/(.+)$" controllers/user.php?name=$1&$2
 </Directory>

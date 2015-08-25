@@ -11,6 +11,6 @@
 			User::setCurrentLogin($username);
 			header('Location: ' . "/user/$username");
 		break;
-		default: header('Location: ' . "login/$result");
+		default: header('Location: ' . "login/reason=$result&username=$username");
 	}
 ?>

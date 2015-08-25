@@ -28,5 +28,5 @@
 		break;
 	}
 	$result = Login::renderReason($reason);
-	echo Standard::render($result, Login::render());
+	echo Standard::render($result, Login::render(Http::get('username')));
 ?>
