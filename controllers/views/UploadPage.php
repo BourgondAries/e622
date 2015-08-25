@@ -7,9 +7,42 @@
 			return intermix(self::$upload_form, ['']);
 		}
 
-		static function renderInformation()
+		static function renderSuccess($id)
 		{
-			return self::$information;
+			return intermix(self::$success_box, [$id]);
+		}
+
+		static private $success_box =
+		[
+			'<div class="notification">
+				Previous upload successful with ID ',
+
+			'</div><div class="vertical space"></div>'
+		];
+
+		static function renderFail($reason)
+		{
+			switch ($reason)
+			{
+				case 'wrong_no_privilege': $reason = 'This account does not have the privilege to upload media.'; break;
+				case 'wrong_no_tags': $reason = 'No tags were provided. Every medium must have at least one tag.'; break;
+				case 'wrong_submime': $reason = 'The type is an image or video, but not the supported format. webm, gif, png, hpg, and jpeg are supported.'; break;
+				case 'wrong_mime': $reason = 'Wrong major type: only image and video are supported.'; break;
+				default: break;
+			}
+			return intermix(self::$warning_box, [$reason]);
+		}
+
+		static private $warning_box =
+		[
+			'<div class="warning">',
+
+			'</div><div class="vertical space"></div>'
+		];
+
+		static function renderInformation($notice = '')
+		{
+			return $notice . self::$information;
 		}
 
 		static private $information = '<div class="smalltext">

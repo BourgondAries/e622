@@ -11,5 +11,10 @@
 	}
 	$user = User::getUser($username);
 	$upload = new Upload;
-	$upload->uploadFile($user, Http::get('description'), Http::get('taglist'), Http::getFile('mediafile')['tmp_name']);
+	$result = $upload->uploadFile($user, Http::get('description'), Http::get('taglist'), Http::getFile('mediafile')['tmp_name']);
+	if (Upload::startsWith($result, 'wrong'))
+		$result = 'reason=' . $result;
+	else
+		$result = 'newid=' . $result;
+	header("Location: /upload/$result");
 ?>

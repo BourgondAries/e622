@@ -51,6 +51,7 @@
 					$prepare->execute();
 					$root = $_SERVER['DOCUMENT_ROOT'];
 					rename($file, "$root/storage/" . $newname);
+					return $mediaid;
 				}
 			}
 		}
@@ -66,7 +67,7 @@
 			$type = finfo_file($finfo, $file);
 			finfo_close($finfo);
 			if (!self::startsWith($type, 'image') && !self::startsWith($type, 'video'))
-				return false;
+				return "wrong_mime";
 			switch ($type)
 			{
 				case 'image/gif': return 'gif';
@@ -74,7 +75,7 @@
 				case 'image/jpg': return 'jpg';
 				case 'image/jpeg': return 'jpeg';
 				case 'video/webm': return 'webm';
-				default: return false;
+				default: return "wrong_submime";
 			}
 		}
 
@@ -82,11 +83,14 @@
 		{
 			// Check if the uploader has enough privileges
 			if ($uploader['privilege'] > 3)
-				return 'no_privilege';
+				return 'wrong_no_privilege';
 
+			$tags = trim($tags);
+			if (empty($tags))
+				return 'wrong_no_tags';
 			$tags = explode(' ', $tags);
 			if (count($tags) == 0)
-				return 'no_tags';
+				return 'wrong_no_tags';
 
 			$tags = array_unique($tags);
 			$counter = 0;
@@ -107,9 +111,9 @@
 				$tag_ids[] = $this->insertTag($tag);
 			var_dump($tag_ids);
 			$extension = $this->getFileType($file);
-			if ($extension == false)
-				return false;
-			$this->insertMedia($uploader['user_ID'], $description, $file, $extension);
+			if (self::startsWith($extension, 'wrong'))
+				return $extension;
+			return $this->insertMedia($uploader['user_ID'], $description, $file, $extension);
 		}
 	}
 ?>
