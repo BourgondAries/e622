@@ -218,7 +218,7 @@
 				{
 					$prepare->bind_param('sssis', $username, $email, $this->pwhash->HashPassword($password), $newprivilege, $oldusername);
 					$prepare->execute();
-					if ($prepare->affected_rows == 1)
+					if ($prepare->affected_rows == 0)
 					{
 						return 'nothing_changed';
 					}
