@@ -1,8 +1,17 @@
 CREATE TABLE Privilege
 (
 	privilege_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-	description VARCHAR(255)
+	description VARCHAR(255),
+
+	PRIMARY KEY (privilege_id)
 );
+
+INSERT INTO Privilege (privilege_id, description) VALUES (0, 'root');
+INSERT INTO Privilege (privilege_id, description) VALUES (1, 'administrator');
+INSERT INTO Privilege (privilege_id, description) VALUES (2, 'moderator');
+INSERT INTO Privilege (privilege_id, description) VALUES (3, 'user');
+INSERT INTO Privilege (privilege_id, description) VALUES (4, 'viewer');
+INSERT INTO Privilege (privilege_id, description) VALUES (5, 'banned');
 
 CREATE TABLE User
 (
@@ -10,9 +19,8 @@ CREATE TABLE User
 	username VARCHAR(26) UNIQUE,
 	email VARCHAR(255),
 	user_since DATETIME,
-	privilege BIGINT UNSIGNED,
-	deleted BOOLEAN DEFAULT FALSE,
-	password_hash VARCHAR(255) NOT NULL,
+	privilege BIGINT UNSIGNED DEFAULT 3,
+	password_hash VARCHAR(255),
 
 	PRIMARY KEY (user_ID),
 	FOREIGN KEY (privilege) REFERENCES Privilege(privilege_id)
@@ -21,6 +29,8 @@ CREATE TABLE User
 CREATE TRIGGER user_since_creation BEFORE INSERT ON User
 FOR EACH ROW
 SET NEW.user_since = NOW();
+
+INSERT INTO User (user_ID, username, privilege) VALUES (0, 'root', 0);
 
 CREATE TABLE Media
 (
