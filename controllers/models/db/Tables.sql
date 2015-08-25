@@ -37,16 +37,11 @@ CREATE TABLE Media
 	media_ID BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
 	filename VARCHAR(18) UNIQUE,
 	description VARCHAR(1024),
-	source VARCHAR(255),
 	upload_date DATETIME,
 	uploader BIGINT UNSIGNED,
-	link_forward_ID BIGINT UNSIGNED,
-	link_previous_ID BIGINT UNSIGNED,
 
 	PRIMARY KEY (media_ID),
-	FOREIGN KEY (uploader) REFERENCES User(user_ID),
-	FOREIGN KEY (link_forward_ID) REFERENCES Media(media_ID) ON DELETE SET NULL,
-	FOREIGN KEY (link_previous_ID) REFERENCES Media(media_ID) ON DELETE SET NULL
+	FOREIGN KEY (uploader) REFERENCES User(user_ID)
 
 );
 
@@ -111,3 +106,13 @@ CREATE TABLE Comment
 CREATE TRIGGER comment_creation BEFORE INSERT ON Comment
 FOR EACH ROW
 SET NEW.comm_date = NOW();
+
+CREATE TABLE MediaLink
+(
+	from_id BIGINT UNSIGNED UNIQUE,
+	to_id BIGINT UNSIGNED UNIQUE,
+
+	PRIMARY KEY (from_id),
+	FOREIGN KEY (from_id) REFERENCES Media(media_ID),
+	FOREIGN KEY (to_id) REFERENCES Media(media_ID)
+);
