@@ -65,6 +65,10 @@ CREATE TABLE Tag
 	PRIMARY KEY (tag_ID)
 );
 
+INSERT INTO Tag (tag_ID, description) VALUES (0, 'sfw');
+INSERT INTO Tag (tag_ID, description) VALUES (1, 'qsfw');
+INSERT INTO Tag (tag_ID, description) VALUES (2, 'nsfw');
+
 CREATE TABLE MediaTag
 (
 	tag_ID BIGINT UNSIGNED NOT NULL,
