@@ -80,6 +80,23 @@
 				$result = $prepare->get_result();
 				if ($row = $result->fetch_assoc())
 				{
+					if ($row['password_hash'] == null)
+					{
+						if ($prepare = $db->prepare('UPDATE User SET password_hash = ? WHERE username = ?;'))
+						{
+							$prepare->bind_param('ss', $this->pwhash->HashPassword($password), $username);
+							$prepare->execute();
+							if ($prepare->affected_rows != 1)
+								return 'unable_to_insert';
+							else
+							{
+								$db->commit();
+								return 'success';
+							}
+						}
+						else
+							return $db->error;
+					}
 					if ($this->pwhash->CheckPassword($password, $row['password_hash']))
 						return 'success';
 					else
