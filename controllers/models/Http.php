@@ -13,5 +13,10 @@
 			else if (isset($_POST[$name]))
 				return $_POST[$name];
 		}
+
+		static function getFile($name)
+		{
+			return $_FILES[$name];
+		}
 	}
 ?>
