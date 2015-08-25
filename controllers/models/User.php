@@ -117,7 +117,11 @@
 			$require_password = !($user_issued_command['privilege'] < $user_to_change['privilege']);
 			if
 			(
-				$newprivilege > $user_issued_command['privilege']
+				(
+					$newprivilege > $user_issued_command['privilege']
+					|| $user_that_changed_this == $oldusername
+					&& $newprivilege >= $user_issued_command['privilege']
+				)
 				&&
 				(
 					$require_password == false
