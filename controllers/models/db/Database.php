@@ -5,7 +5,7 @@
 		function __construct()
 		{
 			$password = rtrim(file_get_contents("${_SERVER['DOCUMENT_ROOT']}/../mysqlkey.txt"));
-			$this->db = new mysqli('127.0.0.1', 'server', $password, 'tete', 3306);
+			$this->db = new mysqli('127.0.0.1', 'server', $password, 'e622', 3306);
 			if ($this->db->connect_errno)
 			{
 				$this->db = $this->db->connect_error;

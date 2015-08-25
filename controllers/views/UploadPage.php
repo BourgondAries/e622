@@ -99,6 +99,39 @@
 							'</textarea>
 						</div>
 					</div>
+					<div class="row"><div class="vertical space"></div></div>
+					<div class="row">
+						<div class="cell">
+							Link
+							<div class="smalltext">
+								<div class="leftpad">
+									The image ID of the previous medium in the set. Allows you to bundle images into an easily scrollable collection. Only needed if you upload logically coherent sets of media.
+								</div>
+							</div>
+						</div>
+						<div class="cell">
+						</div>
+						<div class="cell">
+							<textarea name="link" placeholder="link id"></textarea>
+						</div>
+					</div>
+					<div class="row"><div class="vertical space"></div></div>
+					<div class="row">
+						<div class="cell">
+							Autolink
+							<div class="smalltext">
+								<div class="leftpad">
+									If you want to fill in the link automatically with the previously uploaded medium ID.
+								</div>
+							</div>
+						</div>
+						<div class="cell">
+						</div>
+						<div class="cell">
+							<input type="checkbox">
+						</div>
+					</div>
+					<div class="row"><div class="vertical space"></div></div>
 					<div class="row">
 						<div class="cell">
 							<div class="little horizontal space">
