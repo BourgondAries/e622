@@ -107,11 +107,27 @@
 			'
 		];
 
-		static function renderPrivileged($username, $email, $privileges, $userprivilege, $viewer_privilege)
+		static function renderPrivileged($username, $email, $privileges, $userprivilege, $viewer_privilege, $viewername)
 		{
 			$privilege_buttons = self::renderPrivilegeButtons($privileges, $userprivilege, $viewer_privilege);
-			return self::intermix(self::$code, [$username, $email, $privilege_buttons]);
+			$oldpassfield = '';
+			if ($viewername == $username)
+				$oldpassfield = self::$old_pass_entry;
+			return self::intermix(self::$code, [$username, $email, $oldpassfield, $privilege_buttons]);
 		}
+
+		static private $old_pass_entry = '
+			<div class="row"><div class="vertical space"></div></div>
+				<div class="row">
+					<div class="cell text">
+						Old Password
+					</div>
+					<div class="cell">
+					</div>
+					<div class="cell">
+						<input name="old_password" placeholder="required for security reasons" type="password">
+					</div>
+				</div>';
 
 		static private $code =
 		[
@@ -148,19 +164,9 @@
 
 									'" type="text">
 								</div>
-							</div>
-							<div class="row"><div class="vertical space"></div></div>
-							<div class="row">
-								<div class="cell text">
-									Old Password
-								</div>
-								<div class="cell">
-								</div>
-								<div class="cell">
-									<input name="old_password" placeholder="required for security reasons" type="password">
-								</div>
-							</div>
-							<div class="row"><div class="vertical space"></div></div>
+							</div>',
+
+							'<div class="row"><div class="vertical space"></div></div>
 							<div class="row">
 								<div class="cell text">
 									New Password

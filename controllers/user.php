@@ -18,7 +18,7 @@
 
 	if ($username == $logged_in_as || $viewerinfo['privilege'] <= 3)
 	{
-		$privilege = Userpage::renderPrivileged($username, $userinfo['email'], $privileges, $userinfo['privilege'], $viewerinfo['privilege']);
+		$privilege = Userpage::renderPrivileged($username, $userinfo['email'], $privileges, $userinfo['privilege'], $viewerinfo['privilege'], $viewerinfo['username']);
 		$sidebar = Userpage::renderPrivilegedStatistics();
 		$sidebar .= Userpage::renderReason(Http::get('reason'));
 		if (Http::get('reason') == 'success')
