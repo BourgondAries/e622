@@ -6,6 +6,8 @@
 
 	if ($username = User::getCurrentLogin())
 	{
+		if (!User::getUser($username))
+			User::logout();
 		header("Location: /user/$username");
 		die();
 	}
