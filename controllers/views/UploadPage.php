@@ -36,24 +36,36 @@
 					<div class="row">
 						<div class="cell">
 							Description
+							<div class="smalltext">
+								<div class="leftpad">
+									A descriptive text to go with your media. Please put possible sources of the media here, as well as the story or reason for the media if it is available. Note that the artist can be put in the tag using \'artist:name\'. The description is limited to 1024 characters. We recommend following these suggestions, but you\'re free to write whatever you want.
+								</div>
+							</div>
 						</div>
 						<div class="cell"><div class="horizontal space"></div></div>
 						<div class="cell">
-							<textarea name="description"></textarea>
+							<textarea name="description" placeholder="This is my grandparents\' belgian malinois. This is a picture of her taken when she was ten years old. Her face is awkward when she squints."></textarea>
 						</div>
 					</div>
+					<div class="row"><div class="vertical space"></div></div>
 					<div class="row">
 						<div class="cell">
 							Tags
+							<div class="smalltext">
+								<div class="leftpad">
+									Tags that will match a search. Tags are space-separated. Multiple words must be mimicked using underscores. There are three reserved tags: \'sfw\', \'qsfw\', and \'nsfw\'. These stand for <em>safe for work</em>, <em>questionably safe for work</em>, and <em>not safe for work</em>, respectively. Tagging with these will provide a small icon beside the thumbnail. If you do not tag any of the reserved tags, nsfw will be inserted for you. \'artist:name\' should be used to give an artist.
+								</div>
+							</div>
 						</div>
 						<div class="cell"><div class="horizontal space"></div></div>
 						<div class="cell">
-							<textarea name="description"></textarea>
+							<textarea name="description" placeholder="happy begian_malinois dog squinting -- sfw bone black_muzzle blonde_hair teeth canine pointy_ears brown_eyes"></textarea>
 						</div>
 					</div>
 					<div class="row">
 						<div class="cell">
-							Upload
+							<div class="little horizontal space">
+							</div>
 						</div>
 						<div class="cell"><div class="horizontal space"></div></div>
 						<div class="cell">
@@ -63,6 +75,10 @@
 				',
 
 				'</div>
+				<div class="vertical space"></div>
+				<div class="smalltext">
+					The tag system is central to the searching methods and general philosophy. The first few words of the tags ought to be semi-descriptive. They must read as an english sentence without conjunctions (and, or, but, because). An example is <em> happy begian_malinois dog squinting -- sfw bone black_muzzle blonde_hair teeth canine pointy_ears brown_eyes </em>. Observe how the first four words are descriptive, and the rest are less so. Tags after -- are sorted alphabetically.
+				</div>
 			</form>'
 		];
 	}
