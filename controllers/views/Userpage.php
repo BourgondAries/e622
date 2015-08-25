@@ -113,7 +113,7 @@
 			$oldpassfield = '';
 			if ($viewername == $username)
 				$oldpassfield = self::$old_pass_entry;
-			return self::intermix(self::$code, [$username, $email, $oldpassfield, $privilege_buttons]);
+			return self::intermix(self::$code, [$username, $username, $email, $oldpassfield, $privilege_buttons]);
 		}
 
 		static private $old_pass_entry = '
@@ -134,7 +134,9 @@
 			' <div class="row">
 						USER PAGE
 					</div>
-					<form action="/changeuser" method="post">
+					<form action="/changeuser/',
+
+					'" method="post">
 						<div class="autotable">
 							<div class="auto table-column"></div>
 							<div class="tiny table-column"></div>

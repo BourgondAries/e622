@@ -1,12 +1,12 @@
 <?php
 	require_once 'models/Http.php';
 	require_once 'models/User.php';
-	if (Http::has('username') && Http::has('email') && Http::has('old_password') && Http::has('password') && Http::has('password_retype'))
+	if (Http::has('user') && Http::has('username') && Http::has('email') && Http::has('old_password') && Http::has('password') && Http::has('password_retype'))
 	{
 		if ($username = User::getCurrentLogin())
 		{
 			$user = new User;
-			$result = $user->change($username, Http::get('username'), Http::get('email'), Http::get('password'), Http::get('old_password'));
+			$result = $user->change(Http::get('user'), Http::get('username'), Http::get('email'), Http::get('password'), Http::get('old_password'));
 			if ($result == 'success')
 			{
 				$working_password = Http::get('password') != '' ? Http::get('password') : Http::get('old_password');
