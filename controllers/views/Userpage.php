@@ -59,6 +59,25 @@
 			return self::$statistics[0];
 		}
 
+		static private function intermix($template, $array)
+		{
+			$result = '';
+			for ($i = 0; $i < count($template); ++$i)
+			{
+				$result .= $template[$i];
+				if ($i < count($array))
+					$result .= $array[$i];
+			}
+			return $result;
+		}
+
+		static private $privilege_template =
+		[
+			'<input name="privilege" type="radio" ',
+
+			'>'
+		];
+
 		static private $statistics =
 		[
 			'<div class="smalltext"> Here you can change your settings
@@ -66,12 +85,13 @@
 			<div class="space vertical"></div>
 			<form action="/logout" method="post">
 				<input type="submit" value="log out">
-			</form>'
+			</form>
+			'
 		];
 
 		static function renderPrivileged($username, $email)
 		{
-			return self::$code[0] . $username . self::$code[1] . $email . self::$code[2];
+			return self::intermix(self::$code, [$username, $email]);
 		}
 
 		static private $code =
