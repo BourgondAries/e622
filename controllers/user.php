@@ -18,6 +18,8 @@
 		$privilege = Userpage::renderPrivileged($username, $userinfo['email']);
 		$sidebar = Userpage::renderPrivilegedStatistics();
 		$sidebar .= Userpage::renderReason(Http::get('reason'));
+		if (Http::get('reason') == 'success')
+			$sidebar .= Userpage::renderSuccessTime(Http::get('time'));
 		echo Standard::render($sidebar, $privilege, User::generateLoginState());
 	}
 	else

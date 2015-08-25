@@ -21,12 +21,13 @@
 					die();
 				}
 				$newusername = Http::get('username');
-				 header("Location: /user/$newusername");
+				$time = date('H:i:s');
+				header("Location: /user/$newusername/reason=success&time=$time");
 			}
 			else
 			{
 				$username = User::getCurrentLogin();
-				header("Location: /user/$username/$result");
+				header("Location: /user/$username/reason=$result");
 			}
 		}
 		else
@@ -38,7 +39,7 @@
 	{
 		if ($username = User::getCurrentLogin())
 		{
-			header("Location: /user/$username");
+			header("Location: /user/$username/reason=");
 		}
 		else
 		{

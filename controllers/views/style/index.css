@@ -28,6 +28,7 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .navigation_bar a { display: table-cell; }
 .e622 .navigation_bar a:visited { color: inherit; }
 
+.e622 .notification { background-color: green; border: 0.3vmin solid #00AA00; border-radius: 0.5vmin; padding: 0.5vh 0.5vw; }
 .e622 .space.horizontal{ width: 1vw; }
 .e622 .space.vertical { height: 1vh; }
 .e622 .smalltext { font-size: 80%; }

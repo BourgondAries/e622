@@ -6,6 +6,20 @@
 			return self::$code_not_exist[0] . $username . self::$code_not_exist[1];
 		}
 
+		static function renderSuccessTime($time)
+		{
+			return self::$success_box[0] . $time . self::$success_box[1];
+		}
+
+		static private $success_box =
+		[
+			'<div class="vertical space"></div>
+			<div class="notification">
+				Successfully changed the user at: ',
+
+			'</div>'
+		];
+
 		static function renderReason($reason)
 		{
 			switch ($reason)
