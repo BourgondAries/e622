@@ -78,7 +78,7 @@
 			{
 				$status = '';
 				if ($privilege_set['privilege_id'] == $privilege)
-					$status = 'checked';
+					$status = 'selected';
 				else if ($privilege_set['privilege_id'] < $viewer_privilege)
 					$status = 'disabled';
 
