@@ -71,11 +71,29 @@
 			return $result;
 		}
 
+		static private function renderPrivilegeButtons($privileges, $privilege, $viewer_privilege)
+		{
+			$keys = '';
+			foreach ($privileges as &$privilege_set)
+			{
+				$status = '';
+				if ($privilege_set['privilege_id'] == $privilege)
+					$status = 'checked';
+				else if ($privilege_set['privilege_id'] < $viewer_privilege)
+					$status = 'disabled';
+
+				$description = $privilege_set['description'];
+				$keys .= self::intermix(self::$privilege_template, [$description, $status, $description]);
+			}
+			return $keys;
+		}
+
 		static private $privilege_template =
 		[
-			'<input name="privilege" type="radio" ',
-
-			'>'
+			'<option value="',
+			'" ',
+			'>',
+			'</option>'
 		];
 
 		static private $statistics =
@@ -89,9 +107,10 @@
 			'
 		];
 
-		static function renderPrivileged($username, $email)
+		static function renderPrivileged($username, $email, $privileges, $userprivilege, $viewer_privilege)
 		{
-			return self::intermix(self::$code, [$username, $email]);
+			$privilege_buttons = self::renderPrivilegeButtons($privileges, $userprivilege, $viewer_privilege);
+			return self::intermix(self::$code, [$username, $email, $privilege_buttons]);
 		}
 
 		static private $code =
@@ -162,6 +181,16 @@
 								<div class="cell">
 									<input name="password_retype" placeholder="no password change" type="password">
 								</div>
+							</div>
+							<div class="row"><div class="vertical space"></div></div>
+							<div class="cell"> Privilege </div>
+							<div class="cell"></div>
+							<div class="cell">
+								<select>
+								',
+
+								'
+								</select>
 							</div>
 						</div>
 						<div class="space vertical"></div>
