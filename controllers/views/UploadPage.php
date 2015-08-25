@@ -128,7 +128,7 @@
 						<div class="cell">
 						</div>
 						<div class="cell">
-							<input type="checkbox">
+							<input name="autolink" type="checkbox">
 						</div>
 					</div>
 					<div class="row"><div class="vertical space"></div></div>
