@@ -134,12 +134,12 @@
 					<div class="row"><div class="vertical space"></div></div>
 					<div class="row">
 						<div class="cell">
+							<input type="submit" value="upload">
 							<div class="little horizontal space">
 							</div>
 						</div>
 						<div class="cell"><div class="horizontal space"></div></div>
 						<div class="cell">
-							<input type="submit" value="upload">
 						</div>
 					</div>
 				</div>
