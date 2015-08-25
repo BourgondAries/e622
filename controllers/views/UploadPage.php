@@ -59,7 +59,7 @@
 						</div>
 						<div class="cell"><div class="horizontal space"></div></div>
 						<div class="cell">
-							<textarea name="description" placeholder="happy begian_malinois dog squinting -- sfw bone black_muzzle blonde_hair teeth canine pointy_ears brown_eyes"></textarea>
+							<textarea name="taglist" placeholder="happy belgian_malinois dog squinting -- sfw bone black_muzzle blonde_hair teeth canine pointy_ears brown_eyes"></textarea>
 						</div>
 					</div>
 					<div class="row">
@@ -77,7 +77,7 @@
 				'</div>
 				<div class="vertical space"></div>
 				<div class="smalltext">
-					The tag system is central to the searching methods and general philosophy. The first few words of the tags ought to be semi-descriptive. They must read as an english sentence without conjunctions (and, or, but, because). An example is <em> happy begian_malinois dog squinting -- sfw bone black_muzzle blonde_hair teeth canine pointy_ears brown_eyes </em>. Observe how the first four words are descriptive, and the rest are less so. Tags after -- are sorted alphabetically.
+					The tag system is central to the searching methods and general philosophy. The first few words of the tags ought to be semi-descriptive. They must read as an english sentence without conjunctions (and, or, but, because). An example is <em> happy belgian_malinois dog squinting -- sfw bone black_muzzle blonde_hair teeth canine pointy_ears brown_eyes </em>. Observe how the first four words are descriptive, and the rest are less so. Tags after -- are sorted alphabetically.
 				</div>
 			</form>'
 		];
