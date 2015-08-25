@@ -38,10 +38,12 @@
 			$db = $this->dbc->get();
 			if ($prepare = $db->prepare
 				('
-					SELECT media_ID FROM MediaTag
+					SELECT * FROM MediaTag
+					JOIN Media ON Media.media_ID = MediaTag.media_ID
 					WHERE tag_ID in (?)
-					GROUP BY media_ID
+					GROUP BY MediaTag.media_ID
 					HAVING count(distinct tag_ID) > ?
+					ORDER BY upload_date DESC
 					LIMIT ?, ?;
 				'))
 			{
@@ -50,16 +52,32 @@
 				$prepare->bind_param('siii', $tag_string, $amount, $start_at, $pagecount);
 				$prepare->execute();
 				$result = $prepare->get_result();
-				while ($row = $result->fetch_array())
+				$media = array();
+				while ($row = $result->fetch_assoc())
+					$media[] = $row;
+
+				$returnvar = array('media' => $media);
+
+				if ($prepare = $db->prepare
+				(
+					'SELECT count(media_ID) FROM MediaTag
+					WHERE tag_ID in (?)
+					GROUP BY media_ID
+					HAVING count(distinct tag_ID) > ?;'
+				))
 				{
-					echo 'value: ';
-					echo $row[0];
-					echo '<br>';
+					$prepare->bind_param('si', $tag_string, $amount);
+					$prepare->execute();
+					$result = $prepare->get_result();
+					if ($row = $result->fetch_array())
+						$returnvar['pagecount'] = intval(ceil($row[0] / $pagecount));
+					else
+						$returnvar['pagecount'] = 0;
 				}
+				return $returnvar;
 			}
 			else
 				echo $db->error;
-			die();
 		}
 	}
 ?>

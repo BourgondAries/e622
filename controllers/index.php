@@ -4,7 +4,8 @@
 	require_once "views/Standard.php";
 
 	$media = new Media;
-	$media->getPage(['nsfw'], 3, 3);
+	var_dump($media->getPage(['nsfw'], 0, 50));
+	die();
 
 	echo Standard::render('Hi', 'There!', User::generateLoginState());
 ?>
