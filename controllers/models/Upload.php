@@ -103,6 +103,8 @@
 				return 'wrong_no_tags';
 
 			$tags = array_unique($tags);
+			if (!in_array('sfw', $tags) && !in_array('qsfw', $tags) && !in_array('nsfw'))
+				$tags[] = 'nsfw';
 			$counter = 0;
 			foreach ($tags as &$tag)
 			{
