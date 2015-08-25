@@ -12,6 +12,7 @@
 		{
 			switch ($reason)
 			{
+				case 'username_too_long': $reason = 'The username is too long. It must not exceed 26 characters.'; break;
 				case 'no_username': $reason = 'A request was made for a new account, but no username was given.'; break;
 				case 'no_email': $reason = 'A request was made for a new account, but no email was given.'; break;
 				case 'no_password': $reason = 'A request was made for a new account, but no password was given.'; break;

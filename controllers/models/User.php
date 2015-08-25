@@ -94,8 +94,11 @@
 
 		function change($oldusername, $username, $email, $password, $oldpassword)
 		{
+			if (strlen($username) > 26)
+				return 'username_too_long';
+
 			if (strlen($username) < 3)
-			return 'name_too_short';
+				return 'name_too_short';
 
 			if (strlen($username) != strlen(trim($username)))
 				return 'name_trailing_spaces';
@@ -188,6 +191,9 @@
 
 		function register($username, $email, $password)
 		{
+			if (strlen($username) > 26)
+				return 'username_too_long';
+
 			if (strlen($username) < 3)
 				return 'name_too_short';
 
