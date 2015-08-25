@@ -9,6 +9,6 @@
 		$notice = UploadPage::renderSuccess(Http::get('newid'));
 	else if (Http::has('reason'))
 		$notice = UploadPage::renderFail(Http::get('reason'));
-	$upload_form = UploadPage::render();
+	$upload_form = UploadPage::render(Http::get('description'), Http::get('taglist'));
 	echo Standard::render(UploadPage::renderInformation($notice), $upload_form, User::generateLoginState());
 ?>

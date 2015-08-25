@@ -79,6 +79,16 @@
 			}
 		}
 
+		private function associateTag($media_id, $tag_id, $placing)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('INSERT INTO MediaTag (tag_ID, media_ID, placing) VALUES (?, ?, ?);'))
+			{
+				$prepare->bind_param('iii', $tag_id, $media_id, $placing);
+				$prepare->execute();
+			}
+		}
+
 		function uploadFile($uploader, $description, $tags, $file)
 		{
 			// Check if the uploader has enough privileges
@@ -109,11 +119,17 @@
 				$tag_ids[] = $this->insertTag($tag);
 			foreach ($sorted_tags as &$tag)
 				$tag_ids[] = $this->insertTag($tag);
-			var_dump($tag_ids);
 			$extension = $this->getFileType($file);
 			if (self::startsWith($extension, 'wrong'))
 				return $extension;
-			return $this->insertMedia($uploader['user_ID'], $description, $file, $extension);
+			$media_id = $this->insertMedia($uploader['user_ID'], $description, $file, $extension);
+			$counter = 0;
+			foreach ($tag_ids as &$tag_id)
+			{
+				$this->associateTag($media_id, $tag_id, $counter);
+				++$counter;
+			}
+			return $media_id;
 		}
 	}
 ?>
