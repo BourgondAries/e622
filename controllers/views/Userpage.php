@@ -85,7 +85,7 @@
 			'</div>'
 		];
 
-		static private function renderPrivilegeButtons($privileges, $privilege, $viewer_privilege)
+		static private function renderPrivilegeButtons($privileges, $privilege, $viewer_privilege, $views_self)
 		{
 			$keys = '';
 			foreach ($privileges as &$privilege_set)
@@ -93,7 +93,7 @@
 				$status = '';
 				if ($privilege_set['privilege_id'] == $privilege)
 					$status = 'selected';
-				else if ($privilege_set['privilege_id'] < $viewer_privilege)
+				else if ($privilege_set['privilege_id'] <= $viewer_privilege && $views_self == false || $privilege_set['privilege_id'] < $viewer_privilege && $views_self == true)
 					$status = 'disabled';
 
 				$description = $privilege_set['description'];
@@ -124,7 +124,7 @@
 
 		static function renderPrivileged($username, $email, $privileges, $userprivilege, $viewer_privilege, $viewername)
 		{
-			$privilege_buttons = self::renderPrivilegeButtons($privileges, $userprivilege, $viewer_privilege);
+			$privilege_buttons = self::renderPrivilegeButtons($privileges, $userprivilege, $viewer_privilege, $username == $viewername);
 			$oldpassfield = '';
 			if ($viewername == $username)
 				$oldpassfield = self::$old_pass_entry;
