@@ -14,6 +14,33 @@
 			$this->dbc->get()->commit();
 		}
 
+		function existsId($id)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('SELECT 1 FROM Media WHERE media_ID = ?;'))
+			{
+				$prepare->bind_param('i', $id);
+				$prepare->execute();
+				return 0 < $prepare->get_result()->num_rows;
+			}
+		}
+
+		function rollback()
+		{
+			return $this->dbc->get()->rollback();
+		}
+
+		function linkFromTo($from, $to)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('INSERT INTO MediaLink (from_id, to_id) VALUES (?, ?);'))
+			{
+				$prepare->bind_param('ii', $from, $to);
+				$prepare->execute();
+				return $db->affected_rows;
+			}
+		}
+
 		private function insertTag($tagname)
 		{
 			$db = $this->dbc->get();

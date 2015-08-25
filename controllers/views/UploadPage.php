@@ -2,9 +2,14 @@
 	require_once 'utils/StringManip.php';
 	class UploadPage
 	{
-		static function render($previous_description = '', $previous_tags = '')
+		static function render($previous_description, $previous_tags, $link, $autolink)
 		{
-			return intermix(self::$upload_form, [$previous_description, $previous_tags]);
+			if ($autolink == 1)
+			{
+				return intermix(self::$upload_form, [$previous_description, $previous_tags, $link, 'checked']);
+			}
+			else
+				return intermix(self::$upload_form, [$previous_description, $previous_tags, '', '']);
 		}
 
 		static function renderSuccess($id)
@@ -24,6 +29,8 @@
 		{
 			switch ($reason)
 			{
+				case 'already_linked': $reason = 'The medium to link from already has a link to some other medium. Only one link is allowed.'; break;
+				case 'no_such_link': $reason = 'The medium you are trying to link to does not appear to exist'; break;
 				case 'wrong_no_privilege': $reason = 'This account does not have the privilege to upload media.'; break;
 				case 'wrong_no_tags': $reason = 'No tags were provided. Every medium must have at least one tag.'; break;
 				case 'wrong_submime': $reason = 'The type is an image or video, but not the supported format. webm, gif, png, hpg, and jpeg are supported.'; break;
@@ -112,7 +119,9 @@
 						<div class="cell">
 						</div>
 						<div class="cell">
-							<textarea name="link" placeholder="link id"></textarea>
+							<textarea name="link" placeholder="link id">',
+
+							'</textarea>
 						</div>
 					</div>
 					<div class="row"><div class="vertical space"></div></div>
@@ -128,7 +137,9 @@
 						<div class="cell">
 						</div>
 						<div class="cell">
-							<input name="autolink" type="checkbox">
+							<input name="autolink" type="checkbox"',
+
+							'>
 						</div>
 					</div>
 					<div class="row"><div class="vertical space"></div></div>
