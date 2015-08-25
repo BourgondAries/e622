@@ -16,7 +16,7 @@
 		die();
 	}
 
-	if ($username == $logged_in_as || $viewerinfo['privilege'] <= 3)
+	if ($username == $logged_in_as || $userinfo['privilege'] > $viewerinfo['privilege'] && $viewerinfo['privilege'] <= 3)
 	{
 		$privilege = Userpage::renderPrivileged($username, $userinfo['email'], $privileges, $userinfo['privilege'], $viewerinfo['privilege'], $viewerinfo['username']);
 		$sidebar = Userpage::renderPrivilegedStatistics();
