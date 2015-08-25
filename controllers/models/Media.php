@@ -24,8 +24,29 @@
 			}
 		}
 
-		function getPage($tags, $pagenumber, $pagecount)
+		function getPage($tags, $pagenumber, $items_per_page)
 		{
+			$db = $this->dbc->get();
+			if (empty($tags))
+			{
+				if ($prepare = $db->prepare('SELECT * FROM Media ORDER BY upload_date DESC LIMIT ?, ?;'))
+				{
+					$start_at = $pagenumber * $items_per_page;
+					$prepare->bind_param('ii', $start_at, $items_per_page);
+					$prepare->execute();
+					$result = $prepare->get_result();
+					$media = array();
+					while ($row = $result->fetch_assoc())
+						$media[] = $row;
+					if ($prepare = $db->prepare('SELECT count(media_ID) AS elems FROM Media;'))
+					{
+						$prepare->execute();
+						$result = $prepare->get_result();
+						$result = $result->fetch_assoc();
+						return ['media' => $media, 'pagecount' => $result['elems']];
+					}
+				}
+			}
 			$tag_ids = [];
 			foreach ($tags as &$tag)
 			{
@@ -35,7 +56,6 @@
 			}
 			$tag_string = implode(',', $tag_ids);
 
-			$db = $this->dbc->get();
 			if ($prepare = $db->prepare
 				('
 					SELECT * FROM MediaTag
@@ -48,8 +68,8 @@
 				'))
 			{
 				$amount = count($tag_ids) - 1;
-				$start_at = $pagenumber * $pagecount;
-				$prepare->bind_param('siii', $tag_string, $amount, $start_at, $pagecount);
+				$start_at = $pagenumber * $items_per_page;
+				$prepare->bind_param('siii', $tag_string, $amount, $start_at, $items_per_page);
 				$prepare->execute();
 				$result = $prepare->get_result();
 				$media = array();
@@ -69,10 +89,7 @@
 					$prepare->bind_param('si', $tag_string, $amount);
 					$prepare->execute();
 					$result = $prepare->get_result();
-					if ($row = $result->fetch_array())
-						$returnvar['pagecount'] = intval(ceil($row[0] / $pagecount));
-					else
-						$returnvar['pagecount'] = 0;
+					$returnvar['pagecount'] = intval(ceil($result->num_rows / $items_per_page));
 				}
 				return $returnvar;
 			}
