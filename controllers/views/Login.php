@@ -5,18 +5,12 @@
 		{
 			switch ($reason)
 			{
-				case 'wrong_password':
-					$reason = 'The password is incorrect';
-				break;
-				case 'invalid_user':
-					$reason = 'The user does not exist, maybe you should create an account!';
-				break;
-				case 'account_suspended':
-					$reason = 'The account is currently suspended';
-				break;
-				case null:
-					return null;
-				break;
+				case 'user_does_not_exist': $reason = 'The user does not exist.'; break;
+				case 'uploading_redirect': $reason = 'You were logged out whilst attempting to upload. Please log in again.'; break;
+				case 'wrong_password': $reason = 'The password is incorrect'; break;
+				case 'invalid_user': $reason = 'The user does not exist, maybe you should create an account!'; break;
+				case 'account_suspended': $reason = 'The account is currently suspended'; break;
+				case null: return null; break;
 			}
 			return Login::$reason_code[0] . $reason . Login::$reason_code[1];
 		}
