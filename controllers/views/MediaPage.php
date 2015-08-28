@@ -16,6 +16,9 @@
 				<source src="/storage/',
 
 				'" type="video/webm">
+				<div class="warning">
+					Your browser does not appear to support webm video.
+				</div>
 			</video>'
 		];
 
