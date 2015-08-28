@@ -9,8 +9,9 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .boxpad { padding: 1vh 1vw; }
 .e622 .leftpad { padding-left: 1vw; }
 
-.e622 img.thumbnail { border-top-left-radius: 0.5vmin; border-top-right-radius: 0.5vmin;  max-height: 18vw; max-width: 18vw;}
-.e622 .thumbnailbox { background-color: red; height: 1vh; width: 100%; }
+.e622 img.thumbnail { border-top-left-radius: 0.5vmin; border-top-right-radius: 0.5vmin; display: block; max-height: 18vw; max-width: 18vw;}
+.e622 .thumbnailbar { background-color: rgba(255, 0, 255, 0.2); border-bottom-left-radius: 0.5vmin; border-bottom-right-radius: 0.5vmin; text-align: center; }
+.e622 .thumbnailbox { display: inline-block; }
 
 .e622 em { font-style: italic; }
 
@@ -39,7 +40,7 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .space.horizontal { display: inline-block; width: 1vw; }
 .e622 .space.small.horizontal { display: inline-block; width: 10vw; }
 .e622 .space.little.horizontal{ width: 20vw; }
-.e622 .space.vertical { height: 1vh; }
+.e622 .space.vertical { display: inline-block; height: 1vh; }
 .e622 .smalltext { font-size: 80%; }
 .e622 .suspicion { background-color: orange; border: 0.3vmin solid brown; border-radius: 0.5vmin; padding: 0.5vh 0.5vw; }
 .e622 .tinytext{ font-size: 60%; }

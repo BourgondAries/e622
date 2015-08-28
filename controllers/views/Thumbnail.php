@@ -17,11 +17,21 @@
 
 		static private $code =
 		[
-			'<img class="thumbnail" src="/storage/',
+			'<div class="thumbnailbox">
+				<img class="thumbnail" src="/storage/',
 
-			'_200.',
+				'_200.',
 
-			'"><div class="horizontal space"></div>'
+				'">
+				<div class="thumbnailbar">
+					<div class="smalltext">
+						Damn son
+					</div>
+				</div>
+				<div class="vertical space">
+				</div>
+			</div>
+			<div class="horizontal space"></div>'
 		];
 	}
 ?>
