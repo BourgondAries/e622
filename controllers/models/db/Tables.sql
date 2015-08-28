@@ -89,6 +89,7 @@ CREATE TABLE UserFeedback
 	FOREIGN KEY (media_ID) REFERENCES Media(media_ID) ON DELETE CASCADE
 );
 
+ALTER TABLE UserFeedback ADD CONSTRAINT userfeedback_unique_key UNIQUE (media_ID, user_ID);
 
 CREATE TABLE Comment
 (
