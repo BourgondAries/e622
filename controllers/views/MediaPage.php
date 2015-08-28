@@ -10,17 +10,17 @@
 				return intermix(self::$code, [$media_data['filename']]);
 		}
 
-		static function renderControls($id, $user_affiliation = null)
+		static function renderControls($id, $user_affiliation, $stats)
 		{
 			if ($user_affiliation == null)
-				return intermix(self::$statistics, [$id, '', $id, '', $id, '']);
+				return intermix(self::$statistics, [$id, '', $id, '', $id, '', $stats['ups'], $stats['favs'], $stats['downs']]);
 			else
 			{
 				$ui = $user_affiliation;
 				$up = $ui['upvote'] == 1 ? '&#8658; ' : '';
 				$fav = $ui['favorite'] == 1 ? '&#8658; ' : '';
 				$down = $ui['downvote'] == 1 ? '&#8658; ' : '';
-				return intermix(self::$statistics, [$id, $up, $id, $fav, $id, $down]);
+				return intermix(self::$statistics, [$id, $up, $id, $fav, $id, $down, $stats['ups'], $stats['favs'], $stats['downs']]);
 			}
 		}
 
@@ -54,6 +54,18 @@
 						'&#9662; Downvote">
 					</form>
 				</div>
+			</div>
+			<div class="vertical space"></div>
+			<div class="table center">
+				<div class="cell upvote"> &#9652; ',
+
+				'</div>
+				<div class="cell favorite"> &#9829; ',
+
+				'</div>
+				<div class="cell downvote"> &#9662; ',
+
+				'</div>
 			</div>'
 		];
 

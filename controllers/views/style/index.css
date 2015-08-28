@@ -16,6 +16,7 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .thumbnailbar { background-color: rgba(255, 0, 255, 0.2); border-bottom-left-radius: 0.5vmin; border-bottom-right-radius: 0.5vmin; text-align: center; }
 .e622 .thumbnailbox { display: inline-block; text-align: center; }
 
+.e622 .center { text-align: center; }
 .e622 em { font-style: italic; }
 
 .e622 .content { background-color: #2F175C; background-image: url("top_gradient.png"); background-position: 0 0; background-repeat: repeat-x; border-radius: 0.5vmin; height: 100%; margin: 0 1vw; margin-bottom: 1vh; padding: 1.5vh 1vw; }

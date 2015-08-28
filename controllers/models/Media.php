@@ -14,7 +14,19 @@
 			$this->dbc->get()->commit();
 		}
 
-		private function getTagId($description)
+		function getMediaStatistics($id)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('SELECT sum(upvote) AS ups, sum(favorite) AS favs, sum(downvote) AS downs FROM UserFeedback WHERE media_ID = ?;'))
+			{
+				$prepare->bind_param('i', $id);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				return $result->fetch_assoc();
+			}
+		}
+
+		function getTagId($description)
 		{
 			$db = $this->dbc->get();
 			if ($prepare = $db->prepare('SELECT tag_ID FROM Tag WHERE description = ?;'))
