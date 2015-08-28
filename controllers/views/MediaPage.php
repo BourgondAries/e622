@@ -12,6 +12,8 @@
 
 		static function renderControls($id, $user_affiliation, $stats)
 		{
+			if ($stats['ups'] == null)
+				$stats = array('ups' => 0, 'favs' => 0, 'downs' => 0);
 			if ($user_affiliation == null)
 				return intermix(self::$statistics, [$id, '', $id, '', $id, '', $stats['ups'], $stats['favs'], $stats['downs']]);
 			else
