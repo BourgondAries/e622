@@ -7,6 +7,6 @@
 	$media = new Media;
 	$media_data = $media->getMedia(Http::get('id'));
 	$media_code = MediaPage::render($media_data);
-	$control_code = MediaPage::renderControls();
+	$control_code = MediaPage::renderControls($media_data['media_ID']);
 	echo Standard::render($control_code, $media_code, User::generateLoginState());
 ?>

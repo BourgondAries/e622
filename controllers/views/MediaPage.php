@@ -10,31 +10,35 @@
 				return intermix(self::$code, [$media_data['filename']]);
 		}
 
-		static function renderControls()
+		static function renderControls($id)
 		{
-			return intermix(self::$statistics, ['', '']);
+			return intermix(self::$statistics, [$id, $id, $id]);
 		}
 
 		static private $statistics =
 		[
 			'<div class="statistic smalltext table">
 				<div class="row">
-					<form action="/like/id" method="post">
+					<form action="/upvote/',
+
+					'" method="post">
 						<input class="upvote" type="submit" value="&#9652; Upvote">
-					</form>',
-
-				'</div>
+					</form>
+				</div>
 				<div class="row">
-					<form action="/like/id" method="post">
+					<form action="/favorite/',
+
+					'" method="post">
 						<input class="favorite" type="submit" value="&#9829; Favorite">
-					</form>',
-
-				'</div>
+					</form>
+				</div>
 				<div class="row">
-					<form action="/like/id" method="post">
+					<form action="/downvote/',
+
+					'" method="post">
 						<input class="downvote" type="submit" value="&#9662; Downvote">
-					</form>',
-				'</div>
+					</form>
+				</div>
 			</div>'
 		];
 
