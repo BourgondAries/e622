@@ -103,15 +103,20 @@
 				$prepare->bind_param('si', $description, $uploaderid);
 				$prepare->execute();
 				$mediaid = $db->insert_id;
-				if ($prepare = $db->prepare('UPDATE Media SET filename = ? WHERE media_ID = ?;'))
+				if ($prepare = $db->prepare('INSERT INTO UserFeedback (media_ID, user_ID) VALUES (?, 0);'))
 				{
-					$newname = base_convert($mediaid, 10, 36) . ".$extension";
-					$prepare->bind_param('si', $newname, $mediaid);
+					$prepare->bind_param('i', $mediaid);
 					$prepare->execute();
-					$root = $_SERVER['DOCUMENT_ROOT'];
-					rename($file, "$root/storage/$newname");
-					self::generateThumbnail("$root/storage/$newname", $extension, 200);
-					return $mediaid;
+					if ($prepare = $db->prepare('UPDATE Media SET filename = ? WHERE media_ID = ?;'))
+					{
+						$newname = base_convert($mediaid, 10, 36) . ".$extension";
+						$prepare->bind_param('si', $newname, $mediaid);
+						$prepare->execute();
+						$root = $_SERVER['DOCUMENT_ROOT'];
+						rename($file, "$root/storage/$newname");
+						self::generateThumbnail("$root/storage/$newname", $extension, 200);
+						return $mediaid;
+					}
 				}
 			}
 		}

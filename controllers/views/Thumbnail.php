@@ -12,8 +12,46 @@
 
 		static function generateThumbnail($item)
 		{
-			return intermix(self::$code, [$item['media_ID'], $item['filename'], getExtension($item['filename'])]);
+			$stats = self::generateStats($item['ups'], $item['favs'], $item['downs'], 'sfw');
+			return intermix(self::$code, [$item['media_ID'], $item['filename'], getExtension($item['filename']), $stats]);
 		}
+
+		static function generateStats($ups, $favs, $downs, $sfwrating)
+		{
+			$rating = '';
+			$color = '';
+			switch ($sfwrating)
+			{
+				case 'sfw':
+					$rating = 'S';
+					$color = 'upvote';
+				break;
+				case 'qsfw':
+					$rating = 'Q';
+					$color = 'favorite';
+				break;
+				case 'nsfw':
+					$rating = 'N';
+					$color = 'downvote';
+				break;
+			}
+			return intermix(self::$thumbcode, [$ups, $favs, $downs, $color, $rating]);
+		}
+
+		static private $thumbcode =
+		[
+			'<span class="upvote">&#9652; ',
+
+			'</span><span class="favorite"> &#9829; ',
+
+			'</span><span class="downvote"> &#9662; ',
+
+			'</span><span class="',
+
+			'"> ',
+
+			'</span>'
+		];
 
 		static private $code =
 		[
@@ -28,9 +66,9 @@
 					'">
 				</a>
 				<div class="thumbnailbar">
-					<div class="smalltext">
-						Damn son
-					</div>
+					<div class="smalltext">',
+
+					'</div>
 				</div>
 				<div class="vertical space">
 				</div>

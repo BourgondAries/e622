@@ -115,7 +115,8 @@
 			$db = $this->dbc->get();
 			if (empty($tags))
 			{
-				if ($prepare = $db->prepare('SELECT * FROM Media ORDER BY upload_date DESC LIMIT ?, ?;'))
+				if ($prepare = $db->prepare('SELECT Media.media_ID, filename, sum(upvote) AS ups, sum(favorite) AS favs, sum(downvote) AS downs FROM Media LEFT JOIN UserFeedback ON Media.media_ID = UserFeedback.media_ID GROUP BY UserFeedback.media_ID ORDER BY upload_date DESC LIMIT ?, ?;'))
+				// if ($prepare = $db->prepare('SELECT * FROM Media ORDER BY upload_date DESC LIMIT ?, ?;'))
 				{
 					$start_at = $pagenumber * $items_per_page;
 					$prepare->bind_param('ii', $start_at, $items_per_page);
