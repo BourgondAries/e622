@@ -17,15 +17,15 @@
 
 		static private $statistics =
 		[
-			'<div class="table">
+			'<div class="smalltext table">
 				<div class="row">
-					<a href="/post"> Upvote </a>',
+					<a class="upvote" href="/post"> &#9652; Upvote </a>',
 				'</div>
 				<div class="row">
-					<a href="/post"> Favorite </a>',
+					<a class="favorite" href="/post"> &#9829; Favorite </a>',
 				'</div>
 				<div class="row">
-					<a href="/post"> Downvote </a>
+					<a class="downvote" href="/post"> &#9662; Downvote </a>
 				</div>
 			</div>'
 		];
