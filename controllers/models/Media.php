@@ -9,6 +9,11 @@
 			$this->dbc = new Database;
 		}
 
+		function __destruct()
+		{
+			$this->dbc->get()->commit();
+		}
+
 		private function getTagId($description)
 		{
 			$db = $this->dbc->get();
@@ -33,6 +38,51 @@
 				$prepare->execute();
 				$result = $prepare->get_result();
 				return $result->fetch_assoc();
+			}
+		}
+
+		function upvote($media_id, $user_id)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('INSERT INTO UserFeedback (user_ID, media_ID, upvote) VALUES (?, ?, true) ON DUPLICATE KEY UPDATE upvote = !upvote;'))
+			{
+				$prepare->bind_param('ii', $user_id, $media_id);
+				$prepare->execute();
+			}
+			else
+			{
+				echo $db->error;
+				die();
+			}
+		}
+
+		function favorite($media_id, $user_id)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('INSERT INTO UserFeedback (user_ID, media_ID, favorite) VALUES (?, ?, true) ON DUPLICATE KEY UPDATE favorite = !favorite;'))
+			{
+				$prepare->bind_param('ii', $user_id, $media_id);
+				$prepare->execute();
+			}
+			else
+			{
+				echo $db->error;
+				die();
+			}
+		}
+
+		function downvote($media_id, $user_id)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('INSERT INTO UserFeedback (user_ID, media_ID, downvote) VALUES (?, ?, false) ON DUPLICATE KEY UPDATE downvote = !downvote;'))
+			{
+				$prepare->bind_param('ii', $user_id, $media_id);
+				$prepare->execute();
+			}
+			else
+			{
+				echo $db->error;
+				die();
 			}
 		}
 
