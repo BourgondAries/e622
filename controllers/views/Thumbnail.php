@@ -17,9 +17,9 @@
 
 		static private $code =
 		[
-			'<img src="/storage/',
+			'<img style="max-height: 25vh; max-width: 18vw;" src="/storage/',
 
-			'_200.png">'
+			'_200.png"><div style="display: inline-block;" class="horizontal space"></div>'
 		];
 	}
 ?>
