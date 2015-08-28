@@ -10,6 +10,26 @@
 				return intermix(self::$code, [$media_data['filename']]);
 		}
 
+		static function renderControls()
+		{
+			return intermix(self::$statistics, ['', '']);
+		}
+
+		static private $statistics =
+		[
+			'<div class="table">
+				<div class="row">
+					<a href="/post"> Upvote </a>',
+				'</div>
+				<div class="row">
+					<a href="/post"> Favorite </a>',
+				'</div>
+				<div class="row">
+					<a href="/post"> Downvote </a>
+				</div>
+			</div>'
+		];
+
 		static private $video_code =
 		[
 			'<video class="media" autoplay controls>
