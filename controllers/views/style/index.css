@@ -9,6 +9,8 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .boxpad { padding: 1vh 1vw; }
 .e622 .leftpad { padding-left: 1vw; }
 
+.e622 img.thumbnail { border-top-left-radius: 0.5vmin; border-top-right-radius: 0.5vmin;  max-height: 18vw; max-width: 18vw;}
+
 .e622 em { font-style: italic; }
 
 .e622 .content { background-color: #2F175C; background-image: url("top_gradient.png"); background-position: 0 0; background-repeat: repeat-x; border-radius: 0.5vmin; height: 100%; margin: 0 1vw; margin-bottom: 1vh; padding: 1.5vh 1vw; }

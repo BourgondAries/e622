@@ -12,14 +12,16 @@
 
 		static function generateThumbnail($item)
 		{
-			return intermix(self::$code, [$item['filename']]);
+			return intermix(self::$code, [$item['filename'], getExtension($item['filename'])]);
 		}
 
 		static private $code =
 		[
-			'<img style="max-height: 25vh; max-width: 18vw;" src="/storage/',
+			'<img class="thumbnail" style="max-height: 18vh; max-width: 18vw;" src="/storage/',
 
-			'_200.png"><div style="display: inline-block;" class="horizontal space"></div>'
+			'_200.',
+
+			'"><div class="horizontal space"></div>'
 		];
 	}
 ?>

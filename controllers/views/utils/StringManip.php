@@ -1,4 +1,9 @@
 <?php
+	function getExtension($filename)
+	{
+		return preg_replace('/.+\.([^\.]+)/', '$1', $filename);
+	}
+
 	function intermix($template, $array)
 	{
 		$result = '';
