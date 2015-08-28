@@ -9,7 +9,7 @@
 
 		static private $code =
 		[
-			'<img src="/storage/',
+			'<img class="media" src="/storage/',
 
 			'">'
 		];

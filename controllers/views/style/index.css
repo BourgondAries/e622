@@ -31,6 +31,8 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .row { display: table-row; width: 100%; }
 .e622 .table { display: table; overflow-wrap: break-word; table-layout: fixed; width: 100%; }
 
+.e622 .media { max-width: 100%; }
+
 .e622 .navigation_bar { display: table; font-size: 120%; text-align: center; width: 100%; }
 .e622 .navigation_bar a:hover { background-color: rgba(0, 0, 0, 0.2); }
 .e622 .navigation_bar a { display: table-cell; }

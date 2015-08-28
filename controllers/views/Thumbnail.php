@@ -12,17 +12,21 @@
 
 		static function generateThumbnail($item)
 		{
-			return intermix(self::$code, [$item['filename'], getExtension($item['filename'])]);
+			return intermix(self::$code, [$item['media_ID'], $item['filename'], getExtension($item['filename'])]);
 		}
 
 		static private $code =
 		[
 			'<div class="thumbnailbox">
-				<img class="thumbnail" src="/storage/',
-
-				'_200.',
+				<a href="/media/',
 
 				'">
+					<img class="thumbnail" src="/storage/',
+
+					'_200.',
+
+					'">
+				</a>
 				<div class="thumbnailbar">
 					<div class="smalltext">
 						Damn son
