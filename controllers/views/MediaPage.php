@@ -13,7 +13,7 @@
 		static function renderControls($id, $user_affiliation = null)
 		{
 			if ($user_affiliation == null)
-				return intermix(self::$statistics, [$id, 'upvote', $id, 'favorite', $id, 'downvote']);
+				return intermix(self::$statistics, [$id, '', $id, '', $id, '']);
 			else
 			{
 				$ui = $user_affiliation;
