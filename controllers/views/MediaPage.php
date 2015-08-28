@@ -10,9 +10,18 @@
 				return intermix(self::$code, [$media_data['filename']]);
 		}
 
-		static function renderControls($id)
+		static function renderControls($id, $user_affiliation = null)
 		{
-			return intermix(self::$statistics, [$id, $id, $id]);
+			if ($user_affiliation == null)
+				return intermix(self::$statistics, [$id, 'upvote', $id, 'favorite', $id, 'downvote']);
+			else
+			{
+				$ui = $user_affiliation;
+				$up = $ui['upvote'] == 1 ? '&#8658; ' : '';
+				$fav = $ui['favorite'] == 1 ? '&#8658; ' : '';
+				$down = $ui['downvote'] == 1 ? '&#8658; ' : '';
+				return intermix(self::$statistics, [$id, $up, $id, $fav, $id, $down]);
+			}
 		}
 
 		static private $statistics =
@@ -22,21 +31,27 @@
 					<form action="/upvote/',
 
 					'" method="post">
-						<input class="upvote" type="submit" value="&#9652; Upvote">
+						<input class="upvote" type="submit" value="',
+
+						'&#9652; Upvote">
 					</form>
 				</div>
 				<div class="row">
 					<form action="/favorite/',
 
 					'" method="post">
-						<input class="favorite" type="submit" value="&#9829; Favorite">
+						<input class="favorite" type="submit" value="',
+
+						'&#9829; Favorite">
 					</form>
 				</div>
 				<div class="row">
 					<form action="/downvote/',
 
 					'" method="post">
-						<input class="downvote" type="submit" value="&#9662; Downvote">
+						<input class="downvote" type="submit" value="',
+
+						'&#9662; Downvote">
 					</form>
 				</div>
 			</div>'

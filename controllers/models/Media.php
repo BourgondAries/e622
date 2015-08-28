@@ -41,6 +41,18 @@
 			}
 		}
 
+		function getUserVotes($media_id, $user_id)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('SELECT * FROM UserFeedback WHERE media_ID = ? AND user_ID = ?;'))
+			{
+				$prepare->bind_param('ii', $media_id, $user_id);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				return $result->fetch_assoc();
+			}
+		}
+
 		function upvote($media_id, $user_id)
 		{
 			$db = $this->dbc->get();
