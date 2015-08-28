@@ -17,16 +17,24 @@
 
 		static private $statistics =
 		[
-			'<div class="smalltext table">
+			'<div class="statistic smalltext table">
 				<div class="row">
-					<a class="upvote" href="/post"> &#9652; Upvote </a>',
+					<form action="/like/id" method="post">
+						<input class="upvote" type="submit" value="&#9652; Upvote">
+					</form>',
+
 				'</div>
 				<div class="row">
-					<a class="favorite" href="/post"> &#9829; Favorite </a>',
+					<form action="/like/id" method="post">
+						<input class="favorite" type="submit" value="&#9829; Favorite">
+					</form>',
+
 				'</div>
 				<div class="row">
-					<a class="downvote" href="/post"> &#9662; Downvote </a>
-				</div>
+					<form action="/like/id" method="post">
+						<input class="downvote" type="submit" value="&#9662; Downvote">
+					</form>',
+				'</div>
 			</div>'
 		];
 
