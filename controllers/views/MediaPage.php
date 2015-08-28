@@ -12,7 +12,7 @@
 
 		static private $video_code =
 		[
-			'<video class="media" controls>
+			'<video class="media" autoplay controls>
 				<source src="/storage/',
 
 				'" type="video/webm">
