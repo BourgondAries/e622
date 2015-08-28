@@ -43,7 +43,8 @@
 						$prepare->execute();
 						$result = $prepare->get_result();
 						$result = $result->fetch_assoc();
-						return ['media' => $media, 'pagecount' => $result['elems']];
+						$pagecount = intval(ceil($result['elems'] / $items_per_page));
+						return ['media' => $media, 'pagecount' => $pagecount];
 					}
 				}
 			}
