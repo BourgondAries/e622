@@ -17,7 +17,7 @@
 
 		static private $code =
 		[
-			'<img class="thumbnail" style="max-height: 18vh; max-width: 18vw;" src="/storage/',
+			'<img class="thumbnail" src="/storage/',
 
 			'_200.',
 

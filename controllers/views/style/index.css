@@ -10,6 +10,7 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .leftpad { padding-left: 1vw; }
 
 .e622 img.thumbnail { border-top-left-radius: 0.5vmin; border-top-right-radius: 0.5vmin;  max-height: 18vw; max-width: 18vw;}
+.e622 .thumbnailbox { background-color: red; height: 1vh; width: 100%; }
 
 .e622 em { font-style: italic; }
 
