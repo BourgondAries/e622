@@ -24,6 +24,18 @@
 			}
 		}
 
+		function getMedia($id)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('SELECT * FROM Media WHERE media_ID = ?;'))
+			{
+				$prepare->bind_param('i', $id);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				return $result->fetch_assoc();
+			}
+		}
+
 		function getPage($tags, $pagenumber, $items_per_page)
 		{
 			$db = $this->dbc->get();

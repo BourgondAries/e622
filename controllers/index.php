@@ -8,5 +8,5 @@
 	$results = $media->getPage([], 0, 50);
 	$html = Thumbnail::generateThumbnails($results['media']);
 
-	echo Standard::render('Hi', $html, User::generateLoginState());
+	echo Standard::render('', $html, User::generateLoginState());
 ?>
