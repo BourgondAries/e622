@@ -33,6 +33,11 @@
 		function postComment($id, $userid, $comment)
 		{
 			$comment = htmlspecialchars($comment);
+			$this->postCommentAuthorized($id, $userid, $comment);
+		}
+
+		private function postCommentAuthorized($id, $userid, $comment)
+		{
 			$db = $this->dbc->get();
 			if ($prepare = $db->prepare('INSERT INTO Comment (user_ID, media_ID, comment) VALUES (?, ?, ?);'))
 			{
@@ -56,9 +61,22 @@
 			return $taglist;
 		}
 
+		function updateDescription($media_id, $user_id, $description)
+		{
+			$description = htmlspecialchars($description);
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('UPDATE Media SET description = ? WHERE media_ID = ?;'))
+			{
+				$prepare->bind_param('si', $description, $media_id);
+				$prepare->execute();
+			}
+			$this->postCommentAuthorized($media_id, $user_id, "<strong>Description Update:</strong><br>" . $description);
+		}
+
 		function updateTags($media_id, $userid, $tags)
 		{
 			$tags = htmlspecialchars($tags);
+			$this->postCommentAuthorized($media_id, $userid, "<strong>Tag Update:</strong><br>" . $tags);
 			$tags = explode(' ', $tags);
 			$db = $this->dbc->get();
 			if ($prepare = $db->prepare('DELETE FROM MediaTag WHERE media_ID = ?;'))

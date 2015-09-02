@@ -12,6 +12,7 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .favorite { color: yellow; }
 .e622 .downvote { color: red; }
 
+.e622 strong { font-weight: bold; }
 .e622 img.thumbnail { border-top-left-radius: 0.5vmin; border-top-right-radius: 0.5vmin; display: block; max-height: 18vw; max-width: 18vw;}
 .e622 .thumbnailbar { background-color: rgba(255, 0, 255, 0.2); border-bottom-left-radius: 0.5vmin; border-bottom-right-radius: 0.5vmin; text-align: center; }
 .e622 .thumbnailbox { display: inline-block; text-align: center; }
