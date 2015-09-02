@@ -82,7 +82,7 @@
 				++$counter;
 			}
 			$unsorted_tags = array_slice($tags, 0, $counter);
-			$sorted_tags = array_slice($tags, $counter + 1);
+			$sorted_tags = array_slice($tags, $counter);
 			sort($sorted_tags, SORT_STRING);
 
 			$tag_ids = [];
