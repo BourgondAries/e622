@@ -252,6 +252,9 @@
 
 		function register($username, $email, $password)
 		{
+			$username = htmlspecialchars($username);
+			$email = htmlspecialchars($email);
+
 			if (strlen($username) > 26)
 				return 'username_too_long';
 
