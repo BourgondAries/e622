@@ -16,6 +16,9 @@
 			return intermix(self::$code, [$item['media_ID'], $item['filename'], getExtension($item['filename']), $stats]);
 		}
 
+		static function generatePageList($current_page, $page_count)
+		{}
+
 		static function generateStats($ups, $favs, $downs, $sfwrating)
 		{
 			$rating = '';
