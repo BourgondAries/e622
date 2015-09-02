@@ -82,7 +82,7 @@
 			$comment = $ci['comment'];
 			$user = $ci['username'];
 			$privilege = $ci['description']; // Privilege description
-			return intermix(self::$single_comment_code, [$user, $privilege, $date]);
+			return intermix(self::$single_comment_code, [$user, $privilege, $date, $comment]);
 		}
 
 		static private $single_comment_code =
@@ -110,7 +110,9 @@
 				<div class="cell">
 				</div>
 				<div class="cell">
-					An example
+					<div class="smalltext">',
+
+					'</div>
 				</div>
 			</div>
 			<div class="row">
