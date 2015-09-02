@@ -25,14 +25,6 @@
 			</form>'
 		];
 
-		private static function renderComment($comment_info)
-		{
-		}
-
-		private static function renderComments($comment_list)
-		{
-		}
-
 		private static function renderDescription($id, $description)
 		{
 			return intermix(self::$description_code, [$id, $description]);
@@ -69,24 +61,74 @@
 				</div>
 				<div class="cell"></div>
 				<div class="cell">
-					<textarea placeholder="your comment"></textarea>
+					<textarea name="comment" placeholder="your comment"></textarea>
 				</div>
 			</form>'
 		];
 
+		private static function renderComments($comment_list)
+		{
+			$code = '';
+			foreach ($comment_list as &$comment)
+				$code .= self::renderComment($comment);
+			return intermix(self::$comment_code, [$code]);
+		}
+
 		static function renderComment($comment_info)
 		{
-			intermix();
+			var_dump($comment_info);
+			$ci = $comment_info;
+			$date = $ci['comm_date'];
+			$comment = $ci['comment'];
+			$user = $ci['username'];
+			$privilege = $ci['description']; // Privilege description
+			return intermix(self::$single_comment_code, [$user, $privilege, $date]);
 		}
+
+		static private $single_comment_code =
+		[
+			'<div class="row">
+				<div class="keep">
+					<div class="cell">
+						<div class="autotable">
+							<div class="row">',
+
+							'</div>
+							<div class="row">
+								<div class="tinytext">',
+
+								'</div>
+							</div>
+							<div class="row">
+								<div class="tinytext">',
+
+								'</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="cell">
+				</div>
+				<div class="cell">
+					An example
+				</div>
+			</div>
+			<div class="row">
+				<div class="vertical space"></div>
+			</div>'
+		];
 
 		static private $comment_code =
 		[
-			'<div class="comment">',
+			'<div class="autotable">
+				<div class="table-column auto"></div>
+				<div class="table-column tiny"></div>
+				<div class="table-column max"></div>',
 
 			'</div>'
 		];
 
-		static function render($media_data, $associated_tags)
+		static function render($media_data, $associated_tags, $comments)
 		{
 			$code = '';
 			if (getExtension($media_data['filename']) == 'webm')
@@ -97,6 +139,7 @@
 			$tags = self::renderTags($media_data['media_ID'], $associated_tags);
 			$comment = self::renderCommentWriter($media_data['media_ID']);
 			$code .= intermix(self::$inputcode, [$description, $tags, $comment]);
+			$code .= self::renderComments($comments);
 			return $code;
 		}
 
@@ -109,7 +152,8 @@
 				<div class="row"><div class="vertical space"></div></div>',
 				'<div class="row"><div class="vertical space"></div></div>',
 				'<div class="row"><div class="vertical space"></div></div>',
-			'</div>'
+				'<div class="vertical space"></div>
+			</div>'
 		];
 
 		static function renderControls($id, $user_affiliation, $stats)

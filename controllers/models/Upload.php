@@ -97,6 +97,7 @@
 
 		private function insertMedia($uploaderid, $description, $file, $extension)
 		{
+			$description = htmlspecialchars($description);
 			$db = $this->dbc->get();
 			if ($prepare = $db->prepare('INSERT INTO Media (description,  uploader) VALUES (?, ?);'))
 			{
@@ -156,6 +157,7 @@
 
 		function uploadFile($uploader, $description, $tags, $file)
 		{
+			$tags = htmlspecialchars($tags);
 			// Check if the uploader has enough privileges
 			if ($uploader['privilege'] > 3)
 				return 'wrong_no_privilege';

@@ -29,6 +29,8 @@ body.e622 { background-color: #250D51; background-image: url("stripe.png"); back
 .e622 .footer { background-color: black; width: 100%; }
 .e622 .footer .autotable { border-spacing: 0.5vw; border-collapse: separate; font-size: 60%; }
 
+.e622 .keep { white-space: nowrap; word-break: keep-all; }
+
 .e622 .autotable { display: table; width: auto; }
 .e622 .cell { display: table-cell; vertical-align: top; }
 .e622 .cell.text { display: table-cell; white-space: nowrap; }

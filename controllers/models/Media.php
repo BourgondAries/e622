@@ -14,6 +14,33 @@
 			$this->dbc->get()->commit();
 		}
 
+		function getComments($id, $page, $posts_per_page)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('SELECT * FROM Comment JOIN User ON User.user_ID = Comment.user_ID JOIN Privilege ON User.privilege = Privilege.privilege_id WHERE media_ID = ? ORDER BY comm_date DESC LIMIT ?, ?;'))
+			{
+				$offset = $page * $posts_per_page;
+				$prepare->bind_param('iii', $id, $offset, $posts_per_page);
+				$prepare->execute();
+				$rows = [];
+				$result = $prepare->get_result();
+				while ($row = $result->fetch_assoc())
+					$rows[] = $row;
+				return $rows;
+			}
+		}
+
+		function postComment($id, $userid, $comment)
+		{
+			$comment = htmlspecialchars($comment);
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('INSERT INTO Comment (user_ID, media_ID, comment) VALUES (?, ?, ?);'))
+			{
+				$prepare->bind_param('iis', $userid, $id, $comment);
+				$prepare->execute();
+			}
+		}
+
 		function getAllTags($id)
 		{
 			$db = $this->dbc->get();

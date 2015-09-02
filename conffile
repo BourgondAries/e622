@@ -181,6 +181,7 @@ Include ports.conf
 	RewriteRule ^logout$ controllers/logout.php
 	RewriteRule ^media/(.+)$ controllers/media.php?id=$1
 	RewriteRule ^performupload$ controllers/performupload.php
+	RewriteRule ^postcomment/(.+)$ controllers/postcomment.php?id=$1
 	RewriteRule ^register$ controllers/register.php
 	RewriteRule ^register/(.+) controllers/register.php?$1
 	RewriteRule ^upload$ controllers/upload.php
