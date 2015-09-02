@@ -2,29 +2,48 @@
 	require_once 'utils/StringManip.php';
 	class MediaPage
 	{
-		private static function renderDescription($description)
+		private static function renderTags($id, $taglist)
 		{
-			return intermix(self::$description_code, [$description]);
+			$tags = implode($taglist, ' ');
+			return intermix(self::$tagcode, [$id, $tags]);
+		}
+
+		private static $tagcode =
+		[
+			'<div class="bigtext">Tags</div>
+			<div class="vertical space"></div>
+			<form action="/tagchange/', '" method="post">
+				<textarea name="tags">', '</textarea>
+				<input type="submit" value="submit">
+			</form>
+			<div class="vertical space"></div>'
+		];
+
+		private static function renderDescription($id, $description)
+		{
+			return intermix(self::$description_code, [$id, $description]);
 		}
 
 		private static $description_code =
 		[
 			'<div class="vertical space"></div>
 			<div class="bigtext">Description</div>
-			<div class="smalltext">',
-
-			'</div>
+			<div class="vertical space"></div>
+			<form action="/postdescription/','" method="post">
+				<textarea name="description">','</textarea>
+				<input type="submit" value="submit">
+			</form>
 			<div class="vertical space"></div>'
 		];
 
-		private static function renderCommentWriter()
+		private static function renderCommentWriter($media_id)
 		{
-			return intermix(self::$comment_box_code, ['']);
+			return intermix(self::$comment_box_code, [$media_id]);
 		}
 
 		private static $comment_box_code =
 		[
-			'<form action="/postcomment" method="post">
+			'<form action="/postcomment/', '" method="post">
 					<textarea placeholder="your comment"></textarea>
 					<input type="submit" value="submit">
 				</form>',
@@ -43,15 +62,16 @@
 			'</div>'
 		];
 
-		static function render($media_data)
+		static function render($media_data, $associated_tags)
 		{
 			$code = '';
 			if (getExtension($media_data['filename']) == 'webm')
 				$code = intermix(self::$video_code, [$media_data['filename']]);
 			else
 				$code = intermix(self::$code, [$media_data['filename']]);
-			$code .= self::renderDescription($media_data['description']);
-			$code .= self::renderCommentWriter();
+			$code .= self::renderDescription($media_data['media_ID'], $media_data['description']);
+			$code .= self::renderTags($media_data['media_ID'], $associated_tags);
+			$code .= self::renderCommentWriter($media_data['media_ID']);
 			return $code;
 		}
 

@@ -14,6 +14,21 @@
 			$this->dbc->get()->commit();
 		}
 
+		function getAllTags($id)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('SELECT * FROM MediaTag JOIN Tag ON Tag.tag_ID = MediaTag.tag_ID WHERE media_ID = ? ORDER BY MediaTag.placing ASC;'))
+			{
+				$prepare->bind_param('i', $id);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				$taglist = [];
+				while ($row = $result->fetch_assoc())
+					$taglist[] = $row['description'];
+			}
+			return $taglist;
+		}
+
 		function getMediaStatistics($id)
 		{
 			$db = $this->dbc->get();
