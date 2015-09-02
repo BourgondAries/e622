@@ -216,8 +216,7 @@
 			}
 		}
 
-		function favorite($media_id, $user_id)
-		{
+		function favorite($media_id, $user_id) {
 			$db = $this->dbc->get();
 			if ($prepare = $db->prepare('INSERT INTO UserFeedback (user_ID, media_ID, favorite) VALUES (?, ?, true) ON DUPLICATE KEY UPDATE favorite = !favorite;'))
 			{
@@ -251,7 +250,16 @@
 			$db = $this->dbc->get();
 			if (empty($tags))
 			{
-				if ($prepare = $db->prepare('SELECT Media.media_ID, filename, sum(upvote) AS ups, sum(favorite) AS favs, sum(downvote) AS downs FROM Media LEFT JOIN UserFeedback ON Media.media_ID = UserFeedback.media_ID GROUP BY UserFeedback.media_ID ORDER BY upload_date DESC LIMIT ?, ?;'))
+				echo 'Empty tags';
+				if ($prepare = $db->prepare
+					('
+						SELECT Media.media_ID, filename, sum(upvote) AS ups, sum(favorite) AS favs, sum(downvote) AS downs
+						FROM Media
+						LEFT JOIN UserFeedback ON Media.media_ID = UserFeedback.media_ID
+						GROUP BY UserFeedback.media_ID
+						ORDER BY upload_date DESC
+						LIMIT ?, ?;
+					'))
 				// if ($prepare = $db->prepare('SELECT * FROM Media ORDER BY upload_date DESC LIMIT ?, ?;'))
 				{
 					$start_at = $pagenumber * $items_per_page;
@@ -280,6 +288,7 @@
 			}
 			$tag_string = implode(',', $tag_ids);
 
+			$media = [];
 			if ($prepare = $db->prepare
 				('
 					SELECT * FROM MediaTag
@@ -296,9 +305,28 @@
 				$prepare->bind_param('siii', $tag_string, $amount, $start_at, $items_per_page);
 				$prepare->execute();
 				$result = $prepare->get_result();
-				$media = array();
 				while ($row = $result->fetch_assoc())
+				{
+					if ($prepare = $db->prepare
+						('
+							SELECT sum(upvote) AS ups, sum(favorite) AS favs, sum(downvote) AS downs
+							FROM UserFeedback
+							WHERE media_ID = ?
+							GROUP BY media_ID;
+						'))
+					{
+						$prepare->bind_param('i', $row['media_ID']);
+						$prepare->execute();
+						$status_result = $prepare->get_result();
+						$status_row = $status_result->fetch_assoc();
+						$row['ups'] = $status_row['ups'];
+						$row['favs'] = $status_row['favs'];
+						$row['downs'] = $status_row['downs'];
+					}
+					else
+						echo $db->error;
 					$media[] = $row;
+				}
 
 				$returnvar = array('media' => $media);
 

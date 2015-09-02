@@ -186,6 +186,7 @@ Include ports.conf
 	RewriteRule ^posttags/(.+)$ controllers/posttags.php?id=$1
 	RewriteRule ^register$ controllers/register.php
 	RewriteRule ^register/(.+) controllers/register.php?$1
+	RewriteRule ^search(.+) controllers/search.php$1
 	RewriteRule ^upload$ controllers/upload.php
 	RewriteRule ^upload/(.+)$ controllers/upload.php?$1
 	RewriteRule ^upvote/([0-9]+)$ controllers/upvote.php?id=$1

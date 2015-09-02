@@ -51,7 +51,7 @@ e622<div class="vertical space"></div></a>
 													</div>
 													<div class="row"><div class="vertical space"></div></div>
 													<div class="row">
-														<form action="/search/search.php" method="get">
+														<form action="/search/" method="get">
 															<input name="tags" placeholder="your tags" type="text">
 															<div class="row"><div class="vertical space"></div></div>
 															<input name="submit" type="submit" value="search">
