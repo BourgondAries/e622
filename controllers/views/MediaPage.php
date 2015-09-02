@@ -43,7 +43,9 @@
 
 		private static $comment_box_code =
 		[
-			'<form action="/postcomment/', '" method="post">
+			'<div class="bigtext">Comment</div>
+			<div class="vertical space"></div>
+			<form action="/postcomment/', '" method="post">
 					<textarea placeholder="your comment"></textarea>
 					<input type="submit" value="submit">
 				</form>',
