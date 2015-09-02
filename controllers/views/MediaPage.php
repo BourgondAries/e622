@@ -76,7 +76,6 @@
 
 		static function renderComment($comment_info)
 		{
-			var_dump($comment_info);
 			$ci = $comment_info;
 			$date = $ci['comm_date'];
 			$comment = $ci['comment'];
