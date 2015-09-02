@@ -56,6 +56,82 @@
 			return $taglist;
 		}
 
+		function updateTags($media_id, $userid, $tags)
+		{
+			$tags = htmlspecialchars($tags);
+			$tags = explode(' ', $tags);
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('DELETE FROM MediaTag WHERE media_ID = ?;'))
+			{
+				$prepare->bind_param('i', $media_id);
+				$prepare->execute();
+			}
+			else
+			{
+				echo $db->error;
+				die();
+			}
+			$tags = array_unique($tags);
+			if (!in_array('sfw', $tags) && !in_array('qsfw', $tags) && !in_array('nsfw', $tags))
+				$tags[] = 'nsfw';
+			$counter = 0;
+			foreach ($tags as &$tag)
+			{
+				if ($tag == '--')
+					break;
+				++$counter;
+			}
+			$unsorted_tags = array_slice($tags, 0, $counter);
+			$sorted_tags = array_slice($tags, $counter + 1);
+			sort($sorted_tags, SORT_STRING);
+
+			$tag_ids = [];
+			foreach ($unsorted_tags as &$tag)
+				$tag_ids[] = $this->insertTag($tag);
+			foreach ($sorted_tags as &$tag)
+				$tag_ids[] = $this->insertTag($tag);
+			$counter = 0;
+			foreach ($tag_ids as &$tag_id)
+			{
+				$this->associateTag($media_id, $tag_id, $counter);
+				++$counter;
+			}
+		}
+
+		private function insertTag($tagname)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('INSERT IGNORE INTO Tag (description) VALUES (?); '))
+			{
+				$prepare->bind_param('s', $tagname);
+				$prepare->execute();
+				if ($prepare = $db->prepare('SELECT tag_ID FROM Tag WHERE description = ?;'))
+				{
+					$prepare->bind_param('s', $tagname);
+					$prepare->execute();
+					$result = $prepare->get_result();
+					if ($row = $result->fetch_array())
+						return $row[0];
+				}
+			}
+			else
+			{
+				return $db->error;
+			}
+		}
+
+		private function associateTag($media_id, $tag_id, $placing)
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('INSERT INTO MediaTag (tag_ID, media_ID, placing) VALUES (?, ?, ?);'))
+			{
+				$prepare->bind_param('iii', $tag_id, $media_id, $placing);
+				$prepare->execute();
+			}
+			else
+				echo $db->error;
+		}
+
 		function getMediaStatistics($id)
 		{
 			$db = $this->dbc->get();
