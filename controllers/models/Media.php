@@ -250,7 +250,6 @@
 			$db = $this->dbc->get();
 			if (empty($tags))
 			{
-				echo 'Empty tags';
 				if ($prepare = $db->prepare
 					('
 						SELECT Media.media_ID, filename, sum(upvote) AS ups, sum(favorite) AS favs, sum(downvote) AS downs
