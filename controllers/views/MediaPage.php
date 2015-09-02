@@ -25,6 +25,14 @@
 			</form>'
 		];
 
+		private static function renderComment($comment_info)
+		{
+		}
+
+		private static function renderComments($comment_list)
+		{
+		}
+
 		private static function renderDescription($id, $description)
 		{
 			return intermix(self::$description_code, [$id, $description]);
