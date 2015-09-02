@@ -2,19 +2,32 @@
 	require_once 'utils/StringManip.php';
 	class MediaPage
 	{
-		static function renderCommentWriter()
+		private static function renderDescription($description)
+		{
+			return intermix(self::$description_code, [$description]);
+		}
+
+		private static $description_code =
+		[
+			'<div class="vertical space"></div>
+			<div class="bigtext">Description</div>
+			<div class="smalltext">',
+
+			'</div>
+			<div class="vertical space"></div>'
+		];
+
+		private static function renderCommentWriter()
 		{
 			return intermix(self::$comment_box_code, ['']);
 		}
 
 		private static $comment_box_code =
 		[
-			'<div class="comment_box">
-				<form action="/postcomment" method="post">
+			'<form action="/postcomment" method="post">
 					<textarea placeholder="your comment"></textarea>
 					<input type="submit" value="submit">
-				</form>
-			</div>',
+				</form>',
 			''
 		];
 
@@ -37,6 +50,7 @@
 				$code = intermix(self::$video_code, [$media_data['filename']]);
 			else
 				$code = intermix(self::$code, [$media_data['filename']]);
+			$code .= self::renderDescription($media_data['description']);
 			$code .= self::renderCommentWriter();
 			return $code;
 		}
