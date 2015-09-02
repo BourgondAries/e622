@@ -10,13 +10,19 @@
 
 		private static $tagcode =
 		[
-			'<div class="bigtext">Tags</div>
-			<div class="vertical space"></div>
-			<form action="/tagchange/', '" method="post">
-				<textarea name="tags">', '</textarea>
-				<input type="submit" value="submit">
-			</form>
-			<div class="vertical space"></div>'
+			'<form action="/posttags/', '" class="row" method="post">
+					<div class="cell">
+						<div class="bigtext">Tags</div>
+						<div class="vertical space"></div>
+						<input type="submit" value="submit">
+					</div>
+					<div class="cell">
+					</div>
+					<div class="cell">
+						<textarea name="tags">', '</textarea>
+					</div>
+				</form>
+			</form>'
 		];
 
 		private static function renderDescription($id, $description)
@@ -26,14 +32,18 @@
 
 		private static $description_code =
 		[
-			'<div class="vertical space"></div>
-			<div class="bigtext">Description</div>
-			<div class="vertical space"></div>
-			<form action="/postdescription/','" method="post">
-				<textarea name="description">','</textarea>
-				<input type="submit" value="submit">
-			</form>
-			<div class="vertical space"></div>'
+			'<form action="/postdescription/','" class="row" method="post">
+				<div class="cell">
+					<div class="bigtext">Description</div>
+					<div class="vertical space"></div>
+					<input type="submit" value="submit">
+				</div>
+				<div class="cell">
+				</div>
+				<div class="cell">
+					<textarea name="description">','</textarea>
+				</div>
+			</form>'
 		];
 
 		private static function renderCommentWriter($media_id)
@@ -43,13 +53,17 @@
 
 		private static $comment_box_code =
 		[
-			'<div class="bigtext">Comment</div>
-			<div class="vertical space"></div>
-			<form action="/postcomment/', '" method="post">
-					<textarea placeholder="your comment"></textarea>
+			'<form action="/postcomment/', '" class="row" method="post">
+				<div class="cell">
+					<div class="bigtext">Comment</div>
+					<div class="vertical space"></div>
 					<input type="submit" value="submit">
-				</form>',
-			''
+				</div>
+				<div class="cell"></div>
+				<div class="cell">
+					<textarea placeholder="your comment"></textarea>
+				</div>
+			</form>'
 		];
 
 		static function renderComment($comment_info)
@@ -71,11 +85,24 @@
 				$code = intermix(self::$video_code, [$media_data['filename']]);
 			else
 				$code = intermix(self::$code, [$media_data['filename']]);
-			$code .= self::renderDescription($media_data['media_ID'], $media_data['description']);
-			$code .= self::renderTags($media_data['media_ID'], $associated_tags);
-			$code .= self::renderCommentWriter($media_data['media_ID']);
+			$description = self::renderDescription($media_data['media_ID'], $media_data['description']);
+			$tags = self::renderTags($media_data['media_ID'], $associated_tags);
+			$comment = self::renderCommentWriter($media_data['media_ID']);
+			$code .= intermix(self::$inputcode, [$description, $tags, $comment]);
 			return $code;
 		}
+
+		static private $inputcode =
+		[
+			'<div class="autotable">
+				<div class="table-column auto"></div>
+				<div class="table-column tiny"></div>
+				<div class="table-column max"></div>
+				<div class="row"><div class="vertical space"></div></div>',
+				'<div class="row"><div class="vertical space"></div></div>',
+				'<div class="row"><div class="vertical space"></div></div>',
+			'</div>'
+		];
 
 		static function renderControls($id, $user_affiliation, $stats)
 		{
