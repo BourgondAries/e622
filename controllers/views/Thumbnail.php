@@ -9,9 +9,16 @@
 			'">'
 		];
 
+		static private $taginput =
+		[
+			'<input type="hidden" name="tags" value="',
+			'">'
+		];
+
 		static private $pagebuttoncounter =
 		[
-			'<form action="/" method="get">',
+			'<form action="/',
+			'" method="get">',
 			'</form>'
 		];
 
@@ -23,7 +30,7 @@
 				return '';
 		}
 
-		static function generatePageCounter($pages, $current)
+		static function generatePageCounter($pages, $current, $search = '', $tags = '')
 		{
 			$html = self::generatePageButton(1);
 			for ($i = -5; $i <= 5; ++$i)
@@ -34,7 +41,9 @@
 			}
 			if ($pages != 1)
 				$html .= self::generatePageButton($pages);
-			return intermix(self::$pagebuttoncounter, [$html]);
+			if ($tags != '')
+				$html .= intermix(self::$taginput, [$tags]);
+			return intermix(self::$pagebuttoncounter, [$search, $html]);
 		}
 
 		static function generateThumbnails($list)
