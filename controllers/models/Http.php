@@ -14,6 +14,21 @@
 				return $_POST[$name];
 		}
 
+		static function getOrZero($name)
+		{
+			if (self::has($name))
+				return self::get($name);
+			return 0;
+		}
+
+		static function getOrOne($name)
+		{
+
+			if (self::has($name))
+				return self::get($name);
+			return 1;
+		}
+
 		static function getFile($name)
 		{
 			return $_FILES[$name];

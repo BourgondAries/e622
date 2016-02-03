@@ -4,9 +4,13 @@
 	require_once 'models/User.php';
 	require_once 'views/Standard.php';
 	require_once 'views/Thumbnail.php';
+	$page = Http::getOrOne('page');
+	$page -= 1;
+
 	$media = new Media;
 	$tags = explode(' ', Http::get('tags'));
 	$result = $media->getPage($tags, 0, 50);
 	$html = Thumbnail::generateThumbnails($result['media']);
+	$html .= Thumbnail::generatePageCounter($result['pagecount'], $page);
 	echo Standard::render('', $html, User::generateLoginState());
 ?>

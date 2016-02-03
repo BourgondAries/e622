@@ -2,6 +2,41 @@
 	require_once 'utils/StringManip.php';
 	class Thumbnail
 	{
+
+		static private $pagebuttoncode =
+		[
+			'<input name="page" type="submit" value="',
+			'">'
+		];
+
+		static private $pagebuttoncounter =
+		[
+			'<form action="/" method="get">',
+			'</form>'
+		];
+
+		static function generatePageButton($number)
+		{
+			if ($number > 0)
+				return intermix(self::$pagebuttoncode, [$number]);
+			else
+				return '';
+		}
+
+		static function generatePageCounter($pages, $current)
+		{
+			$html = self::generatePageButton(1);
+			for ($i = -5; $i <= 5; ++$i)
+			{
+				$page = $current + $i;
+				if ($page > 1 && $page < $pages)
+					$html .= self::generatePageButton($page);
+			}
+			if ($pages != 1)
+				$html .= self::generatePageButton($pages);
+			return intermix(self::$pagebuttoncounter, [$html]);
+		}
+
 		static function generateThumbnails($list)
 		{
 			$html = '';
