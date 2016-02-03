@@ -54,7 +54,7 @@ e622<div class="vertical space"></div></a>
 														<form action="/search/" method="get">
 															<input name="tags" placeholder="your tags" type="text">
 															<div class="row"><div class="vertical space"></div></div>
-															<input name="submit" type="submit" value="search">
+															<input type="submit" value="search">
 														</form>
 													</div>
 													<div class="row"><div class="vertical space"></div></div>
