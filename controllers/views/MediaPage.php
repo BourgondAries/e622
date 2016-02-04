@@ -176,19 +176,50 @@
 			</div>'
 		];
 
-		static function renderControls($id, $user_affiliation, $stats)
+		static private $setnavigation =
+		[
+			'<form action="/media/', '" method="get">
+				<input type="submit" value="', '">
+			</form>'
+		];
+
+		static private $navvert =
+		[
+			'<div class="navvert table">
+				<div class="auto table-column"></div>
+				<div class="tiny table-column"></div>
+				<div class="auto table-column"></div>
+				<div class="row">
+					<div class="cell">',
+					'</div>
+					<div class="cell"></div>
+					<div class="cell">',
+					'</div>
+				</div>
+			</div>'
+		];
+
+		static function renderControls($id, $user_affiliation, $stats, $from, $to)
 		{
+			if ($to != null) $next = intermix(self::$setnavigation, [$to, 'next']);
+			else $next = null;
+			if ($from != null) $prev = intermix(self::$setnavigation, [$from, 'prev']);
+			else $prev = null;
+			$navs = intermix(self::$navvert, [$prev, $next]);
+
 			if ($stats['ups'] == null)
 				$stats = array('ups' => 0, 'favs' => 0, 'downs' => 0);
 			if ($user_affiliation == null)
-				return intermix(self::$statistics, [$id, '', $id, '', $id, '', $stats['ups'], $stats['favs'], $stats['downs']]);
+				return intermix(self::$statistics, [$id, '', $id, '', $id, '', $stats['ups'],
+					$stats['favs'], $stats['downs'], $navs]);
 			else
 			{
 				$ui = $user_affiliation;
 				$up = $ui['upvote'] == 1 ? '&#8658; ' : '';
 				$fav = $ui['favorite'] == 1 ? '&#8658; ' : '';
 				$down = $ui['downvote'] == 1 ? '&#8658; ' : '';
-				return intermix(self::$statistics, [$id, $up, $id, $fav, $id, $down, $stats['ups'], $stats['favs'], $stats['downs']]);
+				return intermix(self::$statistics, [$id, $up, $id, $fav, $id, $down, $stats['ups'],
+					$stats['favs'], $stats['downs'], $navs]);
 			}
 		}
 
@@ -213,6 +244,7 @@
 						'&#9829; Favorite">
 					</form>
 				</div>
+
 				<div class="row">
 					<form action="/downvote/',
 
@@ -234,7 +266,10 @@
 				<div class="cell downvote"> &#9662; ',
 
 				'</div>
-			</div>'
+			</div>
+			<div class="vertical space"></div>',
+				// Placeholder for navigation stuff
+				''
 		];
 
 		static private $video_code =
