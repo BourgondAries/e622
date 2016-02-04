@@ -133,7 +133,7 @@
 			}
 		}
 
-		private function insertMedia($uploaderid, $description, $file, $extension)
+		private function insertMedia($uploaderid, $description, $file, $extension, $tags)
 		{
 			$description = htmlspecialchars($description);
 			$db = $this->dbc->get();
@@ -146,6 +146,13 @@
 				{
 					$prepare->bind_param('i', $mediaid);
 					$prepare->execute();
+					if ($prepare = $db->prepare('INSERT INTO Comment (user_ID, media_ID, comment) VALUES (?, ?, ?);'))
+					{
+						$prepare->bind_param('iis', $uploaderid, $mediaid, "<strong>Uploaded:</strong><br>Description: $description<br>Tags: $tags");
+						i
+						$prepare->execute();
+
+					}
 					if ($prepare = $db->prepare('UPDATE Media SET filename = ? WHERE media_ID = ?;'))
 					{
 						$newname = base_convert($mediaid, 10, 36) . ".$extension";
@@ -232,7 +239,7 @@
 			$extension = $this->getFileType($file);
 			if (self::startsWith($extension, 'wrong'))
 				return $extension;
-			$media_id = $this->insertMedia($uploader['user_ID'], $description, $file, $extension);
+			$media_id = $this->insertMedia($uploader['user_ID'], $description, $file, $extension, implode(' ', $tags));
 			$counter = 0;
 			foreach ($tag_ids as &$tag_id)
 			{
