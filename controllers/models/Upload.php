@@ -142,7 +142,7 @@
 				$prepare->bind_param('si', $description, $uploaderid);
 				$prepare->execute();
 				$mediaid = $db->insert_id;
-				if ($prepare = $db->prepare('INSERT INTO UserFeedback (media_ID, user_ID) VALUES (?, 0);'))
+				if ($prepare = $db->prepare('INSERT INTO UserFeedback (media_ID, user_ID) VALUES (?, 1);'))
 				{
 					$prepare->bind_param('i', $mediaid);
 					$prepare->execute();
@@ -200,7 +200,7 @@
 		{
 			$tags = htmlspecialchars($tags);
 			// Check if the uploader has enough privileges
-			if ($uploader['privilege'] > 3)
+			if ($uploader['privilege'] > 4 /* user */)
 				return 'wrong_no_privilege';
 
 			$tags = trim($tags);
