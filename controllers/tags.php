@@ -7,5 +7,5 @@
 	$media = new Media;
 	$tags = $media->getAllTagsGloballyByCount();
 	$taghtml = Tag::render($tags);
-	echo Standard::render('', $taghtml, User::generateLoginState());
+	echo Standard::render('Here you can see the most common tags in the database. Any non-whitespace broken sequence of characters constitutes a single tag. The number in the parentheses represent the amount of media that is tagged with that tag. If tags have the same number of media, then they will be sorted alphabetically.', $taghtml, User::generateLoginState());
 ?>
