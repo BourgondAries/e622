@@ -308,7 +308,7 @@
 				('
 					SELECT * FROM MediaTag
 					JOIN Media ON Media.media_ID = MediaTag.media_ID
-					WHERE tag_ID in (?)
+					WHERE tag_ID in (' . $tag_string . ')
 					GROUP BY MediaTag.media_ID
 					HAVING count(distinct tag_ID) > ?
 					ORDER BY upload_date DESC
@@ -317,7 +317,7 @@
 			{
 				$amount = count($tag_ids) - 1;
 				$start_at = $pagenumber * $items_per_page;
-				$prepare->bind_param('siii', $tag_string, $amount, $start_at, $items_per_page);
+				$prepare->bind_param('iii', $amount, $start_at, $items_per_page);
 				$prepare->execute();
 				$result = $prepare->get_result();
 				while ($row = $result->fetch_assoc())
