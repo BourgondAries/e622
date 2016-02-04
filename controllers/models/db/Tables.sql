@@ -6,12 +6,12 @@ CREATE TABLE Privilege
 	PRIMARY KEY (privilege_id)
 );
 
-INSERT INTO Privilege (privilege_id, description) VALUES (0, 'root');
-INSERT INTO Privilege (privilege_id, description) VALUES (1, 'administrator');
-INSERT INTO Privilege (privilege_id, description) VALUES (2, 'moderator');
-INSERT INTO Privilege (privilege_id, description) VALUES (3, 'user');
-INSERT INTO Privilege (privilege_id, description) VALUES (4, 'viewer');
-INSERT INTO Privilege (privilege_id, description) VALUES (5, 'banned');
+INSERT INTO Privilege (privilege_id, description) VALUES (1, 'root');
+INSERT INTO Privilege (privilege_id, description) VALUES (2, 'administrator');
+INSERT INTO Privilege (privilege_id, description) VALUES (3, 'moderator');
+INSERT INTO Privilege (privilege_id, description) VALUES (4, 'user');
+INSERT INTO Privilege (privilege_id, description) VALUES (5, 'viewer');
+INSERT INTO Privilege (privilege_id, description) VALUES (6, 'banned');
 
 CREATE TABLE User
 (
@@ -30,7 +30,7 @@ CREATE TRIGGER user_since_creation BEFORE INSERT ON User
 FOR EACH ROW
 SET NEW.user_since = NOW();
 
-INSERT INTO User (user_ID, username, privilege) VALUES (0, 'root', 0);
+INSERT INTO User (user_ID, username, privilege) VALUES (1, 'root', 1);
 
 CREATE TABLE Media
 (
@@ -60,9 +60,9 @@ CREATE TABLE Tag
 	PRIMARY KEY (tag_ID)
 );
 
-INSERT INTO Tag (tag_ID, description) VALUES (0, 'sfw');
-INSERT INTO Tag (tag_ID, description) VALUES (1, 'qsfw');
-INSERT INTO Tag (tag_ID, description) VALUES (2, 'nsfw');
+INSERT INTO Tag (tag_ID, description) VALUES (1, 'sfw');
+INSERT INTO Tag (tag_ID, description) VALUES (2, 'qsfw');
+INSERT INTO Tag (tag_ID, description) VALUES (3, 'nsfw');
 
 CREATE TABLE MediaTag
 (
