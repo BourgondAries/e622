@@ -39,7 +39,7 @@
 				$html .= ', ';
 				if (self::every($i, 5))
 					$html .= '<br>';
-				if (self::every($i, 10))
+				if (self::every($i, 10) || $i == count($tags) - 1)
 				{
 					$left = intermix(self::$cell, ['Top ' . ($i + 1)]);
 					$right = intermix(self::$cell, [$html]);
