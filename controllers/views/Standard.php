@@ -35,7 +35,7 @@ e622<div class="vertical space"></div></a>
 										'</a>
 										<a href="/upload"> UPLOAD </a>
 										<a href="/tags"> TAGS </a>
-										<a href="#"> SUPPORT </a>
+										<a href="/support"> SUPPORT </a>
 									</div>
 								</div>
 								<div class="row">
