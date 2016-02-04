@@ -186,7 +186,8 @@
 				$prepare->bind_param('s', $description);
 				$prepare->execute();
 				$result = $prepare->get_result();
-				if ($row = $result->fetch_array())
+				$row = $result->fetch_array();
+				if ($row != null)
 					return $row[0];
 				else
 					return null;
@@ -311,12 +312,16 @@
 			foreach ($tags as &$tag)
 			{
 				$result = $this->getTagId($tag);
-				if ($result)
+				if ($result !== null)
+				{
 					$tag_ids[] = $result;
+				}
 				else
 					$unused_tags[] = $tag;
 			}
 			$tag_string = implode(',', $tag_ids);
+			if (empty($tag_ids))
+				return array('media' => null, 'pagecount' => 0, 'unused' => $unused_tags);
 
 			$media = [];
 			if ($prepare = $db->prepare

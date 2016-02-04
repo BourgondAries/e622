@@ -3,22 +3,22 @@
 	class SearchError
 	{
 		static private $error_template =
-		['<div class="warning"> The tags ',
+		['<div class="warning"> The tag',
 
-			' are not present in the database and have been excluded from the search.</div>'
+			' not present in the database and have been excluded from the search.</div>'
 		];
 
 		static private function oxfordify($list)
 		{
 			$size = count($list);
 			if ($size == 1)
-				return $list[0];
+				return ' ' . $list[0] . ' is';
 			if ($size == 2)
-				return $list[0] . ' and ' . $list[1];
-			$code = '';
+				return 's ' . $list[0] . ' and ' . $list[1] . ' are';
+			$code = 's ';
 			for ($i = 0; $i <= $size - 2; ++$i)
 				$code .= $list[$i] . ', ';
-			return $code . ' and ' . $list[$size - 1];
+			return $code . ' and ' . $list[$size - 1] . ' are';
 		}
 
 		static function maybeWriteError($unused)

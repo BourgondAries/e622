@@ -48,6 +48,7 @@
 
 		static function generateThumbnails($list)
 		{
+			if ($list == null) return null;
 			$html = '';
 			foreach ($list as &$list_elem)
 				$html .= self::generateThumbnail($list_elem);
