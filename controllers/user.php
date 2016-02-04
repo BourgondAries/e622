@@ -9,6 +9,13 @@
 	$logged_in_as = User::getCurrentLogin();
 	$viewerinfo = User::getUser($logged_in_as);
 	$userinfo = User::getUser($username);
+
+	if ($viewerinfo == false)
+	{
+		$error = Userpage::renderNoPrivilege($username);
+		echo Standard::render('', $error);
+		die();
+	}
 	if ($userinfo == false)
 	{
 		$error = Userpage::renderNotExist($username);
@@ -16,7 +23,7 @@
 		die();
 	}
 
-	if ($username == $logged_in_as || $userinfo['privilege'] > $viewerinfo['privilege'] && $viewerinfo['privilege'] <= 3)
+	if ($username == $logged_in_as || $userinfo['privilege'] > $viewerinfo['privilege'] && $viewerinfo['privilege'] <= 4)
 	{
 		$privilege = Userpage::renderPrivileged($username, $userinfo['email'], $privileges, $userinfo['privilege'], $viewerinfo['privilege'], $viewerinfo['username']);
 		$sidebar = Userpage::renderPrivilegedStatistics();
@@ -29,6 +36,8 @@
 	}
 	else
 	{
-		echo 'da' . User::getCurrentLogin();
+		$error = Userpage::renderNoPrivilege($username);
+		echo Standard::render('', $error);
+		die();
 	}
 ?>

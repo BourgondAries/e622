@@ -7,6 +7,11 @@
 			return self::$code_not_exist[0] . $username . self::$code_not_exist[1];
 		}
 
+		static function renderNoPrivilege($username)
+		{
+			return intermix(self::$code_not_privileged, [$username]);
+		}
+
 		static function renderSuccessTime($time)
 		{
 			return self::$success_box[0] . $time . self::$success_box[1];
@@ -54,6 +59,13 @@
 			'<div class="warning"> The user "',
 
 			'" does not exist.</div>'
+		];
+
+		static private $code_not_privileged =
+		[
+			'<div class="warning"> The user "',
+
+			'" can not be shown to you, you have insufficient privileges.</div>'
 		];
 
 		static function renderPrivilegedStatistics()
