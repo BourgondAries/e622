@@ -56,7 +56,7 @@
 
 		static function generateThumbnail($item)
 		{
-			$stats = self::generateStats($item['ups'], $item['favs'], $item['downs'], 'sfw');
+			$stats = self::generateStats($item['ups'], $item['favs'], $item['downs'], $item['safety']);
 			return intermix(self::$code, [$item['media_ID'], $item['filename'], getExtension($item['filename']), $stats]);
 		}
 
@@ -69,14 +69,17 @@
 			$color = '';
 			switch ($sfwrating)
 			{
+				case 0:
 				case 'sfw':
 					$rating = 'S';
 					$color = 'upvote';
 				break;
+				case 1:
 				case 'qsfw':
 					$rating = 'Q';
 					$color = 'favorite';
 				break;
+				case 2:
 				case 'nsfw':
 					$rating = 'N';
 					$color = 'downvote';

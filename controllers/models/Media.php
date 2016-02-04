@@ -283,7 +283,10 @@
 					$result = $prepare->get_result();
 					$media = array();
 					while ($row = $result->fetch_assoc())
+					{
+						$row['safety'] = self::getSafety($db, $row['media_ID']);
 						$media[] = $row;
+					}
 					if ($prepare = $db->prepare('SELECT count(media_ID) AS elems FROM Media;'))
 					{
 						$prepare->execute();
@@ -295,11 +298,14 @@
 				}
 			}
 			$tag_ids = [];
+			$unused_tags = [];
 			foreach ($tags as &$tag)
 			{
 				$result = $this->getTagId($tag);
 				if ($result)
 					$tag_ids[] = $result;
+				else
+					$unused_tags[] = $tag;
 			}
 			$tag_string = implode(',', $tag_ids);
 
@@ -308,7 +314,7 @@
 				('
 					SELECT * FROM MediaTag
 					JOIN Media ON Media.media_ID = MediaTag.media_ID
-					WHERE tag_ID in (' . $tag_string . ')
+					WHERE tag_ID IN (' . $tag_string . ')
 					GROUP BY MediaTag.media_ID
 					HAVING count(distinct tag_ID) > ?
 					ORDER BY upload_date DESC
@@ -322,6 +328,7 @@
 				$result = $prepare->get_result();
 				while ($row = $result->fetch_assoc())
 				{
+					$row['safety'] = self::getSafety($db, $row['media_ID']);
 					if ($prepare = $db->prepare
 						('
 							SELECT sum(upvote) AS ups, sum(favorite) AS favs, sum(downvote) AS downs
@@ -343,7 +350,7 @@
 					$media[] = $row;
 				}
 
-				$returnvar = array('media' => $media);
+				$returnvar = array('media' => $media, 'unused' => $unused_tags);
 
 				if ($prepare = $db->prepare
 				(
@@ -362,6 +369,24 @@
 			}
 			else
 				echo $db->error;
+		}
+
+		private static function getSafety($db, $media)
+		{
+			if ($prepare = $db->prepare
+			('
+				SELECT tag_ID
+				FROM MediaTag
+				WHERE media_ID = ?
+				AND tag_ID IN (0,1,2);
+			'))
+			{
+				$prepare->bind_param('i', $media);
+				$prepare->execute();
+				$status_result = $prepare->get_result();
+				$status_row = $status_result->fetch_assoc();
+				return $status_row['tag_ID'];
+			}
 		}
 	}
 ?>
