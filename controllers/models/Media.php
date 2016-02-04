@@ -196,13 +196,22 @@
 		function getMedia($id)
 		{
 			$db = $this->dbc->get();
-			if ($prepare = $db->prepare('SELECT * FROM Media WHERE media_ID = ?;'))
+			if ($prepare = $db->prepare('SELECT * FROM Media LEFT JOIN MediaLink ON MediaLink.to_id = Media.media_ID WHERE media_ID = ?;'))
 			{
 				$prepare->bind_param('i', $id);
 				$prepare->execute();
 				$result = $prepare->get_result();
-				return $result->fetch_assoc();
+				$total = $result->fetch_assoc();
 			}
+			if ($prepare = $db->prepare('SELECT * FROM MediaLink WHERE from_id = ?;'))
+			{
+				$prepare->bind_param('i', $id);
+				$prepare->execute();
+				$result = $prepare->get_result();
+				$total2 = $result->fetch_assoc();
+			}
+			$total['to_id'] = $total2['to_id'];
+			return $total;
 		}
 
 		function getUserVotes($media_id, $user_id)
