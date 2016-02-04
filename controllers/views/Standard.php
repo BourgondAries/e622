@@ -1,9 +1,9 @@
 <?php
 	class Standard
 	{
-		static function render($main_content, $under_search_bar, $loginstate = ['LOGIN', '/login'])
+		static function render($main_content, $under_search_bar, $loginstate = ['LOGIN', '/login'], $filled_tags = '')
 		{
-			$inserter = [$under_search_bar, $main_content];
+			$inserter = [$under_search_bar, $main_content, $filled_tags];
 			foreach ($loginstate as &$value)
 				$inserter[] = $value;
 			$generated = '';
@@ -52,7 +52,7 @@ e622<div class="vertical space"></div></a>
 													<div class="row"><div class="vertical space"></div></div>
 													<div class="row">
 														<form action="/search/" method="get">
-															<input name="tags" placeholder="your tags" type="text">
+															<input name="tags" placeholder="your tags" type="text" value="', '">
 															<div class="row"><div class="vertical space"></div></div>
 															<input type="submit" value="search">
 														</form>

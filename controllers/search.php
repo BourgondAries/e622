@@ -13,5 +13,5 @@
 
 	$html = Thumbnail::generateThumbnails($result['media']);
 	$html .= Thumbnail::generatePageCounter($result['pagecount'], $page, 'search/', Http::get('tags'));
-	echo Standard::render('', $html, User::generateLoginState());
+	echo Standard::render('', $html, User::generateLoginState(), Http::get('tags'));
 ?>
