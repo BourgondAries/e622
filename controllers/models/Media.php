@@ -392,7 +392,7 @@
 				SELECT tag_ID
 				FROM MediaTag
 				WHERE media_ID = ?
-				AND tag_ID IN (0,1,2);
+				AND tag_ID IN (1,2,3);
 			'))
 			{
 				$prepare->bind_param('i', $media);
