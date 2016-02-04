@@ -14,5 +14,6 @@
 	$user_affiliation = $media->getUserVotes($media_id, $user['user_ID']);
 	$media_code = MediaPage::render($media_data, $media_tags, $comments);
 	$control_code = MediaPage::renderControls($media_data['media_ID'], $user_affiliation, $statistics);
-	echo Standard::render($control_code, $media_code, User::generateLoginState());
+	$error_code = MediaPage::renderWarning(Http::get('reason'));
+	echo Standard::render($control_code . $error_code, $media_code, User::generateLoginState());
 ?>

@@ -2,6 +2,25 @@
 	require_once 'utils/StringManip.php';
 	class MediaPage
 	{
+		static function renderWarning($reason)
+		{
+			switch ($reason)
+			{
+				case 'log_in_description':
+					return self::foldWarning('You have to log in to edit the description');
+				case 'log_in_tags':
+					return self::foldWarning('You have to log in to edit the tags');
+				case 'log_in':
+					return self::foldWarning('You have to log in before commenting');
+			}
+			return '';
+		}
+
+		private static function foldWarning($string)
+		{
+			return '<div class="vertical space"></div><div class="warning">' . $string . '</div>';
+		}
+
 		private static function renderTags($id, $taglist)
 		{
 			$tags = implode($taglist, ' ');

@@ -9,6 +9,7 @@
 	if ($username == false)
 	{
 		header("Location: /media/$media_id&reason=log_in_tags");
+		die();
 	}
 	$user_id = User::getUser($username)['user_ID'];
 	$media->updateTags($media_id, $user_id, $tags);
