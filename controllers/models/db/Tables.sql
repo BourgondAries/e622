@@ -19,7 +19,7 @@ CREATE TABLE User
 	username VARCHAR(26) UNIQUE,
 	email VARCHAR(255),
 	user_since DATETIME,
-	privilege BIGINT UNSIGNED DEFAULT 3,
+	privilege BIGINT UNSIGNED DEFAULT 4,
 	password_hash VARCHAR(255),
 
 	PRIMARY KEY (user_ID),
