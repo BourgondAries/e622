@@ -29,7 +29,7 @@
 		{
 			switch ($reason)
 			{
-				case 'already_linked': $reason = 'The medium to link from already has a link to some other medium. Only one link is allowed.'; break;
+				case 'already_linked': $reason = 'You need to be the same user as the from link to overwrite a link.'; break;
 				case 'no_such_link': $reason = 'The medium you are trying to link to does not appear to exist'; break;
 				case 'wrong_no_privilege': $reason = 'This account does not have the privilege to upload media.'; break;
 				case 'wrong_no_tags': $reason = 'No tags were provided. Every medium must have at least one tag.'; break;

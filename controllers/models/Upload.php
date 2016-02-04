@@ -62,8 +62,34 @@
 			return $this->dbc->get()->rollback();
 		}
 
-		function linkFromTo($from, $to)
+		function linkFromTo($from, $to, $uid)
 		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('SELECT * FROM MediaLink WHERE from_id = ?;'))
+			{
+				$prepare->bind_param('i', $from);
+				$prepare->execute();
+				$result = $prepare->get_result()->fetch_assoc();
+				if ($result != null)
+					if ($prepare = $db->prepare('SELECT * FROM Media WHERE media_ID = ?;'))
+					{
+						$prepare->bind_param('i', $from);
+						$prepare->execute();
+						$result = $prepare->get_result()->fetch_assoc();
+						if ($result['uploader'] == $uid)
+						{
+							$db = $this->dbc->get();
+							if ($prepare = $db->prepare('UPDATE MediaLink SET to_id = ? WHERE from_id = ?;'))
+							{
+								$prepare->bind_param('ii', $to, $from);
+								$prepare->execute();
+								return $db->affected_rows;
+							}
+						}
+						else
+							return 0;
+					}
+			}
 			$db = $this->dbc->get();
 			if ($prepare = $db->prepare('INSERT INTO MediaLink (from_id, to_id) VALUES (?, ?);'))
 			{

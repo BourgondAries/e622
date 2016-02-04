@@ -20,6 +20,7 @@
 		if ($upload->existsId($link) != 1)
 		{
 			header("Location: /upload/reason=no_such_link&description=$description&taglist=$taglist");
+			die();
 		}
 	}
 	$result = $upload->uploadFile($user, $description, $taglist, Http::getFile('mediafile')['tmp_name']);
@@ -32,7 +33,7 @@
 	{
 		if ($link != '')
 		{
-			$rows = $upload->linkFromTo($link, $result);
+			$rows = $upload->linkFromTo($link, $result, $user['user_ID']);
 			if ($rows < 1)
 			{
 				$result = 'reason=already_linked';
