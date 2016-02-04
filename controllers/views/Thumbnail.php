@@ -76,17 +76,17 @@
 			$color = '';
 			switch ($sfwrating)
 			{
-				case 0:
+				case 1:
 				case 'sfw':
 					$rating = 'S';
 					$color = 'upvote';
 				break;
-				case 1:
+				case 2:
 				case 'qsfw':
 					$rating = 'Q';
 					$color = 'favorite';
 				break;
-				case 2:
+				case 3:
 				case 'nsfw':
 					$rating = 'N';
 					$color = 'downvote';
