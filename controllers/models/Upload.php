@@ -148,7 +148,8 @@
 					$prepare->execute();
 					if ($prepare = $db->prepare('INSERT INTO Comment (user_ID, media_ID, comment) VALUES (?, ?, ?);'))
 					{
-						$prepare->bind_param('iis', $uploaderid, $mediaid, "<strong>Uploaded:</strong><br>Description: $description<br>Tags: $tags");
+						$string = "<strong>Uploaded:</strong><br>Description: $description<br>Tags: $tags";
+						$prepare->bind_param('iis', $uploaderid, $mediaid, $string);
 						$prepare->execute();
 
 					}
