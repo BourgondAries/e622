@@ -58,7 +58,13 @@
 		static function generateThumbnail($item)
 		{
 			$stats = self::generateStats($item['ups'], $item['favs'], $item['downs'], $item['safety']);
-			return intermix(self::$code, [$item['media_ID'], $item['filename'], getExtension($item['filename']), $stats]);
+			$extension = getExtension($item['filename']);
+			if ($extension == 'webm')
+			{
+				$item['filename'] .= '.png';
+				$extension = 'png';
+			}
+			return intermix(self::$code, [$item['media_ID'], $item['filename'], $extension, $stats]);
 		}
 
 		static function generatePageList($current_page, $page_count)

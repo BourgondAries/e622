@@ -19,6 +19,18 @@
 			return preg_replace('/[a-z0-9]+\.([a-z]+)/', '$1', $filename);
 		}
 
+		static function generateVidThumbnail($src, $thumb_width)
+		{
+			system("avconv -i $src 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,// > $src.duration");
+			$duration = file_get_contents("$src.duration");
+			$times = split(':', $duration);
+			$time = (floatval($times[2]) +
+				floatval($times[1]) * 60 +
+				floatval($times[0]) * 3600) / 2;
+			system("avconv -ss $time -i $src -vframes 1 -q:v 2 $src.png");
+			self::generateThumbnail("$src.png", 'png', 200);
+		}
+
 		static function generateThumbnail($src, $type, $thumb_width)
 		{
 			$dest = "${src}_${thumb_width}.$type";
@@ -141,7 +153,10 @@
 						$prepare->execute();
 						$root = $_SERVER['DOCUMENT_ROOT'];
 						rename($file, "$root/storage/$newname");
-						self::generateThumbnail("$root/storage/$newname", $extension, 200);
+						if ($extension == 'webm')
+							self::generateVidThumbnail("$root/storage/$newname", 200);
+						else
+							self::generateThumbnail("$root/storage/$newname", $extension, 200);
 						return $mediaid;
 					}
 				}
