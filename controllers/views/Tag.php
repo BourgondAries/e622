@@ -35,7 +35,8 @@
 			$n = 'number';
 			for ($i = 0; $i < count($tags); ++$i)
 			{
-				$html .= intermix(self::$template, [$tags[$i][$d], $tags[$i][$n]]);
+				$tag = $tags[$i][$d];
+				$html .= intermix(self::$template, ["<a href=/search/?tags=$tag>$tag</a>", $tags[$i][$n]]);
 				$html .= ', ';
 				if (self::every($i, 5))
 					$html .= '<br>';
