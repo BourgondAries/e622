@@ -46,6 +46,22 @@
 			}
 		}
 
+		function getAllTagsGloballyByCount()
+		{
+			$db = $this->dbc->get();
+			if ($prepare = $db->prepare('SELECT COUNT(MediaTag.tag_ID) AS number, description FROM Tag JOIN MediaTag ON MediaTag.tag_ID = Tag.tag_ID GROUP BY Tag.tag_ID ORDER BY number DESC, description ASC;'))
+			{
+				$prepare->execute();
+				$result = $prepare->get_result();
+				$taglist = [];
+				while ($row = $result->fetch_assoc())
+					$taglist[] = $row;
+				return $taglist;
+			}
+			else
+				echo "A fatal error occurred"; die();
+		}
+
 		function getAllTags($id)
 		{
 			$db = $this->dbc->get();
