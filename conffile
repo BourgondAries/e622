@@ -176,6 +176,7 @@ Include ports.conf
 	RewriteRule ^checkregister$ controllers/checkregister.php
 	RewriteRule ^downvote/([0-9]+)$ controllers/downvote.php?id=$1
 	RewriteRule ^favorite/([0-9]+)$ controllers/favorite.php?id=$1
+	RewriteRule ^help$ controllers/help.php
 	RewriteRule ^login$ controllers/login.php
 	RewriteRule ^login/(.+)$ controllers/login.php?$1
 	RewriteRule ^logout$ controllers/logout.php
