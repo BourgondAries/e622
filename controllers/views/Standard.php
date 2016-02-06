@@ -19,6 +19,9 @@
 				<head>
 					<style> @import url("/controllers/views/style/reset.css"); </style>
 					<style> @import url("/controllers/views/style/index.css"); </style>
+					<link rel="icon" type="image/png" href="/storage/icons/favicon16x16.png" sizes="16x16">
+					<link rel="icon" type="image/png" href="/storage/favicon32x32.png" sizes="32x32">
+					<link rel="icon" type="image/png" href="/storage/favicon48x48.png" sizes="48x48">
 				</head>
 				<body class="e622">
 					<div class="row">
