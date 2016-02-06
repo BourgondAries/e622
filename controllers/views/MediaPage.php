@@ -286,9 +286,19 @@
 
 		static private $code =
 		[
-			'<img class="media" src="/storage/',
+			'
+			<script>
+				function enlarge() {
+					if (document.getElementById("media").className == "enlargedmedia")
+						document.getElementById("media").className = "media";
+					else
+						document.getElementById("media").className = "enlargedmedia";
+				};
+			</script>
+			<img onclick="enlarge();" id="media" class="media" src="/storage/',
 
-			'">'
+			'">
+			'
 		];
 	}
 ?>
