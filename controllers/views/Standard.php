@@ -1,6 +1,20 @@
 <?php
 	class Standard
 	{
+		static function renderSidebar()
+		{
+			return self::$templateside[0];
+		}
+
+		static private $templateside =
+		[
+			'<div class="update smalltext">
+				<ul>
+					<li> You can now expand pictures by clicking on them. </li>
+				</ul>
+			</div>'
+		];
+
 		static function render($main_content, $under_search_bar, $loginstate = ['LOGIN', '/login'], $filled_tags = '')
 		{
 			$inserter = [$under_search_bar, $main_content, $filled_tags];

@@ -5,7 +5,7 @@
 		static private $error_template =
 		['<div class="warning"> The tag',
 
-			' not present in the database and have been excluded from the search.</div>'
+			' not present in the database and ',' been excluded from the search.</div>'
 		];
 
 		static private function oxfordify($list)
@@ -25,8 +25,11 @@
 		{
 			if (empty($unused))
 				return '';
+			$have = 'has';
+			if (count($unused) >= 2)
+				$have = 'have';
 			$unused = self::oxfordify($unused);
-			return intermix(self::$error_template, [$unused]);
+			return intermix(self::$error_template, [$unused, $have]);
 		}
 	}
 ?>

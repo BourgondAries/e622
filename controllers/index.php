@@ -12,5 +12,7 @@
 	$html = Thumbnail::generateThumbnails($results['media']);
 	$html .= Thumbnail::generatePageCounter($results['pagecount'], $page);
 
-	echo Standard::render('', $html, User::generateLoginState());
+	$sidebar = Standard::renderSidebar();
+
+	echo Standard::render($sidebar, $html, User::generateLoginState());
 ?>

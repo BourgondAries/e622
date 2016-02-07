@@ -16,5 +16,6 @@
 	$html .= Thumbnail::generatePageCounter
 		($result['pagecount'], $page, 'search/', Http::get('tags'));
 	$error = SearchError::maybeWriteError($result['unused']);
-	echo Standard::render($error, $html, User::generateLoginState(), Http::get('tags'));
+	$sidebar = Standard::renderSidebar();
+	echo Standard::render($error . $sidebar, $html, User::generateLoginState(), Http::get('tags'));
 ?>
