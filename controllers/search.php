@@ -9,7 +9,7 @@
 	$page = Http::getOrOne('page') - 1;
 
 	$media = new Media;
-	$tags = explode(' ', Http::get('tags'));
+	$tags = explode(' ', trim(Http::get('tags')));
 	$result = $media->getPage($tags, $page, 25);
 
 	$html = Thumbnail::generateThumbnails($result['media']);
