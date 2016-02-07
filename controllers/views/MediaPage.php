@@ -100,7 +100,7 @@
 			$comment = $ci['comment'];
 			$user = $ci['username'];
 			$privilege = $ci['description']; // Privilege description
-			return intermix(self::$single_comment_code, [$user, $privilege, $date, $comment]);
+			return intermix(self::$single_comment_code, [$user, $user, $privilege, $date, $comment]);
 		}
 
 		static private $single_comment_code =
@@ -109,9 +109,11 @@
 				<div class="keep">
 					<div class="cell">
 						<div class="autotable">
-							<div class="row">',
+							<div class="row">
+								<a href=/user/', '>',
 
-							'</div>
+								'</a>
+							</div>
 							<div class="row">
 								<div class="tinytext">',
 
