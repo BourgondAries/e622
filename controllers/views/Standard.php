@@ -37,7 +37,7 @@
 					<link rel="icon" type="image/png" href="/storage/favicon32x32.png" sizes="32x32">
 					<link rel="icon" type="image/png" href="/storage/favicon48x48.png" sizes="48x48">
 				</head>
-				<body class="e622">
+				<body class="e622" onkeydown="navigate(event);">
 					<div class="row">
 						<div class="prefoot">
 							<div class="table">

@@ -5,7 +5,7 @@
 
 		static private $pagebuttoncode =
 		[
-			'<input name="page" type="submit" value="',
+			'<input id="pagebutton', '" name="page" type="submit" value="',
 			'">'
 		];
 
@@ -19,15 +19,40 @@
 		[
 			'<form action="/',
 			'" method="get">',
-			'</form>'
+			'</form>', ''
 		];
 
 		static function generatePageButton($number)
 		{
 			if ($number > 0)
-				return intermix(self::$pagebuttoncode, [$number]);
+				return intermix(self::$pagebuttoncode, [$number, $number]);
 			else
 				return '';
+		}
+
+		static private $navigation_script =
+		[
+			'<script>
+				function navigate(event)
+				{
+					if (event.keyIdentifier == "Right")
+						document.getElementById("pagebutton', '").click();
+					if (event.keyIdentifier == "Left")
+						document.getElementById("pagebutton', '").click();
+				}
+			</script>'
+		];
+
+		static function generateNavigationScript($pages, $current)
+		{
+			$current += 1;
+			$prev = $current - 1;
+			$next = $current + 1;
+			if ($next > $pages)
+				$next = $pages;
+			if ($prev < 1)
+				$prev = 1;
+			return intermix(self::$navigation_script, [$next, $prev]);
 		}
 
 		static function generatePageCounter($pages, $current, $search = '', $tags = '')
@@ -43,7 +68,8 @@
 				$html .= self::generatePageButton($pages);
 			if ($tags != '')
 				$html .= intermix(self::$taginput, [$tags]);
-			return intermix(self::$pagebuttoncounter, [$search, $html]);
+			$pagescript = self::generateNavigationScript($pages, $current);
+			return intermix(self::$pagebuttoncounter, [$search, $html, $pagescript]);
 		}
 
 		static function generateThumbnails($list)
@@ -114,7 +140,8 @@
 
 		static private $code =
 		[
-			'<div class="thumbnailbox">
+			'
+			<div class="thumbnailbox">
 				<a href="/media/',
 
 				'">
