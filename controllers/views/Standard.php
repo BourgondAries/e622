@@ -10,6 +10,7 @@
 		[
 			'<div class="update smalltext">
 				<ul>
+					<strong> Scroll through search pages using the arrow keys. </strong>
 					<li> You can now expand pictures by clicking on them. </li>
 				</ul>
 			</div>'
